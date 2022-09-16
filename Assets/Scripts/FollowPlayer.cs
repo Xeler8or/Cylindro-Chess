@@ -16,8 +16,8 @@ public class FollowPlayer : MonoBehaviour
         // var eulerRotation = new Vector3(cylinder.eulerAngles.x, cylinder.eulerAngles.y, cylinder.eulerAngles.z);
         //
         // transform.rotation = Quaternion.Euler(eulerRotation);
-        var rotation_quaterion = new Quaternion(transform.rotation.x, transform.rotation.y, cylinder.rotation.z,
-            transform.rotation.w);
-        transform.rotation = rotation_quaterion;
+        // var rotation_quaterion = new Quaternion(transform.rotation.x, transform.rotation.y, cylinder.rotation.z,
+        //     transform.rotation.w);
+        // transform.rotation = rotation_quaterion;
     }
 }
