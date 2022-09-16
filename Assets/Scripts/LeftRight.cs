@@ -14,12 +14,12 @@ public class LeftRight : MonoBehaviour
         if (Input.GetKey("d"))
         {
             //Rotate cylinder to left
-            ground.Rotate(0f,-leftRotation * Time.deltaTime,0f, Space.Self);
+            ground.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
         }
         if(Input.GetKey("a"))
         {
             // Rotate cylinder to right
-            ground.Rotate(0f,rightRotation * Time.deltaTime, 0f, Space.Self);
+            ground.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
         }
     }
 }
