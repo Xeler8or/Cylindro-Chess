@@ -11,12 +11,12 @@ public class LeftRight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.GetKey("right"))
         {
             //Rotate cylinder to left
             ground.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
         }
-        if(Input.GetKey("a"))
+        if(Input.GetKey("a") || Input.GetKey("left"))
         {
             // Rotate cylinder to right
             ground.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
