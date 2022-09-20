@@ -28,6 +28,7 @@ public class ObstacleController : MonoBehaviour
             //Restart
             Time.timeScale = 0;
             restartPanel.SetActive(true);
+            //Call Analytics
         }
     }
 }
