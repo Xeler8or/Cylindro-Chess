@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     {
         
     }
-    public void replay(){
+    public void Replay(){
         Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
