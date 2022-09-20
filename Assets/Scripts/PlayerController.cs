@@ -4,9 +4,11 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody rb;
+    private Rigidbody rb;
     public Vector3 inertiaTensor = new Vector3(0f,0f,0f);
     public float forwardForce = 10f;
+
+    public GameObject restartPanel;
 
     void Start()
     { 
@@ -19,5 +21,13 @@ public class PlayerController : MonoBehaviour
     {
         //Player to move forward
         rb.AddForce(0,0,forwardForce);
+        
+        //Pause if player falls
+        if(this.gameObject.transform.position.y < 4.5f)
+        {
+            //Restart
+            Time.timeScale = 0;
+            restartPanel.SetActive(true);
+        }
     }
 }
