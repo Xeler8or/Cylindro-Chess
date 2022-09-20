@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public Vector3 InertiaTensor = new Vector3(0f,0f,0f);
-    public float forwardForce = 200f;
+    public float forwardForce = 10f;
    
     void Start()
     {
