@@ -18,8 +18,10 @@ public class GameController : MonoBehaviour
         
     }
     public void Replay(){
+        print("Hello");
         Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        print(scene.name);
     }
 }

@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
         if(this.gameObject.transform.position.y < 4.5f)
         {
             //Restart
+            GameObject go;
+            go = Instantiate(restartPanel) as GameObject;
             Time.timeScale = 0;
             restartPanel.SetActive(true);
             

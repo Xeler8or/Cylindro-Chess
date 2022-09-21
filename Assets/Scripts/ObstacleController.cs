@@ -24,9 +24,13 @@ public class ObstacleController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            print("JJJJJJJJJJJJJJ");
+
             Destroy(this.gameObject);
             //Restart
             Time.timeScale = 0;
+            GameObject go;
+            go = Instantiate(restartPanel) as GameObject;
             restartPanel.SetActive(true);
             //Call Analytics
         }
