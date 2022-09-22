@@ -38,7 +38,9 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+
   m_IndirectSpecularColor: {r: 0.102343865, g: 0.1279557, b: 0.1258116, a: 1}
+
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -150,10 +152,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44138621}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!54 &44138623
@@ -1459,11 +1461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012297859478, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4000012297859478, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 4000012297859478, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1493,22 +1495,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3096217407326995551, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
+    - target: {fileID: 0}
       propertyPath: rb
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 3096217407326995551, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
+    - target: {fileID: 0}
       propertyPath: gmController
       value: 
       objectReference: {fileID: 813461466}
-    - target: {fileID: 3096217407326995551, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
+    - target: {fileID: 0}
       propertyPath: restartPanel
       value: 
       objectReference: {fileID: 285846933}
+    - target: {fileID: 4579460214892128823, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579460214892128823, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 3096217407326995551, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
     - {fileID: 3371854390482545132, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
-    - {fileID: 4579460214892128823, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7a6bdcb053e941588debe9e13a13d63, type: 3}
 --- !u!1 &2111234517
 GameObject:

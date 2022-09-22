@@ -32,7 +32,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log(_GMC.score);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         //Restart
+    //         Time.timeScale = 0;
+    //         restartPanel.SetActive(true);
+    //     }
+    // }
+
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
