@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Constants : MonoBehaviour
+public static class Constants
 {
     public enum Pieaces
     {
@@ -18,15 +14,6 @@ public class Constants : MonoBehaviour
         Black,
         White
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static float PLAYER_FORCE_Z = 10f;
 }
