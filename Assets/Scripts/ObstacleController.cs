@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
-
 {
-    
-    public GameObject restartPanel;
+    public Constants.Pieaces piece;
+    public Constants.Color color;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +24,6 @@ public class ObstacleController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
-            //Restart
-            Time.timeScale = 0;
-            restartPanel.SetActive(true);
             //Call Analytics
         }
     }
