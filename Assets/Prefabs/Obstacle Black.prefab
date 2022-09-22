@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2587566003384170300}
   m_Layer: 0
   m_Name: Obstacle Black
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,4 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ef37ab2f86c4ef69d68e83d2d661aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartPanel: {fileID: 8163633000494222391, guid: 1775f000bf2384e039c03d74fb4f55b6, type: 3}
+  piece: 0
+  color: 0
