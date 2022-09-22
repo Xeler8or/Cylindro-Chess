@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Constants.Color color;
     public Rigidbody rb;
     private Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
-    public float forwardForce = 10f;
+    public static float forwardForce;
     public GameObject gmController;
     public GameObject restartPanel;
     private GameController _GMC;
@@ -32,7 +32,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log(_GMC.score);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         //Restart
+    //         Time.timeScale = 0;
+    //         restartPanel.SetActive(true);
+    //     }
+    // }
+
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {

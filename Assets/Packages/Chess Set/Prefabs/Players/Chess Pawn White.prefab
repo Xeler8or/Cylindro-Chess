@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33000012760542366}
   - component: {fileID: 23000012148006776}
   - component: {fileID: 4579460214892128823}
-  - component: {fileID: 3096217407326995551}
   - component: {fileID: 3371854390482545132}
   m_Layer: 0
   m_Name: Chess Pawn White
@@ -100,31 +99,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: dc780bbe80163bc46883e8c2d96af493, type: 3}
---- !u!114 &3096217407326995551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013277376148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1daf0e1fe494146a0c7809bd5b2a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pieces:
-  - {fileID: 1000013277376148, guid: 3605a6e4fde7d594aa08481185959edb, type: 3}
-  - {fileID: 1000014234871720, guid: cb0afc2bcef746940a57b9fff95cf079, type: 3}
-  - {fileID: 1000012089885188, guid: 6771efaae8343104b88ef1dd839fd639, type: 3}
-  - {fileID: 1000011613667446, guid: c9476b5c23fb4634485fcb52734c04d5, type: 3}
-  - {fileID: 1000013557280178, guid: d992acfff4e84c44e97513dc227b06b7, type: 3}
-  piece: 0
-  color: 1
-  rb: {fileID: 0}
-  forwardForce: 10
-  gmController: {fileID: 0}
-  restartPanel: {fileID: 0}
-  scoreIncrement: 1
 --- !u!54 &3371854390482545132
 Rigidbody:
   m_ObjectHideFlags: 0
