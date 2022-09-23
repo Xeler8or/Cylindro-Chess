@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             ShowParticleEffect();
-            Destroy(gameObject);
+            // Destroy(gameObject);
             return false;
         }
         return true;

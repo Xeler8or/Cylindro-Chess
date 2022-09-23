@@ -32,6 +32,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (playerTransform.position.z  - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
         {
             SpawnTile();
@@ -73,7 +74,7 @@ public class TileManager : MonoBehaviour
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
         {
-            randomIndex = Random.Range(0, tilePrefabs.Length);
+            randomIndex = Random.Range(1, tilePrefabs.Length);
         }
 
         lastPrefabIndex = randomIndex;
