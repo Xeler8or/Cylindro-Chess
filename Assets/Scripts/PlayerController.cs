@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         //Player to move forward
         rb.AddForce(0,0,forwardForce);
         _GMC.score += scoreIncrement;
-        Debug.Log(_GMC.score);
+        //Debug.Log(_GMC.score);
     }
 
     // private void OnCollisionEnter(Collision collision)
@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             //Restart
+            Debug.Log(collision.gameObject.GetComponent<ObstacleController>().piece);
+            Debug.Log(collision.gameObject.GetComponent<ObstacleController>().color);
             Time.timeScale = 0;
             restartPanel.SetActive(true);
         }

@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject[] tilePrefabs;
     public Transform playerTransform;
-    private float spawnZ = -6.0f;
+    private float spawnZ = -50.0f;
     private float cylinderLength = 100.0f;
     private int tilesOnScreen = 4;
     private float safeZone = 105.0f;
@@ -18,7 +18,7 @@ public class TileManager : MonoBehaviour
         activeTiles = new List<GameObject>();
         for (int i = 0; i < tilesOnScreen; i++)
         {
-            if (i < 2)
+            if (i < 1)
             {
                 SpawnTile(0);
             }
