@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         //Player to move forward
         rb.velocity = new Vector3(0,0,velocity);
         
-        _GMC.score += scoreIncrement;
+        _GMC.SetScore(_GMC.GetScore() + scoreIncrement);
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             ShowParticleEffect();
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return false;
         }
         return true;
