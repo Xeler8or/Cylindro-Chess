@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public Constants.Color color;
     public Rigidbody rb;
     private Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
-    public static float velocity = 10;
+    public static float velocity;
     public GameObject restartPanel;
     private GameController _GMC;
     public int scoreIncrement = 1;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
         {Constants.Pieaces.Queen,3},
         {Constants.Pieaces.King,4}
     };
+
+    private TutorialManager _tutorialManager;
     void Start()
     { 
         rb.inertiaTensor = _inertiaTensor;
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         piece = Constants.Pieaces.Pawn;
         color = Constants.Color.White;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        _tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     // Update is called once per frame
@@ -52,12 +55,14 @@ public class PlayerController : MonoBehaviour
                 //If color opposite
                 if (!HandlePiece(collision))    //Higher piece
                 {
+                    _tutorialManager.showMessage(Constants.END_GAME_HIGHER_POWER);
                     Restart();
                 }
             }
             else
             {
                 //If Color same
+                _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
                 Restart();
             }
 
@@ -115,14 +120,31 @@ public class PlayerController : MonoBehaviour
     private bool HandlePiece(Collider collision)
     {
         Constants.Pieaces obstaclePiece = collision.gameObject.GetComponent<ObstacleController>().piece;
-        if (collision.gameObject.GetComponent<ObstacleController>().piece == piece) //FOR NOW JUST ADDED 1 PER PIECE FOR PROMOTION
+        if (collision.gameObject.GetComponent<ObstacleController>().piece ==
+            piece) //FOR NOW JUST ADDED 1 PER PIECE FOR PROMOTION
         {
-            if (piece != Constants.Pieaces.King)    //Update only if not King
+            if (piece != Constants.Pieaces.King) //Update only if not King
             {
                 TriggerPiecePrefab(piece);
                 piece = GetNextPiece(piece);
                 ShowPromotionEffect();
                 TriggerPiecePrefab(piece);
+                if (piece == Constants.Pieaces.Knight)
+                {
+                    _tutorialManager.showMessage(Constants.UPGRADE_TO_KNIGHT);
+                }
+                else if (piece == Constants.Pieaces.Rook)
+                {
+                    _tutorialManager.showMessage(Constants.UPGRADE_TO_ROOK);
+                }
+                else if (piece == Constants.Pieaces.Queen)
+                {
+                    _tutorialManager.showMessage(Constants.UPGRADE_TO_QUEEN);
+                }
+                else if (piece == Constants.Pieaces.King)
+                {
+                    _tutorialManager.showMessage(Constants.UPGRADE_TO_KING);
+                }
             }
         }
         else if(PieceRanking[piece] > PieceRanking[obstaclePiece])
@@ -136,5 +158,10 @@ public class PlayerController : MonoBehaviour
             return false;
         }
         return true;
+    }
+    
+    public static void setVelocity(float inVelocity)
+    {
+        velocity = inVelocity;
     }
 }
