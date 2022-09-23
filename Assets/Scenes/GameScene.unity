@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.10238326, g: 0.12799948, b: 0.1258508, a: 1}
+  m_IndirectSpecularColor: {r: 0.102425046, g: 0.12794787, b: 0.12585908, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piece: 0
+  prev: 0
   color: 1
   rb: {fileID: 44138623}
   restartPanel: {fileID: 1102823013}
@@ -1644,7 +1645,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157259375}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &1452864886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2117,10 @@ PrefabInstance:
     - target: {fileID: 1264996541221422927, guid: 1775f000bf2384e039c03d74fb4f55b6, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264996541221422927, guid: 1775f000bf2384e039c03d74fb4f55b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1775f000bf2384e039c03d74fb4f55b6, type: 3}

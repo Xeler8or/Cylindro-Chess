@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
     private GameObject _currentPiece;
-    public Constants.Pieaces piece;
+    public Constants.Pieaces piece,prev;
     public Constants.Color color;
     public Rigidbody rb;
     private Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
@@ -117,10 +117,10 @@ public class PlayerController : MonoBehaviour
         Constants.Pieaces obstaclePiece = collision.gameObject.GetComponent<ObstacleController>().piece;
         if (collision.gameObject.GetComponent<ObstacleController>().piece == piece) //FOR NOW JUST ADDED 1 PER PIECE FOR PROMOTION
         {
-            TriggerPiecePrefab(piece);
-            piece = GetNextPiece(piece);
             if (piece != Constants.Pieaces.King)    //Update only if not King
             {
+                TriggerPiecePrefab(piece);
+                piece = GetNextPiece(piece);
                 ShowPromotionEffect();
                 TriggerPiecePrefab(piece);
             }
