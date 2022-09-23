@@ -50,10 +50,18 @@ public class TutorialManager : MonoBehaviour
                 popupIndex++;
             }
         }
-        else
+        else if (popupIndex == 6)
         {
             popUps[popupIndex-1].SetActive(false);
-            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
+            showMessage(Constants.COLLECT_A_PAWN);
+        }
+        else if (popupIndex is 7 or 8 or 9 or 10 or 11)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                genericMessage.gameObject.SetActive(false);
+                PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
+            }
         }
     }
 
@@ -62,11 +70,6 @@ public class TutorialManager : MonoBehaviour
         genericMessage.text = message;
         genericMessage.gameObject.SetActive(true);
         PlayerController.setVelocity(0f);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            genericMessage.gameObject.SetActive(false);
-            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
-        }
-
+        popupIndex++;
     }
 }
