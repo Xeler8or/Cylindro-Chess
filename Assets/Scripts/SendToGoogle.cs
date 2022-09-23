@@ -9,9 +9,9 @@ public class SendToGoogle : MonoBehaviour
 {
     public static SendToGoogle Instance { get; private set; }
     [SerializeField] private string url;
-    public long _userID;
-    public long _sessionID;
-    public double _distance;
+    private long _userID;
+    private long _sessionID;
+    private double _distance;
     
     private void Awake() 
     { 
@@ -23,19 +23,19 @@ public class SendToGoogle : MonoBehaviour
         } 
         else 
         { 
-            Instance = this; 
+            Instance = this;
         } 
     }
-    public void Send() 
+    public void Send(Double distance) 
     {
         // Assign variables
         print("Send");
         _sessionID = (long)Time.time;
         _userID = UnityEngine.Random.Range(1,10);
-        StartCoroutine(Post(_sessionID.ToString(), _userID.ToString(), _distance.ToString("N")));
+        StartCoroutine(Post(_sessionID.ToString(), _userID.ToString(), distance.ToString("N")));
     }
     
-    public IEnumerator Post(string sessionID, string userID, string distance)
+    private IEnumerator Post(string sessionID, string userID, string distance)
     {
         print("Post");
         // Create the form and enter responses

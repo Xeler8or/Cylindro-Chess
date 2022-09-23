@@ -32,11 +32,13 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (playerTransform.position.z  - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
+        if (playerTransform != null)
         {
-            SpawnTile();
-            DeleteTile();
+            if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
+            {
+                SpawnTile();
+                DeleteTile();
+            }
         }
     }
 
