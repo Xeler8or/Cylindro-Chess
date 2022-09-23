@@ -26,7 +26,7 @@ public class TutorialManager : MonoBehaviour
         }
         if (popupIndex == 0)
         {
-            PlayerController.forwardForce = 0f;
+            PlayerController.velocity = 0f;
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 popupIndex++;
@@ -34,7 +34,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popupIndex == 1)
         {
-            PlayerController.forwardForce = 0f;
+            PlayerController.velocity = 0f;
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 popupIndex++;
@@ -43,7 +43,7 @@ public class TutorialManager : MonoBehaviour
         else if (popupIndex == 2)
         {
             popUps[popupIndex-1].SetActive(false);
-            PlayerController.forwardForce = Constants.PLAYER_FORCE_Z;
+            PlayerController.velocity = Constants.PLAYER_VEL_Z;
         }
     }
 }

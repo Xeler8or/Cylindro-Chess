@@ -15,5 +15,5 @@ public static class Constants
         White
     }
 
-    public static float PLAYER_FORCE_Z = 10f;
+    public static float PLAYER_VEL_Z = 10f;
 }

@@ -3,17 +3,18 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using Unity.Collections;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
     private GameObject _currentPiece;
-    public List<GameObject> pieces;
     public Constants.Pieaces piece;
     public Constants.Color color;
     public Rigidbody rb;
     private Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
-    public static float forwardForce;
+    public static float velocity = 10;
     public GameObject restartPanel;
     private GameController _GMC;
     public int scoreIncrement = 1;
@@ -30,29 +31,22 @@ public class PlayerController : MonoBehaviour
         _GMC = FindObjectOfType<GameController>();
         piece = Constants.Pieaces.Pawn;
         color = Constants.Color.White;
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-    }
-
-    private void Update()
-    {
-        
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         //Player to move forward
-        rb.AddForce(0,0,forwardForce);
+        rb.velocity = new Vector3(0,0,velocity);
         
         _GMC.score += scoreIncrement;
     }
 
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Triggered");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy");
             if (HandleColor(collision))
             {
                 //If color opposite
@@ -92,16 +86,54 @@ public class PlayerController : MonoBehaviour
     }
     
     private bool HandleColor(Collider collision){
-        if (collision.gameObject.GetComponent<ObstacleController>().color == this.color)
+        Debug.Log("Color checking");
+        if (collision.gameObject.GetComponent<ObstacleController>().color == color)
         {
-            Debug.Log("SAME");
+            Debug.Log("Color same");
             return false;
         }
         return true;
     }
+
+    private void ShowPromotionEffect()
+    {
+        //Instantiate Particle Effect
+    }
+    
+    private void ShowParticleEffect()
+    {
+        //Instantiate Particle Effect   
+    }
+    private void TriggerPiecePrefab(Constants.Pieaces pieace)
+    {
+        bool currState = gameObject.transform.GetChild(PieceRanking[pieace]).gameObject.activeSelf;
+        gameObject.transform.GetChild(PieceRanking[pieace]).gameObject.SetActive(!currState);
+    }
     
     private bool HandlePiece(Collider collision)
     {
+        Constants.Pieaces obstaclePiece = collision.gameObject.GetComponent<ObstacleController>().piece;
+        if (collision.gameObject.GetComponent<ObstacleController>().piece == piece) //FOR NOW JUST ADDED 1 PER PIECE FOR PROMOTION
+        {
+            TriggerPiecePrefab(piece);
+            piece = GetNextPiece(piece);
+            if (piece != Constants.Pieaces.King)    //Update only if not King
+            {
+                ShowPromotionEffect();
+                TriggerPiecePrefab(piece);
+            }
+        }
+        else if(PieceRanking[piece] > PieceRanking[obstaclePiece])
+        {
+            ShowParticleEffect();
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            ShowParticleEffect();
+            Destroy(gameObject);
+            return false;
+        }
         return true;
     }
 }
