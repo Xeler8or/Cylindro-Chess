@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popupIndex = 0;
+    public TextMeshProUGUI genericMessage;
 
     void Update()
     {
@@ -26,7 +28,7 @@ public class TutorialManager : MonoBehaviour
         }
         if (popupIndex == 0)
         {
-            PlayerController.velocity = 0f;
+            PlayerController.setVelocity(0f);
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 popupIndex++;
@@ -34,16 +36,37 @@ public class TutorialManager : MonoBehaviour
         }
         else if (popupIndex == 1)
         {
-            PlayerController.velocity = 0f;
+            PlayerController.setVelocity(0f);
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 popupIndex++;
             }
         }
-        else if (popupIndex == 2)
+        else if (popupIndex is 2 or 3 or 4 or 5)
+        {
+            PlayerController.setVelocity(0f);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                popupIndex++;
+            }
+        }
+        else
         {
             popUps[popupIndex-1].SetActive(false);
-            PlayerController.velocity = Constants.PLAYER_VEL_Z;
+            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
         }
+    }
+
+    public void showMessage(String message)
+    {
+        genericMessage.text = message;
+        genericMessage.gameObject.SetActive(true);
+        PlayerController.setVelocity(0f);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            genericMessage.gameObject.SetActive(false);
+            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
+        }
+
     }
 }
