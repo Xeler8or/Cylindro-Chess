@@ -32,6 +32,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (playerTransform.position.z  - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
         {
             SpawnTile();
@@ -70,13 +71,14 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = lastPrefabIndex;
-        while (randomIndex == lastPrefabIndex)
-        {
-            randomIndex = Random.Range(0, tilePrefabs.Length);
-        }
-
-        lastPrefabIndex = randomIndex;
+        int randomIndex = 1;
+        // int randomIndex = lastPrefabIndex;
+        // while (randomIndex == lastPrefabIndex)
+        // {
+        //     randomIndex = Random.Range(0, tilePrefabs.Length);
+        // }
+        //
+        // lastPrefabIndex = randomIndex;
         return randomIndex;
     }
 }
