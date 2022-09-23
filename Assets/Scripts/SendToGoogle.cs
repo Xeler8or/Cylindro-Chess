@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SendToGoogle : MonoBehaviour
 {
     public static SendToGoogle Instance { get; private set; }
-    [SerializeField] private string url;
+    [SerializeField] private string url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScoickLL3WTnSiF_niKaDJEX12n5Li5xnylIxf7P6bs3BbCDg/formResponse";
     private long _userID;
     private long _sessionID;
     private double _distance;
@@ -22,14 +22,13 @@ public class SendToGoogle : MonoBehaviour
             Destroy(this); 
         } 
         else 
-        { 
+        {
             Instance = this;
         } 
     }
     public void Send(Double distance) 
     {
         // Assign variables
-        print("Send");
         _sessionID = (long)Time.time;
         _userID = UnityEngine.Random.Range(1,10);
         StartCoroutine(Post(_sessionID.ToString(), _userID.ToString(), distance.ToString("N")));
@@ -37,7 +36,6 @@ public class SendToGoogle : MonoBehaviour
     
     private IEnumerator Post(string sessionID, string userID, string distance)
     {
-        print("Post");
         // Create the form and enter responses
         WWWForm form = new WWWForm(); 
         form.AddField("entry.1259749787", userID); 
@@ -56,45 +54,3 @@ public class SendToGoogle : MonoBehaviour
         }
     }
 }
-    
-
-
-
-/*
-  public void Awake()
-    {
-        print("Awake");
-        
-        Send();
-    }
-public class Survey : MonoBehaviour
-{
-
-    [SerializeField] InputField feedback1;
-
-    string URL = "";
-
-    
-    public void Send()
-    {
-        StartCoroutine(Post(feedback1.text));
-    }
-
-    IEnumerator Post(string s1)
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("", s1);
-
-
-
-
-        UnityWebRequest www = UnityWebRequest.Post(URL, form);
-        
-        yield return www.SendWebRequest();
-
-    }
-
-
-}
-*/
-

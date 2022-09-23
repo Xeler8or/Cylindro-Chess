@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
             case Constants.Pieaces.Knight:
                 return Constants.Pieaces.Rook;
             case Constants.Pieaces.Rook:
+                return Constants.Pieaces.Queen;
+            case Constants.Pieaces.Queen:
                 return Constants.Pieaces.King;
             default:
                 return Constants.Pieaces.King;
@@ -88,10 +90,8 @@ public class PlayerController : MonoBehaviour
     }
     
     private bool HandleColor(Collider collision){
-        Debug.Log("Color checking");
         if (collision.gameObject.GetComponent<ObstacleController>().color == color)
         {
-            Debug.Log("Color same");
             return false;
         }
         return true;
