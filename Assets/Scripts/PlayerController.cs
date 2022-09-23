@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         //Player to move forward
         rb.velocity = new Vector3(0,0,velocity);
         
-        _GMC.score += scoreIncrement;
+        _GMC.SetScore(_GMC.GetScore() + scoreIncrement);
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0;
         restartPanel.SetActive(true);
+        SendToGoogle.Instance.Send(_GMC.GetScore());
+        Destroy(gameObject);
     }
     
     private Constants.Pieaces GetNextPiece(Constants.Pieaces piece)
@@ -79,6 +81,8 @@ public class PlayerController : MonoBehaviour
             case Constants.Pieaces.Knight:
                 return Constants.Pieaces.Rook;
             case Constants.Pieaces.Rook:
+                return Constants.Pieaces.Queen;
+            case Constants.Pieaces.Queen:
                 return Constants.Pieaces.King;
             default:
                 return Constants.Pieaces.King;
@@ -86,10 +90,8 @@ public class PlayerController : MonoBehaviour
     }
     
     private bool HandleColor(Collider collision){
-        Debug.Log("Color checking");
         if (collision.gameObject.GetComponent<ObstacleController>().color == color)
         {
-            Debug.Log("Color same");
             return false;
         }
         return true;
@@ -131,7 +133,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             ShowParticleEffect();
-            // Destroy(gameObject);
             return false;
         }
         return true;

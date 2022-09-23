@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int score = 0;
-    // Start is called before the first frame update
-    void Start()
+    private int score = 0;
+
+    public void SetScore(int score)
     {
-        
+        score = this.score;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetScore()
     {
-        
+        return score;
     }
+    
     public void Replay(){
         Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene();
