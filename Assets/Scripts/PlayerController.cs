@@ -67,7 +67,14 @@ public class PlayerController : MonoBehaviour
     private void Restart()
     {
         Time.timeScale = 0;
+        print("Line1");
         restartPanel.SetActive(true);
+        print("Line2");
+        SendToGoogle.Instance._distance = Convert.ToDouble(_GMC.score);
+        //send_to_google=GameObject.GetComponent<SendToGoogle>();
+        print("Line3");
+        SendToGoogle.Instance.Send();
+        print("Line4");
     }
     
     private Constants.Pieaces GetNextPiece(Constants.Pieaces piece)
