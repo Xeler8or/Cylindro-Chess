@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0;
         restartPanel.SetActive(true);
-        SendToGoogle.Instance.Send(_GMC.GetScore());
+        SendToGoogle.Instance.Send();
         Destroy(gameObject);
     }
     
