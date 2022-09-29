@@ -1,2 +1,2 @@
-# Cylindro-Man
-Cylindro Man: An infinite runner game. 
+# Cylindro Chess
+Cylindro Chess: An infinite runner conceptualized arround chess.. 
