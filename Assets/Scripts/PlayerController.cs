@@ -52,7 +52,9 @@ public class PlayerController : MonoBehaviour
         int multFactor = 1;
         if (piece == Constants.Pieaces.King)
             multFactor = 2;
-        _GMC.SetScore(_GMC.GetScore() + multFactor*scoreIncrement);
+        // _GMC.SetScore(_GMC.GetScore() + multFactor*scoreIncrement);
+        _GMC.SetScore((int)transform.position.z);
+        
         ManagePower();
         if (Input.GetKey("e") || Input.GetKey("?"))
         {

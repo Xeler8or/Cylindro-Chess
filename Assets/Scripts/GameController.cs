@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public void SetScore(int score)
     {
         _score = score;
+        Debug.Log(_score);
     }
 
     public int GetScore()
