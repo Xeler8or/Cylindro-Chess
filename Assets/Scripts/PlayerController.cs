@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     };
 
     private TutorialManager _tutorialManager;
+    
     void Start()
     { 
         rb.inertiaTensor = _inertiaTensor;
@@ -42,7 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         //Player to move forward
         rb.velocity = new Vector3(0,0,velocity);
-        
         _GMC.SetScore(_GMC.GetScore() + scoreIncrement);
     }
 
