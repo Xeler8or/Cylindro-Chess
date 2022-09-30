@@ -26,12 +26,12 @@ public class SendToGoogle : MonoBehaviour
             Instance = this;
         } 
     }
-    public void Send(Double distance) 
+    public void Send() 
     {
         // Assign variables
         _sessionID = (long)Time.time;
         _userID = UnityEngine.Random.Range(1,10);
-        StartCoroutine(Post(_sessionID.ToString(), _userID.ToString(), distance.ToString("N")));
+        StartCoroutine(Post(_sessionID.ToString(), _userID.ToString(), _distance.ToString("N")));
     }
     
     private IEnumerator Post(string sessionID, string userID, string distance)
