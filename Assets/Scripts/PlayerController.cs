@@ -43,7 +43,10 @@ public class PlayerController : MonoBehaviour
     {
         //Player to move forward
         rb.velocity = new Vector3(0,0,velocity);
-        _GMC.SetScore(_GMC.GetScore() + scoreIncrement);
+        int multFactor = 1;
+        if (piece == Constants.Pieaces.King)
+            multFactor = 2;
+        _GMC.SetScore(_GMC.GetScore() + multFactor*scoreIncrement);
     }
 
     public void OnTriggerEnter(Collider collision)
