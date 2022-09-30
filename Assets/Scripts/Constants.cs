@@ -24,7 +24,10 @@ public static class Constants
     public static string UPGRADE_TO_QUEEN =
         "Awesome! You have been upgraded to a Queen.\nCollect another black Queen to upgrade to a KING!\nHit Spacebar to continue.";
     public static string UPGRADE_TO_KING =
-        "Congratulations! You are now a KING! You will receive double points till you remain KING. \nBut hang in there, all the pieces are white. Try not to hit any white pieces.\nHit Spacebar to continue."; 
+        "Congratulations! You are now a KING! You will receive double points till you remain KING. " +
+        "\nBut hang in there, all the pieces are white. Press E to use powerup.\nHit Spacebar to continue.";
+
+    public static string POWER_UP_USED = "Powerup used, you can pass through all the pieces.";
     public static string END_GAME_SAME_COLOR = 
         "You cannot hit a white piece.";
     public static string END_GAME_HIGHER_POWER = 
