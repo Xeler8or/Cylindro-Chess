@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class PlayerController : MonoBehaviour
 {
     private GameObject _currentPiece;
-    public Constants.Pieaces piece,prev;
+    public Constants.Pieaces piece;
     public Constants.Color color;
     public Rigidbody rb;
     private Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 TriggerPiecePrefab(piece);
                 piece = GetNextPiece(piece);
                 ShowPromotionEffect();
+                Destroy(collision.gameObject);
                 TriggerPiecePrefab(piece);
                 if (piece == Constants.Pieaces.Knight)
                 {
