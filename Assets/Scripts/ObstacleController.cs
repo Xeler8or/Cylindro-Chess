@@ -15,7 +15,7 @@ public class ObstacleController : MonoBehaviour
 
     private void SetMaterial()
     {
-        if(color.whi)
+        
     }
 
     private void Start()
