@@ -63,6 +63,11 @@ public class TutorialManager : MonoBehaviour
                 PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
             }
         }
+        else
+        {
+            genericMessage.gameObject.SetActive(false);
+            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
+        }
     }
 
     public void showMessage(String message)

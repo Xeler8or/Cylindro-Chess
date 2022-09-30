@@ -65,8 +65,11 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //If Color same
-                _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
-                Restart();
+                if (!HandleSameColorPiece(collision))
+                {
+                    _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
+                    Restart();
+                }
             }
 
         }
@@ -94,6 +97,23 @@ public class PlayerController : MonoBehaviour
                 return Constants.Pieaces.King;
             default:
                 return Constants.Pieaces.King;
+        }
+    }
+    
+    private Constants.Pieaces GetPrevPiece(Constants.Pieaces piece)
+    {
+        switch (piece)
+        {
+            case Constants.Pieaces.Knight:
+                return Constants.Pieaces.Pawn;
+            case Constants.Pieaces.Rook:
+                return Constants.Pieaces.Knight;
+            case Constants.Pieaces.Queen:
+                return Constants.Pieaces.Rook;
+            case Constants.Pieaces.King:
+                return Constants.Pieaces.Queen;
+            default:
+                return Constants.Pieaces.Pawn;
         }
     }
     
@@ -130,6 +150,7 @@ public class PlayerController : MonoBehaviour
             {
                 TriggerPiecePrefab(piece);
                 piece = GetNextPiece(piece);
+                print(piece);
                 ShowPromotionEffect();
                 Destroy(collision.gameObject);
                 TriggerPiecePrefab(piece);
@@ -163,6 +184,26 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
+    
+    private bool HandleSameColorPiece(Collider collision)
+    {
+        Constants.Pieaces obstaclePiece = collision.gameObject.GetComponent<ObstacleController>().piece;
+
+        if (piece != Constants.Pieaces.Pawn) //Update only if not Pawn
+        {
+            TriggerPiecePrefab(piece);
+            piece = GetPrevPiece(piece);
+            Destroy(collision.gameObject);
+            TriggerPiecePrefab(piece);
+        }
+        else
+        {
+            ShowParticleEffect();
+            return false;
+        }
+        return true;
+    }
+
     
     public static void setVelocity(float inVelocity)
     {
