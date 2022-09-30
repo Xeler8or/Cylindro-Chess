@@ -55,7 +55,7 @@ public class TutorialManager : MonoBehaviour
             popUps[popupIndex-1].SetActive(false);
             showMessage(Constants.COLLECT_A_PAWN);
         }
-        else if (popupIndex is 7 or 8 or 9 or 10 or 11)
+        else if (popupIndex is 7 or 8 or 9 or 10 or 11 or 12)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {

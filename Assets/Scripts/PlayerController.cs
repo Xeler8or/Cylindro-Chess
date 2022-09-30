@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             if (piece == Constants.Pieaces.King)
             {
+                _tutorialManager.showMessage(Constants.POWER_UP_USED);
                 UsePower();
             }
         }
