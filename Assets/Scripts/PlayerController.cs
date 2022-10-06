@@ -94,9 +94,11 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         rb.velocity = new Vector3(0,0,Velocity);
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0)
         {
+            Velocity += 5f;
             Constants.Color c = GetNextColor(color);
             color = c;
             GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
