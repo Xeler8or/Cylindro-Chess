@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using Unity.Collections;
 using Unity.VisualScripting;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public GameObject restartPanel;
     private GameController _GMC;
     public int scoreIncrement = 1;
+    public GameObject _PowerButton;
+    public GameObject _PowerCountDown;
+    public TextMeshProUGUI _PowerCountTime;
+    public bool powerActive = false;
+    public float PowerStart;
     public Dictionary<Constants.Pieaces, int> PieceRanking = new Dictionary<Constants.Pieaces, int>{
         {Constants.Pieaces.Pawn,0},
         {Constants.Pieaces.Knight,1},
@@ -46,7 +52,18 @@ public class PlayerController : MonoBehaviour
         int multFactor = 1;
         if (piece == Constants.Pieaces.King)
             multFactor = 2;
-        _GMC.SetScore(_GMC.GetScore() + multFactor*scoreIncrement);
+        // _GMC.SetScore(_GMC.GetScore() + multFactor*scoreIncrement);
+        _GMC.SetScore((int)transform.position.z);
+        
+        ManagePower();
+        if (Input.GetKey("e") || Input.GetKey("?"))
+        {
+            if (piece == Constants.Pieaces.King)
+            {
+                _tutorialManager.showMessage(Constants.POWER_UP_USED);
+                UsePower();
+            }
+        }
     }
 
     public void OnTriggerEnter(Collider collision)
@@ -65,9 +82,11 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //If Color same
-                _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
-                Restart();
-                
+                if (powerActive == false && !HandleSameColorPiece(collision))
+                {
+                    _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
+                    Restart();
+                }
             }
 
         }
@@ -95,6 +114,23 @@ public class PlayerController : MonoBehaviour
                 return Constants.Pieaces.King;
             default:
                 return Constants.Pieaces.King;
+        }
+    }
+    
+    private Constants.Pieaces GetPrevPiece(Constants.Pieaces piece)
+    {
+        switch (piece)
+        {
+            case Constants.Pieaces.Knight:
+                return Constants.Pieaces.Pawn;
+            case Constants.Pieaces.Rook:
+                return Constants.Pieaces.Knight;
+            case Constants.Pieaces.Queen:
+                return Constants.Pieaces.Rook;
+            case Constants.Pieaces.King:
+                return Constants.Pieaces.Queen;
+            default:
+                return Constants.Pieaces.Pawn;
         }
     }
     
@@ -131,6 +167,7 @@ public class PlayerController : MonoBehaviour
             {
                 TriggerPiecePrefab(piece);
                 piece = GetNextPiece(piece);
+                print(piece);
                 ShowPromotionEffect();
                 Destroy(collision.gameObject);
                 TriggerPiecePrefab(piece);
@@ -149,6 +186,7 @@ public class PlayerController : MonoBehaviour
                 else if (piece == Constants.Pieaces.King)
                 {
                     _tutorialManager.showMessage(Constants.UPGRADE_TO_KING);
+                    _PowerButton.SetActive(true);
                 }
             }
         }
@@ -165,8 +203,63 @@ public class PlayerController : MonoBehaviour
         return true;
     }
     
+    private bool HandleSameColorPiece(Collider collision)
+    {
+        Constants.Pieaces obstaclePiece = collision.gameObject.GetComponent<ObstacleController>().piece;
+
+        if (piece != Constants.Pieaces.Pawn) //Update only if not Pawn
+        {
+            DisablePower();
+            TriggerPiecePrefab(piece);
+            piece = GetPrevPiece(piece);
+            Destroy(collision.gameObject);
+            TriggerPiecePrefab(piece);
+        }
+        else
+        {
+            ShowParticleEffect();
+            return false;
+        }
+        return true;
+    }
+
+    
     public static void setVelocity(float inVelocity)
     {
         velocity = inVelocity;
+    }
+    
+    public void UsePower(){
+        powerActive = true;
+        // Debug.Log("Power is now active for 10 seconds");
+        _PowerCountDown.SetActive(true);
+        // _PowerCountTime.text = "Time Left : 10";
+        PowerStart = Time.time;
+    }
+
+    public void DisablePower(){
+        _PowerButton.SetActive(false);
+        powerActive = false;
+        //Debug.Log("Power is now active for 10 seconds");
+        _PowerCountDown.SetActive(false);
+        _PowerCountTime.text = "";
+        //PowerStart = Time.time;
+    }
+
+    public void ManagePower(){
+        if (powerActive) {
+            _PowerCountTime.text = "Time Left : " + (10 - Time.time + PowerStart).ToString("#.#");
+            if (Time.time - PowerStart >= 10.0) 
+            {
+                //Debug.Log("Power Over");
+                powerActive = false;
+                TriggerPiecePrefab(piece);
+                piece = Constants.Pieaces.Pawn;
+                ShowPromotionEffect();
+                TriggerPiecePrefab(piece);
+                _PowerButton.SetActive(false);
+                _PowerCountDown.SetActive(false);
+            }
+        }
     }
 }

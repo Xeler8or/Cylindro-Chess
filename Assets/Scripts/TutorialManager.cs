@@ -9,7 +9,9 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private int popupIndex = 0;
     public TextMeshProUGUI genericMessage;
-
+    public GameObject[] sidePannel;
+    private int sidePanelCounter = 0;
+        
     void Update()
     {
         if (popupIndex < popUps.Length)
@@ -31,6 +33,7 @@ public class TutorialManager : MonoBehaviour
             PlayerController.setVelocity(0f);
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
+                UpdateSidePanel();
                 popupIndex++;
             }
         }
@@ -39,6 +42,7 @@ public class TutorialManager : MonoBehaviour
             PlayerController.setVelocity(0f);
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                UpdateSidePanel();
                 popupIndex++;
             }
         }
@@ -59,9 +63,15 @@ public class TutorialManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                UpdateSidePanel();
                 genericMessage.gameObject.SetActive(false);
                 PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
             }
+        }
+        else
+        {
+            genericMessage.gameObject.SetActive(false);
+            PlayerController.setVelocity(Constants.PLAYER_VELOCITY_Z);
         }
     }
 
@@ -71,5 +81,12 @@ public class TutorialManager : MonoBehaviour
         genericMessage.gameObject.SetActive(true);
         PlayerController.setVelocity(0f);
         popupIndex++;
+    }
+
+    private void UpdateSidePanel()
+    {
+        if (sidePanelCounter < sidePannel.Length)
+            sidePannel[sidePanelCounter].SetActive(true);
+        sidePanelCounter++;
     }
 }
