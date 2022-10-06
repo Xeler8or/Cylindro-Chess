@@ -5,16 +5,557 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d1e1e63-fcdb-4ec5-989e-d6ff419a78ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Level 1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cylindro-Man/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cylindro-Man/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/.idea/.idea.Assets.dir/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/.idea/.idea.Assets.dir/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/.idea/.idea.Assets.dir/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Equal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Equal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/King.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/King.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Knight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Knight.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Left Arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Left Arrow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Pawn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Pawn.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Plus.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Queen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Queen.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Right Arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Right Arrow.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Rook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Rook.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Black.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Black.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Inner Cylinder.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Player.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/PlayerMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Inner Cylinder.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/PlayerMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/White.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/White.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/slippery.physicMaterial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/slippery.physicMaterial.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Blender.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Blender.zip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Chess Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Chess Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Chess DemoSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Chess DemoSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Board.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Board.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess King Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess King Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess King White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess King White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Knight Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Knight Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Knight White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Knight White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Pawn Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Pawn Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Pawn White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Pawn White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Queen Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Queen Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Queen White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Queen White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Rook Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Rook Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Rook White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Chess Rook White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Materials/Black Pieces.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Materials/Black Pieces.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Materials/White Pieces.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Materials/White Pieces.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess King Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess King Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess King White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess King White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Knight Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Knight Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Knight White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Knight White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Pawn Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Pawn Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Pawn White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Pawn White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Queen Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Queen Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Queen White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Queen White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Rook Black.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Rook Black.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Rook White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/Prefabs/Players/Chess Rook White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Chess Board.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Chess Board.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/Black Squares.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/Black Squares.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/Chess Board Surround Mat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/Chess Board Surround Mat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/White Squares.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Materials/White Squares.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Bishop.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Bishop.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess King.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess King.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Knight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Knight.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Pawn.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Pawn.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Queen.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Queen.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Rook.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Chess Rook.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Materials/No Name.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Player.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/fbx/Pieces/Materials/No Name.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Chess Set/readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/1/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/10.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/10.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/10/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/11.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/11.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/11/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/12.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/12.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/12/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/13.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/13.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/13/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/14.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/14.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/14/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/15.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/15.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/15/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/16.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/16.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/16/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/17.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/17.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/17/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/18.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/18.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/18/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/19.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/19.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/19/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/2/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/20.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/20.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/20/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/3.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/3.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/3/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/4.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/4.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/4/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/5.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/5.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/5/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/6.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/6.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/6/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/7.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/7.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/New LightmapParameters 1.giparams" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/New LightmapParameters 1.giparams.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/New LightmapParameters.giparams" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/New LightmapParameters.giparams.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/7/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/8.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/8.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/8/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/9.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/9.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Packages/Skyboxes MegaPack 1/9/Up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform (Missing Prefab with guid_ 4515bafd58f8d42168891a62bb05215f).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform (Missing Prefab with guid_ 4515bafd58f8d42168891a62bb05215f).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform-Plain.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform-Plain.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Runner-Platform.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level 1.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/.idea/.idea.Scripts.dir/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/.idea/.idea.Scripts.dir/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/.idea/.idea.Scripts.dir/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/.idea/.idea.Scripts.dir/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Constants.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Constants.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LeftRight.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LeftRight.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObstacleController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObstacleController.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SendToGoogle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SendToGoogle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TileManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorialManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorialManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.connect.share/Settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/connectwebgl.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webgl_sharing" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ObstacleController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,7 +580,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/2021.3.9f1/Unity.app/Contents/MacOS/Unity" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -80,6 +621,7 @@
       <workItem from="1664505954338" duration="2137000" />
       <workItem from="1664519413668" duration="2144000" />
       <workItem from="1664565547486" duration="1184000" />
+      <workItem from="1665034463060" duration="4092000" />
     </task>
     <servers />
   </component>
