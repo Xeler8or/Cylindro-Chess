@@ -8,10 +8,11 @@ public static class Constants
         Yellow,
         Black
     }
+
     public enum Shapes
     {
         Sphere,
         Cube,
-        Triangle
+        Cone
     }
 }
