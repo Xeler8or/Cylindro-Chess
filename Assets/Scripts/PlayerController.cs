@@ -41,19 +41,20 @@ public class PlayerController : MonoBehaviour
         gmc = FindObjectOfType<GameController>();
         player_shape = Constants.Shapes.Cube;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        ChangeMaterial(gameObject.transform.GetChild(0).gameObject);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //gmc.SetScore((int)(transform.position.z - _initalPos));
+        gmc.SetScore((int)(transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
         {
             TriggerPiecePrefab(player_shape);
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
             TriggerPiecePrefab(player_shape);
-            print(player_shape);
+            
 
         }
     }
@@ -61,14 +62,16 @@ public class PlayerController : MonoBehaviour
     private void TriggerPiecePrefab(Constants.Shapes player_shape)
     {
         bool currState = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject.activeSelf;
-        gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject.SetActive(!currState);
+        GameObject child  = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+        child.SetActive(!currState);
+        ChangeMaterial(child);
     }
     
     private void Restart()
     {
         Time.timeScale = 0;
         restartPanel.SetActive(true);
-        SendToGoogle.Instance.Send();
+        //SendToGoogle.Instance.Send();
         Destroy(gameObject);
     }
 
@@ -95,6 +98,9 @@ public class PlayerController : MonoBehaviour
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0)
         {
             Constants.Color c = GetNextColor(color);
+            color = c;
+            GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+            ChangeMaterial(child);
         }
     }
 
@@ -112,13 +118,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered");
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy");
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
-                Debug.Log("Color diff");
                 Restart();
             }
         }

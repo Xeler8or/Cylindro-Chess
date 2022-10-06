@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5837433837849631314}
   - component: {fileID: 3174770794306103425}
   - component: {fileID: 4177422405621186348}
+  - component: {fileID: 501508769647950068}
   m_Layer: 0
   m_Name: obstacle3
   m_TagString: Enemy
@@ -758,3 +759,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &501508769647950068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599214817619777043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ef37ab2f86c4ef69d68e83d2d661aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 4

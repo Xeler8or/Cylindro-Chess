@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
@@ -17,5 +18,11 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = gmc.GetScore().ToString();
+    }
+
+    public void Replay(){
+        Time.timeScale = 1;
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
