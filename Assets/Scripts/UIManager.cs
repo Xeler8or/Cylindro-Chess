@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
     private GameController gmc;
     // private UnityEngine.UI.Text scoreText;
     public TextMeshProUGUI scoreText;
-    public GameObject scoreGameObjectText;
 
     private void Start()
     {
