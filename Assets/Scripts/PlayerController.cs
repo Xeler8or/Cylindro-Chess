@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
                 //If Color same
                 _tutorialManager.showMessage(Constants.END_GAME_SAME_COLOR);
                 Restart();
+                
             }
 
         }
