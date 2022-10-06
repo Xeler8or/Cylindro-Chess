@@ -17,8 +17,6 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         scoreText.text = gmc.GetScore().ToString();
-        //Debug.Log(player.position.z);
     }
 }

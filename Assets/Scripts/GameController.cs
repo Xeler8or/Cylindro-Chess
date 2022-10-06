@@ -11,17 +11,10 @@ public class GameController : MonoBehaviour
     public void SetScore(int score)
     {
         _score = score;
-        Debug.Log(_score);
     }
 
     public int GetScore()
     {
         return _score;
-    }
-
-    public void Replay(){
-        Time.timeScale = 1;
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
     }
 }
