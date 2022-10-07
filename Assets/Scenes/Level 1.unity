@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4454965, g: 0.4951675, b: 0.5740879, a: 1}
+  m_IndirectSpecularColor: {r: 0.44564354, g: 0.49533302, b: 0.574287, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 1266849947997122965, guid: 567b59a498f2c41778e82ab46affbe94, type: 3}
   - {fileID: 1266849947997122965, guid: a027bec7942144f1eb5e2638e3d6b309, type: 3}
   playerTransform: {fileID: 959990680}
+  count: 3
 --- !u!4 &38516574
 Transform:
   m_ObjectHideFlags: 0
@@ -337,6 +338,14 @@ PrefabInstance:
     - target: {fileID: 6073109320821069165, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073109321561095978, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073109321561095978, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6073109321561095989, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: m_IsTrigger

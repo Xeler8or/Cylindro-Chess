@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject timer;
     private TextMeshProUGUI timerTMP;
     public bool triggered=false;
-    public bool gamePassed=false;
+    public bool gamePassed=true;
     public bool posStick = false;
 
     private float initialTime;
@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
         print(timerTMP);
         posStick = false;
+        gamePassed = true;
     }
 
     // Update is called once per frame
@@ -73,8 +74,12 @@ public class PlayerController : MonoBehaviour
         // print(timerTMP);
         timerTMP.text = "Time Left : " + (15 - Time.time + initialTime).ToString("#.#");
 
-        if ((int)(15 - Time.time + initialTime) == 0 && !gamePassed)
-        {  
+        if ((int)(15 - Time.time + initialTime) == 0 && gamePassed == false)
+        {
+            print(gamePassed);
+            print(Time.time);
+            print(initialTime);
+            print("Here I should not be");
             timer.SetActive(false);
             
             Restart();

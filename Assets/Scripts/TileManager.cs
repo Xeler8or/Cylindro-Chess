@@ -13,6 +13,7 @@ public class TileManager : MonoBehaviour
     private float safeZone = 105.0f;
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
+    public float count = 3;
     void Start()
     {
         activeTiles = new List<GameObject>();
@@ -73,11 +74,22 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
+        // int randomIndex = 6;
         // int randomIndex = Random.Range(0, tilePrefabs.Length);
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
         {
             randomIndex = Random.Range(0, tilePrefabs.Length);
+            if (randomIndex == 6 && count <= 3)
+            {
+                continue;
+            }
+            if (randomIndex == 6)
+            {
+                count = 1;
+            }
+        
+            count += 1;
         }
         
         lastPrefabIndex = randomIndex;
