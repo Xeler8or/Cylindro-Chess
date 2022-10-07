@@ -73,7 +73,7 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = 1;
+        int randomIndex = 0;
         // int randomIndex = lastPrefabIndex;
         // while (randomIndex == lastPrefabIndex)
         // {
