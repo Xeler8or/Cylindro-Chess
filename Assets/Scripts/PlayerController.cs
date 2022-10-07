@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private readonly Vector3 _inertiaTensor = new Vector3(0f,0f,0f);
     public static float Velocity;
+    private float oldVelocity = 0f;
     public Constants.Shapes player_shape;
     [SerializeField]
     private GameObject restartPanel;
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.tag);
         if (other.gameObject.CompareTag("Enemy"))
         {
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
@@ -127,5 +129,14 @@ public class PlayerController : MonoBehaviour
                 Restart();
             }
         }
+        
+        if (other.gameObject.CompareTag("zone"))
+        {
+            print("Hello");
+            oldVelocity = Velocity;
+            rb.velocity = new Vector3(0,0,0);
+            
+        }
     }
+    
 }
