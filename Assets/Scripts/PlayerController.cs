@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float _initalPos = 0;
     [SerializeField]
     private Constants.Color color;
-
+    public Collider _lock;
     public Material redMat;
     public Material blueMat;
     public Material greenMat;
@@ -132,11 +132,25 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("zone"))
         {
+            _lock = other;
             print("Hello");
             oldVelocity = Velocity;
-            rb.velocity = new Vector3(0,0,0);
-            
+            print("Look here");
+            print(oldVelocity);
+            Velocity = 0f;
+            LeftRight.rotateFlag = false;
+
         }
+    }
+
+    public void ContinuePlay()
+    {
+        Destroy(_lock.gameObject);
+        print("=========>");
+        print(oldVelocity);
+        Velocity = ((int)(gmc.GetScore() / 200))*5 + 10;
+        LeftRight.rotateFlag = true;
+
     }
     
 }
