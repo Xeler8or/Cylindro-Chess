@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +26,13 @@ public class PlayerController : MonoBehaviour
     public Material blueMat;
     public Material greenMat;
     public Material yellowMat;
+    public GameObject timer;
+    private TextMeshProUGUI timerTMP;
+    public bool triggered=false;
+    public bool gamePassed=false;
+    public bool posStick = false;
+
+    private float initialTime;
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -43,7 +53,9 @@ public class PlayerController : MonoBehaviour
         player_shape = Constants.Shapes.Cube;
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         ChangeMaterial(gameObject.transform.GetChild(0).gameObject);
-
+        timerTMP = timer.GetComponent<TextMeshProUGUI>();
+        print(timerTMP);
+        posStick = false;
     }
 
     // Update is called once per frame
@@ -55,9 +67,20 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
             TriggerPiecePrefab(player_shape);
-            
-
         }
+        // print(initialTime);
+        // print("3224324r");
+        // print(timerTMP);
+        timerTMP.text = "Time Left : " + (100 - Time.time + initialTime).ToString("#.#");
+
+        if ((int)(120 - Time.time + initialTime) == 0 && !gamePassed)
+        {  
+            timer.SetActive(false);
+            
+            Restart();
+        }
+        
+
     }
 
     private void TriggerPiecePrefab(Constants.Shapes player_shape)
@@ -130,8 +153,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (other.gameObject.CompareTag("zone"))
+        if (other.gameObject.CompareTag("zone") && !triggered)
         {
+            other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
+            // posStick = true;
             _lock = other;
             print("Hello");
             oldVelocity = Velocity;
@@ -139,18 +164,24 @@ public class PlayerController : MonoBehaviour
             print(oldVelocity);
             Velocity = 0f;
             LeftRight.rotateFlag = false;
-
+            initialTime = Time.time;
+            timer.SetActive(true);
+            triggered = true;
+            gamePassed = false;
         }
     }
 
     public void ContinuePlay()
     {
+        posStick = false;
         Destroy(_lock.gameObject);
         print("=========>");
         print(oldVelocity);
         Velocity = ((int)(gmc.GetScore() / 200))*5 + 10;
         LeftRight.rotateFlag = true;
-
+        timer.SetActive(false);
+        triggered = false;
+        gamePassed = true;
     }
     
 }

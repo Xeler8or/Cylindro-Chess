@@ -269,6 +269,10 @@ PrefabInstance:
       value: 0.429
       objectReference: {fileID: 0}
     - target: {fileID: 9074146824130906237, guid: 8565a98a866fc4f6583421979b36fd54, type: 3}
+      propertyPath: m_text
+      value: Rotate right x 2. left x 2 (360 degrees)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074146824130906237, guid: 8565a98a866fc4f6583421979b36fd54, type: 3}
       propertyPath: m_fontSize
       value: 2
       objectReference: {fileID: 0}
@@ -309,7 +313,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6653516108433473496, guid: 8565a98a866fc4f6583421979b36fd54, type: 3}
   m_PrefabInstance: {fileID: 2946227093869508022}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &101161226440060235
+--- !u!114 &7501638187458658410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,6 +330,8 @@ MonoBehaviour:
   rotateRight: 0
   rotateLeft: 0
   instructions: {fileID: 2579075281041428543}
+  leftCount: 0
+  rightCount: 0
 --- !u!4 &8409645782943992431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6653516108433473497, guid: 8565a98a866fc4f6583421979b36fd54, type: 3}
