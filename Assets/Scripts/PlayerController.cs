@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("zone") && !triggered)
         {
-            other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
+            // other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
             // posStick = true;
             _lock = other;
             print("Hello");
