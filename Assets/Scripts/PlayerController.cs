@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         // print(initialTime);
         // print("3224324r");
         // print(timerTMP);
-        timerTMP.text = "Time Left : " + (15 - Time.time + initialTime).ToString("#.#");
+        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + initialTime).ToString("#.#");
 
         if ((int)(15 - Time.time + initialTime) == 0 && gamePassed == false)
         {
