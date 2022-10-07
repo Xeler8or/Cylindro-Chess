@@ -11,7 +11,7 @@ public class LockRotator : MonoBehaviour
     public float rotateRight = 0f;
     public float rotateLeft = 0f;
     private PlayerController _player;
-
+    public GameObject instructions;
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>();
@@ -20,8 +20,9 @@ public class LockRotator : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("d") || Input.GetKey("right"))
-        {
-            //Rotate cylinder to left
+        {   
+            instructions.SetActive(false);
+             //Rotate cylinder to left
             transform.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
             rotateRight += leftRotation * Time.deltaTime;
             Debug.Log("right rotations: "+(int)(rotateRight/360.0));
@@ -29,6 +30,7 @@ public class LockRotator : MonoBehaviour
         if(Input.GetKey("a") || Input.GetKey("left"))
         {
             // Rotate cylinder to right
+            instructions.SetActive(false);
             transform.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
             rotateLeft += -rightRotation * Time.deltaTime;
             Debug.Log("left rotations: "+(int)(rotateLeft/360.0));
@@ -38,6 +40,7 @@ public class LockRotator : MonoBehaviour
         {
             Destroy(gameObject);  
             _player.ContinuePlay();
+            instructions.SetActive(true);
 
         }
     }
