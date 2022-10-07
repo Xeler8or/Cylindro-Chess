@@ -24,7 +24,7 @@ public class TileManager : MonoBehaviour
             }
             else
             {
-                SpawnTile();
+                SpawnTile(-1);
             }
         }
     }
@@ -73,7 +73,7 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = 0;
+        int randomIndex = Random.Range(0, tilePrefabs.Length);
         // int randomIndex = lastPrefabIndex;
         // while (randomIndex == lastPrefabIndex)
         // {

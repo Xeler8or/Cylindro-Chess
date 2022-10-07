@@ -71,9 +71,9 @@ public class PlayerController : MonoBehaviour
         // print(initialTime);
         // print("3224324r");
         // print(timerTMP);
-        timerTMP.text = "Time Left : " + (100 - Time.time + initialTime).ToString("#.#");
+        timerTMP.text = "Time Left : " + (15 - Time.time + initialTime).ToString("#.#");
 
-        if ((int)(120 - Time.time + initialTime) == 0 && !gamePassed)
+        if ((int)(15 - Time.time + initialTime) == 0 && !gamePassed)
         {  
             timer.SetActive(false);
             
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("zone") && !triggered)
         {
-            // other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
+            //other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
             // posStick = true;
             _lock = other;
             print("Hello");
