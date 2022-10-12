@@ -12,8 +12,7 @@ public class LockRotator : MonoBehaviour
     public float rotateLeft = 0f;
     private PlayerController _player;
     public GameObject instructions;
-    public int leftCount = 0;
-    public int rightCount = 0;
+
     private void Start()
     {
         _player = FindObjectOfType<PlayerController>();
@@ -23,10 +22,8 @@ public class LockRotator : MonoBehaviour
 
     void Update()
     {
-        
-
-            print(_player.posStick);
-
+        if (!_player.platformRotate)
+        {
             if (Input.GetKey("d") || Input.GetKey("right"))
             {
                 instructions.SetActive(false);
@@ -60,6 +57,7 @@ public class LockRotator : MonoBehaviour
                 instructions.SetActive(true);
 
             }
-        
+        }
+
     }
 }

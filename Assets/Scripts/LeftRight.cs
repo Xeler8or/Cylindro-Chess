@@ -5,29 +5,34 @@ using UnityEngine;
 
 public class LeftRight : MonoBehaviour
 {
-    public Transform ground;
     public float rightRotation = 200f;
     public float leftRotation = 200f;
-    public float rotateRight = 0f;
-    public float rotateLeft = 0f;
-    public static bool rotateFlag = true;
+    public GameObject childRotator;
 
-    // Update is called once per frame
+    private PlayerController _playerController;
+    // // Update is called once per frame
+    private void Start()
+    {
+        _playerController = FindObjectOfType<PlayerController>();
+    }
+
     void Update()
     {
-        if (rotateFlag)
+        if (_playerController.platformRotate)
         {
             if (Input.GetKey("d") || Input.GetKey("right"))
             {
                 //Rotate cylinder to left
-                ground.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
-
+                transform.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
+                if(childRotator)
+                    childRotator.transform.Rotate(0, 2*leftRotation*Time.deltaTime,0, Space.Self);
             }
             if(Input.GetKey("a") || Input.GetKey("left"))
             {
                 // Rotate cylinder to right
-                ground.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
-
+                transform.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
+                if(childRotator)
+                    childRotator.transform.Rotate(0, -2*rightRotation*Time.deltaTime,0, Space.Self);
             }
 
         }

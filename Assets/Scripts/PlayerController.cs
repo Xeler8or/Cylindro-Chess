@@ -21,16 +21,20 @@ public class PlayerController : MonoBehaviour
     private float _initalPos = 0;
     [SerializeField]
     private Constants.Color color;
-    public Collider _lock;
+    
     public Material redMat;
     public Material blueMat;
     public Material greenMat;
     public Material yellowMat;
     public GameObject timer;
     private TextMeshProUGUI timerTMP;
-    public bool triggered=false;
+    // public bool triggered=false;
     public bool gamePassed=true;
-    public bool posStick = false;
+    // public bool posStick = false;
+    // private LeftRight leftrightHandle;
+    public bool platformRotate = true;
+    public GameObject lockRotator;
+    
 
     private float initialTime;
     // Start is called before the first frame update
@@ -54,9 +58,10 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         ChangeMaterial(gameObject.transform.GetChild(0).gameObject);
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
-        print(timerTMP);
-        posStick = false;
+        // print(timerTMP);
+        // posStick = false;
         gamePassed = true;
+        // leftrightHandle=FindObjectOfType<LeftRight>();
     }
 
     // Update is called once per frame
@@ -72,16 +77,11 @@ public class PlayerController : MonoBehaviour
         // print(initialTime);
         // print("3224324r");
         // print(timerTMP);
-        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + initialTime).ToString("#.#");
+        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + initialTime).ToString("#");
 
         if ((int)(15 - Time.time + initialTime) == 0 && gamePassed == false)
         {
-            print(gamePassed);
-            print(Time.time);
-            print(initialTime);
-            print("Here I should not be");
             timer.SetActive(false);
-            
             Restart();
         }
         
@@ -149,7 +149,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
         if (other.gameObject.CompareTag("Enemy"))
         {
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
@@ -157,35 +156,27 @@ public class PlayerController : MonoBehaviour
                 Restart();
             }
         }
-        
-        if (other.gameObject.CompareTag("zone") && !triggered)
+        if (other.gameObject.CompareTag("zone"))
         {
-            //other.gameObject.transform.eulerAngles = new Vector3(-180, 0, 0);
-            // posStick = true;
-            _lock = other;
-            print("Hello");
+            Instantiate(lockRotator,
+                new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
             oldVelocity = Velocity;
-            print("Look here");
-            print(oldVelocity);
             Velocity = 0f;
-            LeftRight.rotateFlag = false;
+            platformRotate = false;
             initialTime = Time.time;
             timer.SetActive(true);
-            triggered = true;
+            // triggered = true;
             gamePassed = false;
         }
     }
 
     public void ContinuePlay()
     {
-        posStick = false;
-        Destroy(_lock.gameObject);
-        print("=========>");
-        print(oldVelocity);
-        Velocity = ((int)(gmc.GetScore() / 200))*5 + 10;
-        LeftRight.rotateFlag = true;
+        // posStick = false;
+        Velocity = oldVelocity;
+        platformRotate = true;
         timer.SetActive(false);
-        triggered = false;
+        // triggered = false;
         gamePassed = true;
     }
     

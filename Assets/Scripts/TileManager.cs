@@ -14,7 +14,7 @@ public class TileManager : MonoBehaviour
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
     public float count = 3;
-    void Start()
+    void Awake()
     {
         activeTiles = new List<GameObject>();
         for (int i = 0; i < tilesOnScreen; i++)
