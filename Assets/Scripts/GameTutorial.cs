@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class GameTutorial : MonoBehaviour
 {
-    public GameObject gameTutorialText;
+    public GameObject tutorialBackground;
+    public TextMeshProUGUI tutorialText;
 
     private float initialTime = Time.time;
     // Start is called before the first frame update
@@ -17,10 +18,11 @@ public class GameTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tutorialText.SetText("Showing Game Text!");
         if ((int)(7 - Time.time + initialTime) == 0)
         {
             print("Here");
-            gameTutorialText.SetActive(false);
+            tutorialBackground.SetActive(false);
         }
     }
 }
