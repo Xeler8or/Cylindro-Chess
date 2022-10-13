@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(0,0,Velocity);
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
-            Velocity += .5f;
+            Velocity += 1f;
         }
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0)
         {
