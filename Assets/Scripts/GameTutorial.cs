@@ -5,22 +5,29 @@ using UnityEngine;
 
 public class GameTutorial : MonoBehaviour
 {
-    public GameObject gameTutorialText;
-
-    private float initialTime = Time.time;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject tutorialBackground;
+    public TextMeshProUGUI tutorialText;
+    private int tutorialIndex = 0;
+    private string[] tutorialTexts = new string[]{ Constants.MOVE_LEFT_RIGHT, 
+                                       Constants.CHANGE_SHAPE,
+                                       Constants.COLOR_CHANGE,
+                                       Constants.AUTOMATIC_RIGHT_SECTION,
+                                       Constants.LOCK_TUTORIAL };
 
     // Update is called once per frame
     void Update()
     {
-        if ((int)(7 - Time.time + initialTime) == 0)
+        if (tutorialIndex < tutorialTexts.Length)
         {
-            print("Here");
-            gameTutorialText.SetActive(false);
+            PlayerController.Velocity = 0f;
+            tutorialText.text = tutorialTexts[tutorialIndex];
+            if (Input.GetKeyDown(KeyCode.Space))
+                tutorialIndex++;
+        }
+        else
+        {
+            tutorialBackground.SetActive(false);
+            PlayerController.Velocity = Constants.INITIAL_PLAYER_SPEED;
         }
     }
 }
