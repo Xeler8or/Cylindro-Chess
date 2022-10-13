@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Velocity = 10f;
+        Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
         gmc = FindObjectOfType<GameController>();
         player_shape = Constants.Shapes.Cube;
@@ -125,9 +125,12 @@ public class PlayerController : MonoBehaviour
     {
         
         rb.velocity = new Vector3(0,0,Velocity);
+        if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
+        {
+            Velocity += 1f;
+        }
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0)
         {
-            Velocity += 5f;
             Constants.Color c = GetNextColor(color);
             color = c;
             GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
