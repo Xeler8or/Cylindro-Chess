@@ -192,37 +192,29 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Portal"))
         {
-<<<<<<< Updated upstream
-            rb.transform.Translate(Vector3.up * 38 );
-            rb.transform.Rotate(Vector3.forward, 180);
-            cameraObject.transform.Rotate(Vector3.forward, 180);
-            cameraObject.transform.Translate(rb.transform.up * 30);
-            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-            InvokeRepeating("HealthReducer", 7.0f, 7.0f);
-            _analyticsVariables.SetHealth(3); //Initialise to 3 lives
-        }
-        //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
-
-        if (other.gameObject.CompareTag("Health"))
-        {
-            HealthPickup();
-            Destroy(other);
-=======
             if (onOuterCylinder)
             {
                 onOuterCylinder = false;
-                rb.transform.Translate(Vector3.up / 38 );
+                rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
                 rb.transform.Rotate(Vector3.forward, 180);
                 cameraObject.transform.Rotate(Vector3.forward, 180);
             }
             else
             {
                 onOuterCylinder = true;
-                rb.transform.Translate(Vector3.up * 38 );
+                rb.transform.Translate(Vector3.up + (new Vector3(0,37f, 0) ) );
                 rb.transform.Rotate(Vector3.forward, 180);
                 cameraObject.transform.Rotate(Vector3.forward, 180);
             }
->>>>>>> Stashed changes
+        }
+        //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
+        if (other.gameObject.CompareTag("Health"))
+        {
+            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+            InvokeRepeating("HealthReducer", 7.0f, 7.0f);
+            _analyticsVariables.SetHealth(3); //Initialise to 3 lives
+            HealthPickup();
+            Destroy(other);
         }
     }
 
