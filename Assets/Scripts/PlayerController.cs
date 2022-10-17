@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // private LeftRight leftrightHandle;
     public bool platformRotate = true;
     public GameObject lockRotator;
+    public GameObject cameraObject;
     
 
     private float initialTime;
@@ -170,6 +171,14 @@ public class PlayerController : MonoBehaviour
             timer.SetActive(true);
             // triggered = true;
             gamePassed = false;
+        }
+
+        if (other.gameObject.CompareTag("Portal"))
+        {
+            rb.transform.Translate(Vector3.up * 38 );
+            rb.transform.Rotate(Vector3.forward, 180);
+            cameraObject.transform.Rotate(Vector3.forward, 180);
+            cameraObject.transform.Translate(rb.transform.up * 30);
         }
     }
 
