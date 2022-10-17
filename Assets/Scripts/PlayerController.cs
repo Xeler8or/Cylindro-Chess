@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private float _initialTime;
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
+    public static bool onOuterCylinder = false;
 
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
@@ -191,6 +192,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Portal"))
         {
+<<<<<<< Updated upstream
             rb.transform.Translate(Vector3.up * 38 );
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
@@ -205,6 +207,22 @@ public class PlayerController : MonoBehaviour
         {
             HealthPickup();
             Destroy(other);
+=======
+            if (onOuterCylinder)
+            {
+                onOuterCylinder = false;
+                rb.transform.Translate(Vector3.up / 38 );
+                rb.transform.Rotate(Vector3.forward, 180);
+                cameraObject.transform.Rotate(Vector3.forward, 180);
+            }
+            else
+            {
+                onOuterCylinder = true;
+                rb.transform.Translate(Vector3.up * 38 );
+                rb.transform.Rotate(Vector3.forward, 180);
+                cameraObject.transform.Rotate(Vector3.forward, 180);
+            }
+>>>>>>> Stashed changes
         }
     }
 
