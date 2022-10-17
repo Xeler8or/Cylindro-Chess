@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 onOuterCylinder = true;
-                rb.transform.Translate(Vector3.up + (new Vector3(0,37f, 0) ) );
+                rb.transform.Translate(Vector3.up + (new Vector3(0,38f, 0) ) );
                 rb.transform.Rotate(Vector3.forward, 180);
                 cameraObject.transform.Rotate(Vector3.forward, 180);
             }
