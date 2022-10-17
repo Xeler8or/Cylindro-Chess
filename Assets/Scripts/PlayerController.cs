@@ -35,19 +35,22 @@ public class PlayerController : MonoBehaviour
     public bool platformRotate = true;
     public GameObject lockRotator;
     public GameObject cameraObject;
-    
+    private float _initialTime;
+    private bool _onUpperCylinder;
+    private AnalyticsVariables _analyticsVariables;
 
-    private float initialTime;
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
         {Constants.Shapes.Sphere,1},
         {Constants.Shapes.Cone,2}
     };
-    public Dictionary<int,Constants.Shapes> GetShape = new Dictionary<int,Constants.Shapes>{
-        {0,Constants.Shapes.Cube},
-        {1,Constants.Shapes.Sphere},
-        {2,Constants.Shapes.Cone}
+
+    public Dictionary<int, Constants.Shapes> GetShape = new Dictionary<int, Constants.Shapes>
+    {
+        { 0, Constants.Shapes.Cube },
+        { 1, Constants.Shapes.Sphere },
+        { 2, Constants.Shapes.Cone }
     };
 
     void Start()
@@ -59,10 +62,8 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         ChangeMaterial(gameObject.transform.GetChild(0).gameObject);
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
-        // print(timerTMP);
-        // posStick = false;
         gamePassed = true;
-        // leftrightHandle=FindObjectOfType<LeftRight>();
+        _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
     }
 
     // Update is called once per frame
@@ -78,15 +79,13 @@ public class PlayerController : MonoBehaviour
         // print(initialTime);
         // print("3224324r");
         // print(timerTMP);
-        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + initialTime).ToString("#");
+        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(15 - Time.time + initialTime) == 0 && gamePassed == false)
+        if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             Restart();
         }
-        
-
     }
 
     private void TriggerPiecePrefab(Constants.Shapes player_shape)
@@ -151,6 +150,23 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = yellowMat;
     }
 
+    private void HealthReducer()
+    {
+        if (_onUpperCylinder)
+        {
+            _analyticsVariables.DecrementHealth();  //Decrements by 1
+            if (_analyticsVariables.GetHealth() <= 0)
+            {
+                //Return to lower cylinder
+            }
+        }
+    }
+
+    private void HealthPickup()
+    {
+        _analyticsVariables.SetHealth(Math.Max(_analyticsVariables.GetHealth()+1, 3));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -167,7 +183,7 @@ public class PlayerController : MonoBehaviour
             oldVelocity = Velocity;
             Velocity = 0f;
             platformRotate = false;
-            initialTime = Time.time;
+            _initialTime = Time.time;
             timer.SetActive(true);
             // triggered = true;
             gamePassed = false;
@@ -179,6 +195,16 @@ public class PlayerController : MonoBehaviour
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Translate(rb.transform.up * 30);
+            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+            InvokeRepeating("HealthReducer", 7.0f, 7.0f);
+            _analyticsVariables.SetHealth(3); //Initialise to 3 lives
+        }
+        //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
+
+        if (other.gameObject.CompareTag("Health"))
+        {
+            HealthPickup();
+            Destroy(other);
         }
     }
 
