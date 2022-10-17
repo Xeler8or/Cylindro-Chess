@@ -26,8 +26,11 @@ public class PlayerController : MonoBehaviour
     public Material blueMat;
     public Material greenMat;
     public Material yellowMat;
+    public Material rainbowMat;
     public GameObject timer;
     private TextMeshProUGUI timerTMP;
+    public GameObject powerTimer;
+    private TextMeshProUGUI powerTimerTMP;
     // public bool triggered=false;
     public bool gamePassed=true;
     // public bool posStick = false;
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
 
+    public bool RainbowActive = false;
+    public float RainbowStartTime;
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -63,6 +68,7 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         ChangeMaterial(gameObject.transform.GetChild(0).gameObject);
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
+        powerTimerTMP = powerTimer.GetComponent<TextMeshProUGUI>();
         gamePassed = true;
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
     }
@@ -70,6 +76,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (RainbowActive){
+            ManageRainbowPower();
+        }
         gmc.SetScore((int)(transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
         {
@@ -77,9 +86,6 @@ public class PlayerController : MonoBehaviour
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
             TriggerPiecePrefab(player_shape);
         }
-        // print(initialTime);
-        // print("3224324r");
-        // print(timerTMP);
         timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + _initialTime).ToString("#");
 
         if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
@@ -99,6 +105,7 @@ public class PlayerController : MonoBehaviour
     
     private void Restart()
     {
+        RainbowActive = false;
         Time.timeScale = 0;
         restartPanel.SetActive(true);
         //SendToGoogle.Instance.Send();
@@ -130,7 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             Velocity += 1f;
         }
-        if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0)
+        if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
         {
             Constants.Color c = GetNextColor(color);
             color = c;
@@ -149,6 +156,8 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = greenMat;
         else if(color == Constants.Color.Yellow)
             gm.GetComponent<MeshRenderer>().material = yellowMat;
+        else if(color == Constants.Color.Rainbow)
+            gm.GetComponent<MeshRenderer>().material = rainbowMat;
     }
 
     private void HealthReducer()
@@ -172,6 +181,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            if (RainbowActive){
+                return;
+            }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
                 Restart();
@@ -216,8 +228,39 @@ public class PlayerController : MonoBehaviour
             HealthPickup();
             Destroy(other);
         }
+        if (other.gameObject.CompareTag("Rainbow"))
+        {
+            StartRainbowPower();
+        }
     }
 
+    public void StartRainbowPower(){
+        //Debug.Log("Power Active");
+        
+        RainbowActive = true;
+        RainbowStartTime = Time.time;
+        GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+        child.GetComponent<MeshRenderer>().material = rainbowMat;   
+        color = Constants.Color.Rainbow;
+        powerTimer.SetActive(true);
+    }
+    public void ManageRainbowPower(){
+        //Debug.Log(Time.time - RainbowStartTime);
+        if (Time.time - RainbowStartTime > 15){
+            powerTimerTMP.text = (20 - Time.time + RainbowStartTime).ToString("#.#");
+        }
+        if (Time.time - RainbowStartTime > 20){
+            EndRainbowPower();
+        }
+    }
+    public void EndRainbowPower(){
+        //Debug.Log("Power finished");
+        powerTimer.SetActive(false);
+        RainbowActive = false;
+        GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+        child.GetComponent<MeshRenderer>().material = redMat;
+        color = Constants.Color.Red;
+    }
     public void ContinuePlay()
     {
         // posStick = false;

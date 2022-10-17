@@ -6,7 +6,8 @@ public static class Constants
         Blue,
         Green,
         Yellow,
-        Black
+        Black,
+        Rainbow
     }
 
     public enum Shapes
