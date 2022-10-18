@@ -21,7 +21,7 @@ public class GameTutorial : MonoBehaviour
         if (showText && tutorialIndex < tutorialTexts.Length)
         {
             tutorialBackground.SetActive(true);
-            PlayerController.Velocity = 0f;
+            Time.timeScale = 0;
             tutorialText.text = tutorialTexts[tutorialIndex];
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -32,7 +32,7 @@ public class GameTutorial : MonoBehaviour
         else
         {
             tutorialBackground.SetActive(false);
-            PlayerController.Velocity = Constants.INITIAL_PLAYER_SPEED;
+            Time.timeScale = 1;
         }
     }
 
