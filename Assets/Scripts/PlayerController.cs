@@ -232,6 +232,11 @@ public class PlayerController : MonoBehaviour
         {
             StartRainbowPower();
         }
+
+        if (other.gameObject.CompareTag("TutorialTrigger"))
+        {
+            GameTutorial.showTutorial();
+        }
     }
 
     public void StartRainbowPower(){

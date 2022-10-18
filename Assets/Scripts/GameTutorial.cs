@@ -8,6 +8,7 @@ public class GameTutorial : MonoBehaviour
     public GameObject tutorialBackground;
     public TextMeshProUGUI tutorialText;
     private int tutorialIndex = 0;
+    private static bool showText = false;
     private string[] tutorialTexts = new string[]{ Constants.MOVE_LEFT_RIGHT, 
                                        Constants.CHANGE_SHAPE,
                                        Constants.COLOR_CHANGE,
@@ -17,17 +18,26 @@ public class GameTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tutorialIndex < tutorialTexts.Length)
+        if (showText && tutorialIndex < tutorialTexts.Length)
         {
+            tutorialBackground.SetActive(true);
             PlayerController.Velocity = 0f;
             tutorialText.text = tutorialTexts[tutorialIndex];
             if (Input.GetKeyDown(KeyCode.Space))
-                tutorialIndex++;
+            {
+                tutorialBackground.SetActive(false);
+                showText = false;
+            }
         }
         else
         {
             tutorialBackground.SetActive(false);
             PlayerController.Velocity = Constants.INITIAL_PLAYER_SPEED;
         }
+    }
+
+    public static void showTutorial()
+    {
+        showText = true;
     }
 }
