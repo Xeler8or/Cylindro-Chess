@@ -7,13 +7,14 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject[] tilePrefabs;
     public Transform playerTransform;
-    private float spawnZ = -50.0f;
+    private float spawnZ = 20.0f;
     private float cylinderLength = 100.0f;
     private int tilesOnScreen = 4;
     private float safeZone = 105.0f;
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
-    void Start()
+    public float count = 3;
+    void Awake()
     {
         activeTiles = new List<GameObject>();
         for (int i = 0; i < tilesOnScreen; i++)
@@ -24,7 +25,7 @@ public class TileManager : MonoBehaviour
             }
             else
             {
-                SpawnTile();
+                SpawnTile(-1);
             }
         }
     }
@@ -73,14 +74,25 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = 1;
-        // int randomIndex = lastPrefabIndex;
-        // while (randomIndex == lastPrefabIndex)
-        // {
-        //     randomIndex = Random.Range(0, tilePrefabs.Length);
-        // }
-        //
-        // lastPrefabIndex = randomIndex;
+        // int randomIndex = 6;
+        // int randomIndex = Random.Range(0, tilePrefabs.Length);
+        int randomIndex = lastPrefabIndex;
+        while (randomIndex == lastPrefabIndex)
+        {
+            randomIndex = Random.Range(0, tilePrefabs.Length);
+            if (randomIndex == 6 && count <= 3)
+            {
+                continue;
+            }
+            if (randomIndex == 6)
+            {
+                count = 1;
+            }
+        
+            count += 1;
+        }
+        
+        lastPrefabIndex = randomIndex;
         return randomIndex;
     }
 }

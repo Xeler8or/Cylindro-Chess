@@ -516,7 +516,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6073109322261225236}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6073109321561095991
 MeshFilter:
@@ -579,7 +579,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6073109321715758797
 GameObject:
@@ -613,7 +613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6073109322261225236}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6073109321715758793
 MeshFilter:
@@ -708,8 +708,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6073109321715758796}
   - {fileID: 6073109321561095978}
+  - {fileID: 6073109321715758796}
   - {fileID: 6073109320821069154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -747,7 +747,12 @@ MonoBehaviour:
   restartPanel: {fileID: 0}
   _initalPos: 0
   color: 0
+  _lock: {fileID: 0}
   redMat: {fileID: 2100000, guid: 98c461a0b8cc01c4baf01c5175f2113a, type: 2}
   blueMat: {fileID: 2100000, guid: f2677631ed2da464495bdf08515ee726, type: 2}
   greenMat: {fileID: 2100000, guid: 3cdd2dec7768f5a4798b4d2b2f23930d, type: 2}
   yellowMat: {fileID: 2100000, guid: e32492d6bdd7d2c43ae4a2a49ad2ed36, type: 2}
+  timer: {fileID: 0}
+  triggered: 0
+  gamePassed: 1
+  posStick: 0
