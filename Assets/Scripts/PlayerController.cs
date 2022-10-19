@@ -162,19 +162,34 @@ public class PlayerController : MonoBehaviour
 
     private void HealthReducer()
     {
-        if (_onUpperCylinder)
+        _analyticsVariables.DecrementHealth();  //Decrements by 1
+        if (_analyticsVariables.GetHealth() <= 0)
         {
-            _analyticsVariables.DecrementHealth();  //Decrements by 1
-            if (_analyticsVariables.GetHealth() <= 0)
-            {
-                //Return to lower cylinder
-            }
+            _analyticsVariables.SetHealth(0);
+            CancelInvoke();
+            MoveToInner();//Return to lower cylinder
         }
+    }
+    
+    private void MoveToInner()
+    {
+        onOuterCylinder = false;
+        rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
+        rb.transform.Rotate(Vector3.forward, 180);
+        cameraObject.transform.Rotate(Vector3.forward, 180);
+    }
+    
+    private void MoveToOuter()
+    {
+        onOuterCylinder = true;
+        rb.transform.Translate(Vector3.up + (new Vector3(0,38f, 0) ) );
+        rb.transform.Rotate(Vector3.forward, 180);
+        cameraObject.transform.Rotate(Vector3.forward, 180);
     }
 
     private void HealthPickup()
     {
-        _analyticsVariables.SetHealth(Math.Max(_analyticsVariables.GetHealth()+1, 3));
+        _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -206,27 +221,22 @@ public class PlayerController : MonoBehaviour
         {
             if (onOuterCylinder)
             {
-                onOuterCylinder = false;
-                rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
-                rb.transform.Rotate(Vector3.forward, 180);
-                cameraObject.transform.Rotate(Vector3.forward, 180);
+                CancelInvoke();
+                MoveToInner();
             }
             else
             {
-                onOuterCylinder = true;
-                rb.transform.Translate(Vector3.up + (new Vector3(0,38f, 0) ) );
-                rb.transform.Rotate(Vector3.forward, 180);
-                cameraObject.transform.Rotate(Vector3.forward, 180);
+                //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+                InvokeRepeating("HealthReducer", 10.0f, 10.0f);
+                _analyticsVariables.SetHealth(3); //Initialise to 3 lives
+                MoveToOuter();
             }
         }
         //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
         if (other.gameObject.CompareTag("Health"))
         {
-            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-            InvokeRepeating("HealthReducer", 7.0f, 7.0f);
-            _analyticsVariables.SetHealth(3); //Initialise to 3 lives
             HealthPickup();
-            Destroy(other);
+            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
