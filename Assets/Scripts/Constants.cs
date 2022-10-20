@@ -33,4 +33,6 @@ public static class Constants
         "There is a section in the game where the player moves right by default.";
 
     public const float INITIAL_PLAYER_SPEED = 10f;
+
+    public const float HEALTH_TIMER = 5f;
 }
