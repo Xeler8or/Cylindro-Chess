@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4186775560934453195}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Enemy
+  m_TagString: Enemy_Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8504824489679479683}
   m_Layer: 0
   m_Name: cube-ring
-  m_TagString: Enemy
+  m_TagString: Enemy_Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872006006736, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872006006737, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872391996983, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872391997000, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872444019365, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872444019366, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872524600403, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872524600404, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872524820400, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872524820401, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872876628805, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803872876628806, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873134738702, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873134738703, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -282,7 +282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873388491136, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873388491137, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873649651373, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873649651374, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873808321837, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 7821803873808321838, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_IsTrigger
@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8595405750680320891, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53f9f1c805804bcaa3396947524052f, type: 3}
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775809677367983, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775809770315889, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775809770315894, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810335868717, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810335868722, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810520089594, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -592,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810520089595, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810953363118, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -600,11 +600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775810953363119, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775811186334210, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775811186334269, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775811292867884, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6072775811292867887, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_IsTrigger
@@ -624,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6072775811533264759, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 8141486267429206289, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_Name
@@ -632,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141486267429206289, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e226b5f7d1b9f4394adf5f60a0e5eb57, type: 3}
@@ -798,11 +798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171939929760807, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171939967726040, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171939967726043, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -814,7 +814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171939968192443, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940004462332, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171940004462333, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940289474773, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -830,11 +830,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171940289475370, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940581025218, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940581025229, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -846,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171940659805089, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940692302562, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -854,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171940692302563, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171940891040273, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -862,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171940891040278, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941066568720, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -870,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171941066568721, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941266383217, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -878,11 +878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171941266383222, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941330191464, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941330191467, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171941370226495, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941456299889, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -902,11 +902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171941456299894, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941519021740, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 168171941519021743, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_IsTrigger
@@ -918,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168171941530553301, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1681925918746831705, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_Name
@@ -926,7 +926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1681925918746831705, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 6524307475301441834, guid: b6887ce6a6f6c438ebd653873abf69c8, type: 3}
       propertyPath: m_RootOrder
@@ -1292,7 +1292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406611982710291, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612153076296, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1300,11 +1300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612153076299, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612813818508, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612813818509, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1316,7 +1316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612879680279, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612921348434, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1324,11 +1324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612921348437, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612932492014, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406612932492015, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1340,11 +1340,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613174870235, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613502606112, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613502606113, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1352,7 +1352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613583309148, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613583309149, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1360,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613735773674, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     - target: {fileID: 1520406613735773675, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_IsTrigger
@@ -1428,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616434007083425600, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Enemy_Shape
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a036c3233f7014521be6f8f5604f5ffc, type: 3}
