@@ -40,7 +40,7 @@ public class AnalyticsVariables : MonoBehaviour
         return _coins;
     }
 
-    public void ModifyCoins(int d)
+    public void UpdateCoins(int d)
     {
         _coins += d;
     }
