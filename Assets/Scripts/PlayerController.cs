@@ -249,8 +249,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-                InvokeRepeating("HealthReducer", 10.0f, 10.0f);
-                _analyticsVariables.SetHealth(3); //Initialise to 3 lives
+                InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
                 MoveToOuter();
             }
         }
