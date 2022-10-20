@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
             TriggerPiecePrefab(player_shape);
         }
-        timerTMP.text = "rotate rightx2,rotate leftx2(360) Time Left : " + (15 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (15 - Time.time + _initialTime).ToString("#");
 
         if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
         {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
-    private Vector3 innerCylinderOffset = new Vector3(0f,3f,-10f);
-    private Vector3 outerCylinderOffset = new Vector3(0f, -3f, -10f);
+    private Vector3 innerCylinderOffset = new Vector3(0f,4.8f,-10f);
+    private Vector3 outerCylinderOffset = new Vector3(0f, -4f, -10f);
 
     // Update is called once per frame
     void Update()
