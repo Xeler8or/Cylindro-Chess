@@ -79,7 +79,12 @@ public class PlayerController : MonoBehaviour
         if (RainbowActive){
             ManageRainbowPower();
         }
-        gmc.SetScore((int)(transform.position.z - _initalPos));
+
+        if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
+        {
+            Restart();
+        }
+        gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
         {
             TriggerPiecePrefab(player_shape);
@@ -252,6 +257,11 @@ public class PlayerController : MonoBehaviour
         {
             Velocity -= 5;
             Destroy(other.gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Bounce"))
+        {
+            Velocity = -Velocity;
         }
         print(Velocity);
     }
