@@ -7,11 +7,11 @@ public class AnalyticsVariables : MonoBehaviour
 {
     private int _health = 3;
     //Set death variable to color, shape, door, lock, arch
-    private string _causeOfDeath;
+    public string _causeOfDeath;
     //Set speed variable on death
-    private int _speedAtDeath;
+    public int _speedAtDeath;
     //Set score on death
-    private int _finalScore;
+    public int _finalScore;
 
     //Increase counter for number of times health variable is set to 1
     private int _counterHealthOne = 0;

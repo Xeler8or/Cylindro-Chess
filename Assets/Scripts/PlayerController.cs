@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
         if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
+            _analyticsVariables.SetDeathObstacle("Lock");
             Restart();
         }
     }
@@ -111,6 +112,12 @@ public class PlayerController : MonoBehaviour
     private void Restart()
     {
         RainbowActive = false;
+        _analyticsVariables.SetSpeedAtDeath((int)Velocity);
+        _analyticsVariables.SetFinalScore(gmc.GetScore());
+        print("Restart");
+        print(_analyticsVariables._causeOfDeath);
+        print(_analyticsVariables._speedAtDeath);
+        print(_analyticsVariables._finalScore);
         Time.timeScale = 0;
         restartPanel.SetActive(true);
         //SendToGoogle.Instance.Send();
@@ -198,13 +205,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black"))
         {
             if (RainbowActive){
                 return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
+                _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
                 Restart();
             }
         }
