@@ -136,7 +136,6 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
         rb.velocity = new Vector3(0,0,Velocity);
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
@@ -242,10 +241,12 @@ public class PlayerController : MonoBehaviour
         {
             HealthPickup();
             Destroy(other.gameObject);
+            
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
             StartRainbowPower();
+            _analyticsVariables.ModifyCoins(-4);
         }
 
         if (other.gameObject.CompareTag("TutorialTrigger"))
@@ -256,6 +257,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
             Velocity -= 5;
+            Destroy(other.gameObject);
+            _analyticsVariables.ModifyCoins(-4);
+        }
+
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            _analyticsVariables.ModifyCoins(1);
             Destroy(other.gameObject);
         }
         

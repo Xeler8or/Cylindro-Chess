@@ -8,15 +8,18 @@ public class UIManager : MonoBehaviour
     private GameController gmc;
     // private UnityEngine.UI.Text scoreText;
     public TextMeshProUGUI scoreText;
-    public GameObject health;
+    public GameObject healthGm;
+    public GameObject coinsGm;
     private TextMeshProUGUI _healthText;
+    private TextMeshProUGUI _coinsText;
     private AnalyticsVariables _analyticsVariables;
 
     private void Start()
     {
         // scoreText = scoreGameObjectText.GetComponent<Text>();
         gmc = gameController.GetComponent<GameController>();
-        _healthText = health.GetComponent<TextMeshProUGUI>();
+        _healthText = healthGm.GetComponent<TextMeshProUGUI>();
+        _coinsText = coinsGm.GetComponent<TextMeshProUGUI>();
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
     }
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = gmc.GetScore().ToString();
         _healthText.text = _analyticsVariables.GetHealth().ToString();
+        _coinsText.text = _analyticsVariables.GetCoins().ToString();
     }
 
     public void Replay(){
