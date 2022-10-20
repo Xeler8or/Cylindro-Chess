@@ -5,6 +5,7 @@ using System.Threading;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -203,6 +204,15 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
     }
 
+    private void HandleBuying(int cost, Collider other)
+    {
+        if (_analyticsVariables.GetCoins() >= cost)
+        {
+            _analyticsVariables.UpdateCoins(-cost);
+            Destroy(other.gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black"))
@@ -254,7 +264,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Rainbow"))
         {
             StartRainbowPower();
-            _analyticsVariables.ModifyCoins(-4);
+            HandleBuying(2, other);
         }
 
         if (other.gameObject.CompareTag("TutorialTrigger"))
@@ -265,13 +275,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
             Velocity -= 5;
-            Destroy(other.gameObject);
-            _analyticsVariables.ModifyCoins(-4);
+            HandleBuying(2, other);
         }
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            _analyticsVariables.ModifyCoins(1);
+            _analyticsVariables.UpdateCoins(1);
             Destroy(other.gameObject);
         }
         
