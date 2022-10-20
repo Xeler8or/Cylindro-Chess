@@ -14,7 +14,7 @@ public class TileManager : MonoBehaviour
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
     public float count = 3;
-    void Start()
+    void Awake()
     {
         activeTiles = new List<GameObject>();
         for (int i = 0; i < tilesOnScreen; i++)
@@ -74,7 +74,7 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        // int randomIndex = 6;
+        // int randomIndex = 0;
         // int randomIndex = Random.Range(0, tilePrefabs.Length);
         int randomIndex = lastPrefabIndex;
         while (randomIndex == lastPrefabIndex)
