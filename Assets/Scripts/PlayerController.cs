@@ -247,6 +247,13 @@ public class PlayerController : MonoBehaviour
         {
             GameTutorial.showTutorial();
         }
+
+        if (other.gameObject.CompareTag("SlowDownPowerUp"))
+        {
+            Velocity -= 40;
+            Destroy(other.gameObject);
+        }
+        print(Velocity);
     }
 
     public void StartRainbowPower(){
