@@ -14,26 +14,38 @@ public class TileManager : MonoBehaviour
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
     public float count = 3;
+    public bool tutorialMode = false;
+    
     void Awake()
     {
         activeTiles = new List<GameObject>();
-        for (int i = 0; i < tilesOnScreen; i++)
+        if (tutorialMode)
         {
-            if (i < 1)
+            for (int i = 0; i < tilePrefabs.Length; i++)
             {
-                SpawnTile(0);
+                SpawnTile(i);
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < tilesOnScreen; i++)
             {
-                SpawnTile(-1);
-            }
+                if (i < 1)
+                {
+                    SpawnTile(0);
+                }
+                else
+                {
+                    SpawnTile(-1);
+                }
+            }   
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerTransform != null)
+        if (playerTransform != null && !tutorialMode)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
             {
@@ -53,7 +65,6 @@ public class TileManager : MonoBehaviour
         else
         {
             go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
-
         }
         go.transform.SetParent(transform);
         go.transform.position = Vector3.forward * spawnZ;
