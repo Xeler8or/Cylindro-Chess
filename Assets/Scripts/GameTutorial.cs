@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameTutorial : MonoBehaviour
 {
     public GameObject tutorialBackground;
+    public GameObject endGame;
     public TextMeshProUGUI tutorialText;
     private int tutorialIndex = 0;
     private static bool showText = false;
@@ -19,7 +20,13 @@ public class GameTutorial : MonoBehaviour
                                                    Constants.LOCK_TUTORIAL,
                                                    Constants.ROTATE_RIGHT_360,
                                                    Constants.ROTATE_LEFT_360,
-                                                   Constants.PERFORM_ON_LOCK
+                                                   Constants.PERFORM_ON_LOCK,
+                                                   Constants.COLLECT_COINS_FOR_POWERUPS,
+                                                   Constants.COLLECT_RAINBOW_POWERUP,
+                                                   Constants.COLLECT_SLOWDOWN_POWERUP,
+                                                   Constants.BOUNCE_OBSTACLE,
+                                                   Constants.PORTALS,
+                                                   Constants.HEALTH
     };
 
     // Update is called once per frame
@@ -39,10 +46,15 @@ public class GameTutorial : MonoBehaviour
             else
                 tutorialIndex = tutorialIndex;
         }
-        else
+        else if ( !showText && tutorialIndex < tutorialTexts.Length )
         {
             tutorialBackground.SetActive(false);
             Time.timeScale = 1;
+        }
+        else
+        {
+            tutorialBackground.SetActive(false);
+            endGame.SetActive(true);
         }
     }
 

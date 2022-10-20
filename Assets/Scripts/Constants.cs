@@ -47,7 +47,27 @@ public static class Constants
     public const string PERFORM_ON_LOCK =
         "Now when the lock appears, you need to perform 2 right 360 degree turns and 2 left 360 degree turns with respect to the line.";
 
+    public const string COLLECT_COINS_FOR_POWERUPS =
+        "Collects coins to buy powerups during the game.";
+
+    public const string COLLECT_RAINBOW_POWERUP =
+        "This is a rainbow powerup. Once you collect this, you can pass through any color obstacle irrespective of player color.";
+
+    public const string COLLECT_SLOWDOWN_POWERUP =
+        "This is the showdown poerup. Once you collect his, the speed of the player reduces.";
+
+    public const string BOUNCE_OBSTACLE =
+        "This is a bounce obstacle, you need to bounce your way through the obstacle. Try it!";
+
+    public const string PORTALS =
+        "These are portal, hit these and you will move between inner and outer cylinders.";
+
+    public const string HEALTH =
+        "Wohoo! Welcome to the upside-down.\nYou get double points here but you also need to constantly collect health to stay here.";
+
     public const float INITIAL_PLAYER_SPEED = 10f;
 
     public const float HEALTH_TIMER = 5f;
+
+    public const float PLAYER_MAX_SPEED = 30f;
 }
