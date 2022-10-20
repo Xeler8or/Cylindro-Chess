@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
-            Velocity -= 40;
+            Velocity -= 5;
             Destroy(other.gameObject);
         }
         print(Velocity);

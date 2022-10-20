@@ -74,25 +74,25 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = 0;
+        // int randomIndex = 0;
         // int randomIndex = Random.Range(0, tilePrefabs.Length);
-        // int randomIndex = lastPrefabIndex;
-        // while (randomIndex == lastPrefabIndex)
-        // {
-        //     randomIndex = Random.Range(0, tilePrefabs.Length);
-        //     if (randomIndex == 6 && count <= 3)
-        //     {
-        //         continue;
-        //     }
-        //     if (randomIndex == 6)
-        //     {
-        //         count = 1;
-        //     }
-        //
-        //     count += 1;
-        // }
-        //
-        // lastPrefabIndex = randomIndex;
+        int randomIndex = lastPrefabIndex;
+        while (randomIndex == lastPrefabIndex)
+        {
+            randomIndex = Random.Range(0, tilePrefabs.Length);
+            if (randomIndex == 6 && count <= 3)
+            {
+                continue;
+            }
+            if (randomIndex == 6)
+            {
+                count = 1;
+            }
+        
+            count += 1;
+        }
+        
+        lastPrefabIndex = randomIndex;
         return randomIndex;
     }
 }
