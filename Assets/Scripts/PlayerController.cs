@@ -226,7 +226,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black"))
         {
             if (RainbowActive){
-                return;
+                if (!other.gameObject.CompareTag("Enemy_Black"))
+                    return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
