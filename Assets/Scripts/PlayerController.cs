@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
+    public PauseGame pauseGame;
 
     public bool RainbowActive = false;
     public float RainbowStartTime;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         powerTimerTMP = powerTimer.GetComponent<TextMeshProUGUI>();
         gamePassed = true;
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
+        pauseGame = FindObjectOfType<PauseGame>();
     }
 
     // Update is called once per frame
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
             TriggerPiecePrefab(player_shape);
         }
+        
         timerTMP.text = "Time Left : " + (15 - Time.time + _initialTime).ToString("#");
 
         if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
@@ -99,6 +102,11 @@ public class PlayerController : MonoBehaviour
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
             Restart();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseGame.pauseGame();
         }
     }
 
