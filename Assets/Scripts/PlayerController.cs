@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(0,0,Velocity);
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
-            Velocity += 1f;
+            Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
         }
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
         {
