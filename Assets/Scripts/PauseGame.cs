@@ -27,5 +27,6 @@ public class PauseGame : MonoBehaviour
     public void continueToActualGame()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 }
