@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
         pauseGame = FindObjectOfType<PauseGame>();
         onOuterCylinder = false;
         _sendToGoogle = FindObjectOfType<SendToGoogle>();
+        _analyticsVariables.SetCoins(0);
+        _analyticsVariables.SetHealth(0);
     }
 
     // Update is called once per frame
@@ -230,10 +232,16 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToOuter()
     {
-        onOuterCylinder = true;
-        rb.transform.Translate(Vector3.up + (new Vector3(0,38f, 0) ) );
-        rb.transform.Rotate(Vector3.forward, 180);
-        cameraObject.transform.Rotate(Vector3.forward, 180);
+        if (_analyticsVariables.GetHealth() > 0)
+        {
+            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+            InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
+            onOuterCylinder = true;
+            print("PC: " + onOuterCylinder);
+            rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
+            rb.transform.Rotate(Vector3.forward, 180);
+            cameraObject.transform.Rotate(Vector3.forward, 180);
+        }
     }
 
     private void HealthPickup()
@@ -241,14 +249,16 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
     }
 
-    private void HandleBuying(int cost, Collider other)
+    private bool HandleBuying(int cost, Collider other)
     {
         if (_analyticsVariables.GetCoins() >= cost)
         {
             _analyticsVariables.UpdateCoins(-cost);
             _analyticsVariables.ModifyUsedCoins(cost);
-            Destroy(other.gameObject);
+            return true;
         }
+
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -310,8 +320,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-                InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
                 MoveToOuter();
             }
         }
@@ -324,9 +332,16 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
-            StartRainbowPower();
-            _analyticsVariables.IncrementCounterRainbow();
-            HandleBuying(2, other);
+            if (HandleBuying(2, other))
+            {
+                StartRainbowPower();
+                _analyticsVariables.IncrementCounterRainbow();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+             //Show visuals that cannot buy   
+            }
         }
 
         if (other.gameObject.CompareTag("TutorialTrigger"))
@@ -336,9 +351,16 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
-            Velocity -= 5;
-            _analyticsVariables.IncrementCounterSlowDown();
-            HandleBuying(2, other);
+            if (HandleBuying(2, other))
+            {
+                Velocity -= 5;
+                _analyticsVariables.IncrementCounterSlowDown();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //Show visuals for cannot buy
+            }
         }
 
         if (other.gameObject.CompareTag("Coin"))
