@@ -147,12 +147,18 @@ public class PlayerController : MonoBehaviour
         */
         print(_analyticsVariables.GetCounterRainbow());
         print(_analyticsVariables.GetCounterSlowDown());
+        print(_analyticsVariables.GetHealthZero());
+        print(_analyticsVariables.GetPlatform());
+        print(_analyticsVariables.GetUsedCoins());
+        print(_analyticsVariables.GetCoins());
         print("Restart End");
         
         _sendToGoogle.Send();
+        
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
         _analyticsVariables.ResetNotUsedColourPowerUp();
+        _analyticsVariables.ResetUsedCoins();
         _analyticsVariables.ResetCounterRainbow();
         _analyticsVariables.ResetCounterSlowDown();
         
@@ -216,7 +222,6 @@ public class PlayerController : MonoBehaviour
         if (_analyticsVariables.GetHealth() <= 0)
         {
             _analyticsVariables.SetHealth(0);
-            _analyticsVariables.IncrementHealthZero();
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
         }
@@ -224,6 +229,10 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToInner()
     {
+        if (onOuterCylinder == true && _analyticsVariables.GetHealth() == 0)
+        {
+            _analyticsVariables.IncrementHealthZero();
+        }
         onOuterCylinder = false;
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
@@ -267,18 +276,22 @@ public class PlayerController : MonoBehaviour
         {
 
             if (RainbowActive){
-                if (!other.gameObject.CompareTag("Enemy_Black"))
-                    return;
-                //print("Entered RainbowActive");
-                //print(other.gameObject.tag);
-                
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
-                    //print("Entering for  color powerup obstacle");
+                    print("Entering for color powerup obstacle");
                     _analyticsVariables.IncrementUsedColourPowerUp();
                 }
                 
-                return;
+                if (!other.gameObject.CompareTag("Enemy_Black"))
+                {
+                    return;
+                }
+                //print("Entered RainbowActive");
+                //print(other.gameObject.tag);
+                
+               
+                
+                //return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
@@ -292,7 +305,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    //print("Entering for same color obstacle");
+                    print("Entering for same color obstacle");
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
