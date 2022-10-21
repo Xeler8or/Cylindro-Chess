@@ -57,10 +57,11 @@ public class SendToGoogle : MonoBehaviour
         form.AddField("entry.908913442", analytics.GetHealthZero());
         form.AddField("entry.1270605244",analytics.GetNotUsedColourPowerUp());
         form.AddField("entry.1789526568",analytics.GetUsedColourPowerUp());
-        form.AddField("entry.329301155",analytics.GetCoins().ToString());
-        form.AddField("entry.1389378337",analytics.GetUsedCoins());
+        form.AddField("entry.329301155",(analytics.GetCoins()+analytics.GetUsedCoins()).ToString());
+        form.AddField("entry.1389378337",analytics.GetUsedCoins().ToString());
         form.AddField("entry.1578993175",analytics.GetCounterRainbow());
         form.AddField("entry.1785583492",analytics.GetCounterSlowDown());
+        form.AddField("entry.601111692",analytics.GetPlatform());
         print("Entered Post");
         
         using (UnityWebRequest www = UnityWebRequest.Post(url, form)) 
