@@ -54,7 +54,7 @@ public static class Constants
         "This is a rainbow powerup. Once you collect this, you can pass through any color obstacle irrespective of player color.";
 
     public const string COLLECT_SLOWDOWN_POWERUP =
-        "This is the showdown poerup. Once you collect his, the speed of the player reduces.";
+        "This is the showdown powerup. Once you collect his, the speed of the player reduces.";
 
     public const string BOUNCE_OBSTACLE =
         "This is a bounce obstacle, you need to bounce your way through the obstacle. Try it!";
