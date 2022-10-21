@@ -7,32 +7,46 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject[] tilePrefabs;
     public Transform playerTransform;
-    private float spawnZ = -50.0f;
+    private float spawnZ = 20.0f;
     private float cylinderLength = 100.0f;
     private int tilesOnScreen = 4;
-    private float safeZone = 105.0f;
+    private float safeZone = 100.0f;
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
-    void Start()
+    public float count = 3;
+    public bool tutorialMode = false;
+    private AnalyticsVariables _analytics;
+        void Awake()
     {
         activeTiles = new List<GameObject>();
-        for (int i = 0; i < tilesOnScreen; i++)
+        if (tutorialMode)
         {
-            if (i < 1)
+            for (int i = 0; i < tilePrefabs.Length; i++)
             {
-                SpawnTile(0);
+                SpawnTile(i);
             }
-            else
+        }
+        else
+        {
+            for (int i = 0; i < tilesOnScreen; i++)
             {
-                SpawnTile();
-            }
+                if (i < 1)
+                {
+                    SpawnTile(0);
+                }
+                else
+                {
+                    SpawnTile(-1);
+                }
+            }   
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerTransform != null)
+        print(activeTiles[1]);
+        if (playerTransform != null && !tutorialMode)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
             {
@@ -52,7 +66,6 @@ public class TileManager : MonoBehaviour
         else
         {
             go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
-
         }
         go.transform.SetParent(transform);
         go.transform.position = Vector3.forward * spawnZ;
@@ -73,14 +86,25 @@ public class TileManager : MonoBehaviour
             return 0;
         }
 
-        int randomIndex = 0;
-        // int randomIndex = lastPrefabIndex;
-        // while (randomIndex == lastPrefabIndex)
-        // {
-        //     randomIndex = Random.Range(0, tilePrefabs.Length);
-        // }
-        //
-        // lastPrefabIndex = randomIndex;
+        // int randomIndex = 0;
+        // int randomIndex = Random.Range(0, tilePrefabs.Length);
+        int randomIndex = lastPrefabIndex;
+        while (randomIndex == lastPrefabIndex)
+        {
+            randomIndex = Random.Range(0, tilePrefabs.Length);
+            if (randomIndex == 6 && count <= 3)
+            {
+                continue;
+            }
+            if (randomIndex == 6)
+            {
+                count = 1;
+            }
+        
+            count += 1;
+        }
+        
+        lastPrefabIndex = randomIndex;
         return randomIndex;
     }
 }

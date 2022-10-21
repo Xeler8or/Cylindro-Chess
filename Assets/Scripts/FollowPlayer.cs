@@ -5,12 +5,16 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
-    public Vector3 offset = new Vector3(10f,3f,-10f);
+    private Vector3 innerCylinderOffset = new Vector3(0f,5f,-10f);
+    private Vector3 outerCylinderOffset = new Vector3(0f, -3f, -10f);
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (transform!=null)
-            transform.position = player.position + offset;
+        if (transform != null)
+            if (PlayerController.onOuterCylinder)
+                transform.position = player.position + outerCylinderOffset;
+            else
+                transform.position = player.position + innerCylinderOffset;
     }
 }
