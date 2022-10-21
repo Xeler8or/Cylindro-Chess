@@ -747,12 +747,17 @@ MonoBehaviour:
   restartPanel: {fileID: 0}
   _initalPos: 0
   color: 0
-  _lock: {fileID: 0}
-  redMat: {fileID: 2100000, guid: 98c461a0b8cc01c4baf01c5175f2113a, type: 2}
-  blueMat: {fileID: 2100000, guid: f2677631ed2da464495bdf08515ee726, type: 2}
-  greenMat: {fileID: 2100000, guid: 3cdd2dec7768f5a4798b4d2b2f23930d, type: 2}
-  yellowMat: {fileID: 2100000, guid: e32492d6bdd7d2c43ae4a2a49ad2ed36, type: 2}
+  redMat: {fileID: 2100000, guid: e0a68b928b6614c6bb191342d940fec1, type: 2}
+  blueMat: {fileID: 2100000, guid: 8c83c95fe1ae541cf999cf614602fabc, type: 2}
+  greenMat: {fileID: 2100000, guid: cea41741871614ff493d9ee6b86c479a, type: 2}
+  yellowMat: {fileID: 2100000, guid: eb9152589bd694a14b0d9dd183b6ec4e, type: 2}
+  rainbowMat: {fileID: 0}
   timer: {fileID: 0}
-  triggered: 0
+  powerTimer: {fileID: 0}
   gamePassed: 1
-  posStick: 0
+  platformRotate: 1
+  lockRotator: {fileID: 0}
+  cameraObject: {fileID: 0}
+  pauseGame: {fileID: 0}
+  RainbowActive: 0
+  RainbowStartTime: 0
