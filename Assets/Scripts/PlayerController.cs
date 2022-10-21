@@ -232,9 +232,10 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToOuter()
     {
-        print("PC1: " + onOuterCylinder);
         if (_analyticsVariables.GetHealth() > 0)
         {
+            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+            InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
             onOuterCylinder = true;
             print("PC: " + onOuterCylinder);
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
@@ -319,8 +320,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-                InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
                 MoveToOuter();
             }
         }

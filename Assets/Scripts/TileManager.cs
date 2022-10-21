@@ -10,13 +10,13 @@ public class TileManager : MonoBehaviour
     private float spawnZ = 20.0f;
     private float cylinderLength = 100.0f;
     private int tilesOnScreen = 4;
-    private float safeZone = 105.0f;
+    private float safeZone = 100.0f;
     private int lastPrefabIndex = 0;
     private List<GameObject> activeTiles;
     public float count = 3;
     public bool tutorialMode = false;
-    
-    void Awake()
+    private AnalyticsVariables _analytics;
+        void Awake()
     {
         activeTiles = new List<GameObject>();
         if (tutorialMode)
@@ -45,6 +45,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(activeTiles[1]);
         if (playerTransform != null && !tutorialMode)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
