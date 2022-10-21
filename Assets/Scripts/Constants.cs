@@ -5,7 +5,7 @@ public static class Constants
         Red,
         Blue,
         Green,
-        Yellow,
+        Yellow, 
         Black,
         Rainbow
     }
