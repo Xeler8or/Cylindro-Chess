@@ -360,6 +360,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("TutorialTrigger"))
         {
             GameTutorial.showTutorial();
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("SlowDownPowerUp"))

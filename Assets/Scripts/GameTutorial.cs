@@ -43,8 +43,6 @@ public class GameTutorial : MonoBehaviour
                 showText = false;
                 tutorialIndex++;
             }
-            else
-                tutorialIndex = tutorialIndex;
         }
         else if ( !showText && tutorialIndex < tutorialTexts.Length )
         {
