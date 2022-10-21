@@ -13,8 +13,11 @@ public class SendToGoogle : MonoBehaviour
     private double _distance;
     private AnalyticsVariables _analyticsVariables;
     
+   
+
     private void Awake() 
     { 
+        print("Entered Awake");
         // If there is an instance, and it's not me, delete myself.
     
         if (Instance != null && Instance != this) 
@@ -24,43 +27,47 @@ public class SendToGoogle : MonoBehaviour
         else
         {
             Instance = this;
-            Send();
 
         }
     }
+    
 
     private void Start()
     {
+        print("Entered Start");
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
     }
 
+ 
+
     public void Send() 
     {
-        // Assign variables
-        _sessionID = (long)Time.time;
-        _distance= UnityEngine.Random.Range(0,100);
         print("Entered Send");
-        StartCoroutine(Post(_sessionID.ToString(), _analyticsVariables.GetUuid(), _distance.ToString("N")));
+        StartCoroutine(Post(_analyticsVariables));
     }
     
-    private IEnumerator Post(string sessionID, string userID, string distance)
+    private IEnumerator Post(AnalyticsVariables analytics)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm(); 
-        form.AddField("entry.1259749787", userID); 
-        form.AddField("entry.849154799", sessionID); 
-        form.AddField("entry.388831527", distance);
+        form.AddField("entry.1259749787", analytics.GetUuid()); 
+        form.AddField("entry.849154799", analytics.GetDeathObstacle()); 
+        form.AddField("entry.388831527", analytics.GetSpeedAtDeath());
+        form.AddField("entry.1026946169",analytics.GetFinalScore());
+        form.AddField("entry.908913442", analytics.GetHealthZero());
+        form.AddField("entry.1270605244",analytics.GetNotUsedColourPowerUp());
+        form.AddField("entry.1789526568",analytics.GetUsedColourPowerUp());
+        form.AddField("entry.329301155",analytics.GetCoins().ToString());
+        form.AddField("entry.1389378337",analytics.GetUsedCoins());
+        form.AddField("entry.1578993175",analytics.GetCounterRainbow());
+        form.AddField("entry.1785583492",analytics.GetCounterSlowDown());
         print("Entered Post");
         
         using (UnityWebRequest www = UnityWebRequest.Post(url, form)) 
         {
+            print("Yes");
             yield return www.SendWebRequest();
-            if (www.result != UnityWebRequest.Result.Success) {
-                print(www.error); }
-            else
-            {
-                print("Form upload complete!");
-            } 
         }
+        
     }
 }
