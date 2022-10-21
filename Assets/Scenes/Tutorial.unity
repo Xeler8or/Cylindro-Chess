@@ -448,8 +448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 842278063}
   scoreText: {fileID: 990752264}
-  healthGm: {fileID: 0}
-  coinsGm: {fileID: 0}
+  healthGm: {fileID: 742228850}
+  coinsGm: {fileID: 155470340}
 --- !u!4 &260737902
 Transform:
   m_ObjectHideFlags: 0
@@ -1449,9 +1449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249056750f99c4efa962eae0a212b5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _causeOfDeath: 
-  _speedAtDeath: 0
-  _finalScore: 0
 --- !u!4 &696787764
 Transform:
   m_ObjectHideFlags: 0
