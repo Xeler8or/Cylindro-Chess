@@ -12,9 +12,14 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         if (transform != null)
-            if (PlayerController.onOuterCylinder)
+            print(PlayerController.onOuterCylinder);
+        if (PlayerController.onOuterCylinder)
+            {
                 transform.position = player.position + outerCylinderOffset;
+            }
             else
+            {
                 transform.position = player.position + innerCylinderOffset;
+            }
     }
 }
