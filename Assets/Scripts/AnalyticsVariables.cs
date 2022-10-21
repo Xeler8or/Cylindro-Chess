@@ -1,28 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnalyticsVariables : MonoBehaviour
 {
     private int _health = 3;
     //Set death variable to color, shape, door, lock, arch
-    public string _causeOfDeath;
+    private string _causeOfDeath;
     //Set speed variable on death
-    public int _speedAtDeath;
+    private int _speedAtDeath;
     //Set score on death
-    public int _finalScore;
+    private int _finalScore;
 
     //Increase counter for number of times health variable is set to 1
-    private int _counterHealthOne = 0;
+    private int _counterHealthZero = 0;
     //Colour obstacles must have two counters:
     //Counter 1: passed with the same color or dodged
     //Counter 2: passed when the all color power up is set to true
     private int _counterNotUsedColourPowerUp = 0;
     private int _counterUsedColourPowerUp = 0;
+    //Counters for number of times a certain power up was purchased
+    private int _counterRainbow = 0;
+    private int _counterSlowDown = 0;
 
     private string _uuid;
     private int _coins;
+    private int _coinsUsed;
     
     private void Awake()
     {
@@ -45,6 +47,16 @@ public class AnalyticsVariables : MonoBehaviour
         _coins += d;
     }
     
+    public string GetUsedCoins()
+    {
+        return _coinsUsed.ToString();
+    }
+
+    public void ModifyUsedCoins(int d)
+    {
+        _coinsUsed += d;
+    }
+
     public string GetUuid()
     {
         return _uuid;
@@ -73,12 +85,14 @@ public class AnalyticsVariables : MonoBehaviour
 
     public void SetDeathObstacle(string obs)
     {
+        //print("Entered");
         _causeOfDeath = obs;
+        //print("Exited");
     }
     
-    public int GetSpeedAtDeath()
+    public string GetSpeedAtDeath()
     {
-        return _speedAtDeath;
+        return _speedAtDeath.ToString();
     }
 
     public void SetSpeedAtDeath(int s)
@@ -86,9 +100,9 @@ public class AnalyticsVariables : MonoBehaviour
         _speedAtDeath = s;
     }
     
-    public int GetFinalScore()
+    public string GetFinalScore()
     {
-        return _finalScore;
+        return _finalScore.ToString();
     }
 
     public void SetFinalScore(int s)
@@ -96,34 +110,75 @@ public class AnalyticsVariables : MonoBehaviour
         _finalScore = s;
     }
     
-    public int GetHealthOne()
+    public string GetHealthZero()
     {
-        return _counterHealthOne;
+        return _counterHealthZero.ToString();
     }
 
-    public void IncrementHealthOne()
+    public void IncrementHealthZero()
     {
-        _counterHealthOne+=1;
+        _counterHealthZero+=1;
     }
     
-    public int GetNotUsedColourPowerUp()
+    public void ResetHealthZero()
     {
-        return _counterNotUsedColourPowerUp;
+        _counterHealthZero=0;
+    }
+    
+    public string GetNotUsedColourPowerUp()
+    {
+        return _counterNotUsedColourPowerUp.ToString();
     }
 
     public void IncrementNotUsedColourPowerUp()
     {
         _counterNotUsedColourPowerUp+=1;
     }
-    
-    public int GetUsedColourPowerUp()
+    public void ResetNotUsedColourPowerUp()
     {
-        return _counterUsedColourPowerUp;
+        _counterNotUsedColourPowerUp=0;
+    }
+    
+    public string GetUsedColourPowerUp()
+    {
+        return _counterUsedColourPowerUp.ToString();
     }
 
     public void IncrementUsedColourPowerUp()
     {
         _counterUsedColourPowerUp+=1;
+    }
+    public void ResetUsedColourPowerUp()
+    {
+        _counterUsedColourPowerUp=0;
+    }
+    
+    public string GetCounterRainbow()
+    {
+        return _counterRainbow.ToString();
+    }
+
+    public void IncrementCounterRainbow()
+    {
+        _counterRainbow+=1;
+    }
+    public void ResetCounterRainbow()
+    {
+        _counterRainbow=0;
+    }
+    
+    public string GetCounterSlowDown()
+    {
+        return _counterSlowDown.ToString();
+    }
+
+    public void IncrementCounterSlowDown()
+    {
+        _counterSlowDown+=1;
+    }
+    public void ResetCounterSlowDown()
+    {
+        _counterSlowDown=0;
     }
 
   

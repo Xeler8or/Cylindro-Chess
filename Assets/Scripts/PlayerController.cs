@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
     public PauseGame pauseGame;
+    private SendToGoogle _sendToGoogle;
 
     public bool RainbowActive = false;
     public float RainbowStartTime;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         pauseGame = FindObjectOfType<PauseGame>();
         onOuterCylinder = false;
+        _sendToGoogle = FindObjectOfType<SendToGoogle>();
     }
 
     // Update is called once per frame
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
         {
+            _analyticsVariables.SetDeathObstacle("Bounce");
             Restart();
         }
         gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
@@ -121,17 +124,41 @@ public class PlayerController : MonoBehaviour
     
     private void Restart()
     {
+        print("Restart Entered");
         RainbowActive = false;
+
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
-        print("Restart");
-        print(_analyticsVariables._causeOfDeath);
-        print(_analyticsVariables._speedAtDeath);
-        print(_analyticsVariables._finalScore);
+        
+        /*
+        print(_analyticsVariables.GetUuid());
+        print(_analyticsVariables.GetDeathObstacle());
+        print(_analyticsVariables.GetSpeedAtDeath());
+        print(_analyticsVariables.GetFinalScore());
+        print(_analyticsVariables.GetHealthZero());
+        print("No Power Up");
+        print(_analyticsVariables.GetNotUsedColourPowerUp());
+        print("Power Up");
+        print(_analyticsVariables.GetUsedColourPowerUp());
+        print(_analyticsVariables.GetCoins());
+        print(_analyticsVariables.GetUsedCoins());
+        */
+        print(_analyticsVariables.GetCounterRainbow());
+        print(_analyticsVariables.GetCounterSlowDown());
+        print("Restart End");
+        
+        _sendToGoogle.Send();
+        _analyticsVariables.ResetHealthZero();
+        _analyticsVariables.ResetUsedColourPowerUp();
+        _analyticsVariables.ResetNotUsedColourPowerUp();
+        _analyticsVariables.ResetCounterRainbow();
+        _analyticsVariables.ResetCounterSlowDown();
+        
         Time.timeScale = 0;
         restartPanel.SetActive(true);
-        //SendToGoogle.Instance.Send();
         Destroy(gameObject);
+        
+        
     }
 
     private Constants.Color GetNextColor(Constants.Color color)
@@ -187,6 +214,7 @@ public class PlayerController : MonoBehaviour
         if (_analyticsVariables.GetHealth() <= 0)
         {
             _analyticsVariables.SetHealth(0);
+            _analyticsVariables.IncrementHealthZero();
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
         }
@@ -218,23 +246,47 @@ public class PlayerController : MonoBehaviour
         if (_analyticsVariables.GetCoins() >= cost)
         {
             _analyticsVariables.UpdateCoins(-cost);
+            _analyticsVariables.ModifyUsedCoins(cost);
             Destroy(other.gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black"))
+        if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone"))
         {
+
             if (RainbowActive){
                 if (!other.gameObject.CompareTag("Enemy_Black"))
                     return;
+                //print("Entered RainbowActive");
+                //print(other.gameObject.tag);
+                
+                if (other.gameObject.CompareTag("EnemyColor"))
+                {
+                    //print("Entering for  color powerup obstacle");
+                    _analyticsVariables.IncrementUsedColourPowerUp();
+                }
+                
+                return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
+                //print("Should Die");
+                //print(other.gameObject.tag);
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
                 Restart();
             }
+            
+            else
+            {
+                if (other.gameObject.GetComponent<ObstacleController>().color == color)
+                {
+                    //print("Entering for same color obstacle");
+                    _analyticsVariables.IncrementNotUsedColourPowerUp();
+                }
+            }
+            
         }
         if (other.gameObject.CompareTag("zone"))
         {
@@ -273,6 +325,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Rainbow"))
         {
             StartRainbowPower();
+            _analyticsVariables.IncrementCounterRainbow();
             HandleBuying(2, other);
         }
 
@@ -284,6 +337,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
             Velocity -= 5;
+            _analyticsVariables.IncrementCounterSlowDown();
             HandleBuying(2, other);
         }
 
