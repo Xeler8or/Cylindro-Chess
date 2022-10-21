@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
         gamePassed = true;
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         pauseGame = FindObjectOfType<PauseGame>();
+        onOuterCylinder = false;
     }
 
     // Update is called once per frame
