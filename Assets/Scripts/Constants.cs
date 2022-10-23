@@ -51,10 +51,10 @@ public static class Constants
         "Collects coins to buy powerups during the game.";
 
     public const string COLLECT_RAINBOW_POWERUP =
-        "This is a rainbow powerup. Once you collect this, you can pass through any color obstacle irrespective of player color.";
+        "This is a rainbow powerup. Once you collect this, you can pass through any color obstacle irrespective of player color.\n2 Coins = 1 Rainbow powerup.";
 
     public const string COLLECT_SLOWDOWN_POWERUP =
-        "This is the showdown powerup. Once you collect his, the speed of the player reduces.";
+        "This is the showdown powerup. Once you collect his, the speed of the player reduces.\n2 Coins = 1 Slowdown powerup.";
 
     public const string BOUNCE_OBSTACLE =
         "This is a bounce obstacle, you need to bounce your way through the obstacle. Try it!";
@@ -64,6 +64,9 @@ public static class Constants
 
     public const string HEALTH =
         "Wohoo! Welcome to the upside-down.\nYou get double points here but you also need to constantly collect health to stay here.";
+
+    public const string TURN_RIGHT_INSIDE_BOUNCE =
+        "Right after entering, turn right to bounce your way out. If you don't the game ends!";
 
     public const float INITIAL_PLAYER_SPEED = 10f;
 

@@ -153,7 +153,8 @@ public class PlayerController : MonoBehaviour
         print(_analyticsVariables.GetCoins());
         print("Restart End");
         
-        _sendToGoogle.Send();
+        if (_sendToGoogle != null)
+            _sendToGoogle.Send();
         
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
