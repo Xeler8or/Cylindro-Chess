@@ -21,7 +21,7 @@ public class TileManager : MonoBehaviour
     {
         _analytics = FindObjectOfType<AnalyticsVariables>();
     }
-        void Awake()
+    void Awake()
     {
         activeTiles = new List<GameObject>();
         if (tutorialMode)
