@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadTutorial(string tutorialName)
     {
+        print(tutorialName);
         if (tutorialName == "MOVEMENT")
         {
             
@@ -50,7 +51,6 @@ public class MainMenu : MonoBehaviour
         {
             
         }
-        
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
