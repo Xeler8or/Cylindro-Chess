@@ -5,24 +5,52 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private static bool tutorialDone = false;
     public void LoadNewGame()
     {
         Time.timeScale = 1;
-        if (tutorialDone)
-        {
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            tutorialDone = true;
-            SceneManager.LoadScene(2);
-        }
+        SceneManager.LoadScene(1);
     }
 
-    public void LoadTutorial()
+    public void LoadTutorials()
     {
-        tutorialDone = true;
+        SceneManager.LoadScene(3);
+    }
+
+    public void LoadTutorial(string tutorialName)
+    {
+        if (tutorialName == "MOVEMENT")
+        {
+            
+        }
+        else if (tutorialName == "SHAPE")
+        {
+            
+        }
+        else if (tutorialName == "COLOR")
+        {
+            
+        }
+        else if (tutorialName == "DEFAULT_LEFT")
+        {
+            
+        }
+        else if (tutorialName == "DEFAULT_LEFT")
+        {
+            
+        }
+        else if (tutorialName == "COINS")
+        {
+            
+        }
+        else if (tutorialName == "BOUNCE")
+        {
+            
+        }
+        else if (tutorialName == "HEALTH")
+        {
+            
+        }
+        
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
