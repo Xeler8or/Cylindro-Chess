@@ -16,6 +16,11 @@ public class TileManager : MonoBehaviour
     public float count = 3;
     public bool tutorialMode = false;
     private AnalyticsVariables _analytics;
+
+    void Start()
+    {
+        _analytics = FindObjectOfType<AnalyticsVariables>();
+    }
         void Awake()
     {
         activeTiles = new List<GameObject>();
@@ -45,7 +50,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(activeTiles[1]);
+        _analytics.SetPlatform(activeTiles[1].name);
         if (playerTransform != null && !tutorialMode)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))

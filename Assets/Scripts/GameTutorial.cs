@@ -25,6 +25,7 @@ public class GameTutorial : MonoBehaviour
                                                    Constants.COLLECT_RAINBOW_POWERUP,
                                                    Constants.COLLECT_SLOWDOWN_POWERUP,
                                                    Constants.BOUNCE_OBSTACLE,
+                                                   Constants.TURN_RIGHT_INSIDE_BOUNCE,
                                                    Constants.PORTALS,
                                                    Constants.HEALTH
     };
@@ -43,8 +44,6 @@ public class GameTutorial : MonoBehaviour
                 showText = false;
                 tutorialIndex++;
             }
-            else
-                tutorialIndex = tutorialIndex;
         }
         else if ( !showText && tutorialIndex < tutorialTexts.Length )
         {

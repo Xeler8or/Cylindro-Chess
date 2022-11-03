@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LeftRight : MonoBehaviour
 {
-    public float rightRotation = 200f;
-    public float leftRotation = 200f;
+    public float rightRotation = 150f;
+    public float leftRotation = 150f;
     public GameObject childRotator;
 
     private PlayerController _playerController;
