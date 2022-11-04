@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
     public bool RainbowActive = false;
     public float RainbowStartTime;
+    private bool _immortal = false;
+    private List<MeshRenderer>  _renderers;
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
         { 2, Constants.Shapes.Cone }
     };
 
-    void Start()
+    private void Start()
     {
         Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
@@ -79,10 +81,15 @@ public class PlayerController : MonoBehaviour
         _sendToGoogle = FindObjectOfType<SendToGoogle>();
         _analyticsVariables.SetCoins(0);
         _analyticsVariables.SetHealth(0);
+        _renderers = new List<MeshRenderer>();
+        foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>())
+        {
+            _renderers.Add(r);
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (RainbowActive){
             ManageRainbowPower();
@@ -145,13 +152,13 @@ public class PlayerController : MonoBehaviour
         print(_analyticsVariables.GetCoins());
         print(_analyticsVariables.GetUsedCoins());
         */
-        print(_analyticsVariables.GetCounterRainbow());
-        print(_analyticsVariables.GetCounterSlowDown());
-        print(_analyticsVariables.GetHealthZero());
-        print(_analyticsVariables.GetPlatform());
-        print(_analyticsVariables.GetUsedCoins());
-        print(_analyticsVariables.GetCoins());
-        print("Restart End");
+        // print(_analyticsVariables.GetCounterRainbow());
+        // print(_analyticsVariables.GetCounterSlowDown());
+        // print(_analyticsVariables.GetHealthZero());
+        // print(_analyticsVariables.GetPlatform());
+        // print(_analyticsVariables.GetUsedCoins());
+        // print(_analyticsVariables.GetCoins());
+        // print("Restart End");
         
         if (_sendToGoogle != null)
             _sendToGoogle.Send();
@@ -166,8 +173,6 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
         restartPanel.SetActive(true);
         Destroy(gameObject);
-        
-        
     }
 
     private Constants.Color GetNextColor(Constants.Color color)
@@ -190,39 +195,9 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(0,0,Velocity);
-        /*
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
             Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
-            print(Velocity);
-        }
-        */
-        if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
-        {
-            if (gmc.GetScore() < 500)
-            {
-                Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .2f);
-                //print("500");
-                //print(Velocity);
-            }
-            else if (gmc.GetScore() < 1000)
-            {
-                Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .4f);
-                //print("1000");
-                //print(Velocity);
-            }
-            else if (gmc.GetScore() < 1500)
-            {
-                Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .6f);
-                //print("1500");
-                //print(Velocity);
-            }
-            else
-            {
-                Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
-                //print("other");
-                //print(Velocity);
-            }
         }
         if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
         {
@@ -275,7 +250,7 @@ public class PlayerController : MonoBehaviour
         if (_analyticsVariables.GetHealth() > 0)
         {
             //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-            InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
+            InvokeRepeating(nameof(HealthReducer), Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
             onOuterCylinder = true;
             print("PC: " + onOuterCylinder);
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
@@ -301,15 +276,41 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    private IEnumerator ImmortalityCoroutine(int secs)
+    {
+        yield return new WaitForSeconds(secs);
+        _immortal = false;
+        foreach (var r in _renderers)
+        {
+            r.enabled = true;
+        }
+        CancelInvoke();
+        print("Immortal off");
+    }
+
+    private void Blink()
+    {
+        foreach (var r in _renderers)
+        {
+            r.enabled = !r.enabled;
+        }
+    }
+
+    private void ToggleImmortal()
+    {
+        _immortal = true;
+        InvokeRepeating(nameof(Blink), 0.5f, 0.5f);
+        StartCoroutine(ImmortalityCoroutine(4));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone"))
+        if ((other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone")) && !_immortal)
         {
-
             if (RainbowActive){
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
-                    print("Entering for color powerup obstacle");
+                    print("Entering for color power up obstacle");
                     _analyticsVariables.IncrementUsedColourPowerUp();
                 }
                 
@@ -319,9 +320,6 @@ public class PlayerController : MonoBehaviour
                 }
                 //print("Entered RainbowActive");
                 //print(other.gameObject.tag);
-                
-               
-                
                 //return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
@@ -331,16 +329,14 @@ public class PlayerController : MonoBehaviour
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
                 Restart();
             }
-            
             else
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    print("Entering for same color obstacle");
+                    // print("Entering for same color obstacle");
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
-            
         }
         if (other.gameObject.CompareTag("zone"))
         {
@@ -361,10 +357,12 @@ public class PlayerController : MonoBehaviour
             {
                 CancelInvoke();
                 MoveToInner();
+                ToggleImmortal();
             }
             else
             {
                 MoveToOuter();
+                ToggleImmortal();
             }
         }
         //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
@@ -403,16 +401,7 @@ public class PlayerController : MonoBehaviour
         {
             if (HandleBuying(2, other))
             {
-                //need to put a check to ensure velocity stays greater than 0
-                if (Velocity - 5 < 0)
-                {
-                    Velocity = 1;
-                }
-                else
-                {
-                    Velocity -= 5;
-                }
-
+                Velocity -= 5;
                 _analyticsVariables.IncrementCounterSlowDown();
                 Destroy(other.gameObject);
             }
@@ -432,7 +421,7 @@ public class PlayerController : MonoBehaviour
         {
             Velocity = -Velocity;
         }
-        print(Velocity);
+        // print(Velocity);
     }
 
     public void StartRainbowPower(){
