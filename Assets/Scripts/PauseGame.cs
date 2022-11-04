@@ -31,6 +31,7 @@ public class PauseGame : MonoBehaviour
 
     public void continueToActualGame()
     {
+        Levels.SetCurrentLevel(Constants.ENDLESS);
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
