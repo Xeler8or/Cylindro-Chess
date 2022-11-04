@@ -59,10 +59,13 @@ public static class Constants
     public const string BOUNCE_OBSTACLE =
         "This is a bounce obstacle, you need to bounce your way through the obstacle. Try it!";
 
+    public const string HEALTH =
+        "These are healths.\n You need these to go to the outer cylinder.\nOn the outer cylinder the points are double.";
+
     public const string PORTALS =
         "These are portal, hit these and you will move between inner and outer cylinders.";
 
-    public const string HEALTH =
+    public const string UP_SIDE_DOWN =
         "Wohoo! Welcome to the upside-down.\nYou get double points here but you also need to constantly collect health to stay here.";
 
     public const string TURN_RIGHT_INSIDE_BOUNCE =
@@ -89,4 +92,6 @@ public static class Constants
     public const string BOUNCE_TUTORIAL = "BOUNCE";
     
     public const string HEALTH_TUTORIAL = "HEALTH";
+
+    public const string ENDLESS = "ENDLESS";
 }
