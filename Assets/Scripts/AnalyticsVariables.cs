@@ -10,6 +10,8 @@ public class AnalyticsVariables : MonoBehaviour
     private int _speedAtDeath;
     //Set score on death
     private int _finalScore;
+    //Set Platform number where death occurred
+    private string _platformNumber;
 
     //Increase counter for number of times health variable is set to 1
     private int _counterHealthZero = 0;
@@ -24,7 +26,7 @@ public class AnalyticsVariables : MonoBehaviour
 
     private string _uuid;
     private int _coins;
-    private int _coinsUsed;
+    private int _coinsUsed=0;
     
     private void Awake()
     {
@@ -47,14 +49,19 @@ public class AnalyticsVariables : MonoBehaviour
         _coins += d;
     }
     
-    public string GetUsedCoins()
+    public int GetUsedCoins()
     {
-        return _coinsUsed.ToString();
+        return _coinsUsed;
     }
 
     public void ModifyUsedCoins(int d)
     {
         _coinsUsed += d;
+    }
+    
+    public void ResetUsedCoins()
+    {
+        _coinsUsed =0;
     }
 
     public string GetUuid()
@@ -179,6 +186,16 @@ public class AnalyticsVariables : MonoBehaviour
     public void ResetCounterSlowDown()
     {
         _counterSlowDown=0;
+    }
+    
+    public string GetPlatform()
+    {
+        return _platformNumber;
+    }
+
+    public void SetPlatform(string plat)
+    {
+        _platformNumber=plat;
     }
 
   

@@ -16,14 +16,24 @@ public class TileManager : MonoBehaviour
     public float count = 3;
     public bool tutorialMode = false;
     private AnalyticsVariables _analytics;
-        void Awake()
+    public int[] tilesToLoad = new int[]{};
+
+    void Start()
+    {
+        _analytics = FindObjectOfType<AnalyticsVariables>();
+    }
+
+    void Awake()
     {
         activeTiles = new List<GameObject>();
-        if (tutorialMode)
+        tilesToLoad = Levels.Platforms();
+
+        if (tilesToLoad.Length > 0)
         {
-            for (int i = 0; i < tilePrefabs.Length; i++)
+            print(tilesToLoad);
+            for (int i = 0; i < tilesToLoad.Length; i++)
             {
-                SpawnTile(i);
+                SpawnTile(tilesToLoad[i]);
             }
         }
         else
@@ -45,7 +55,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(activeTiles[1]);
+        _analytics.SetPlatform(activeTiles[1].name);
         if (playerTransform != null && !tutorialMode)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))

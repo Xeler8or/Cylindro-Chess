@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,13 +26,24 @@ public class GameTutorial : MonoBehaviour
                                                    Constants.COLLECT_RAINBOW_POWERUP,
                                                    Constants.COLLECT_SLOWDOWN_POWERUP,
                                                    Constants.BOUNCE_OBSTACLE,
+                                                   Constants.TURN_RIGHT_INSIDE_BOUNCE,
                                                    Constants.PORTALS,
                                                    Constants.HEALTH
     };
 
+    static bool _EndTutorial = false;
+
     // Update is called once per frame
     void Update()
     {
+        if (_EndTutorial)
+        {
+            tutorialBackground.SetActive(false);
+            endGame.SetActive(true);
+            Time.timeScale = 0;
+            return;
+        }
+        
         if (showText && tutorialIndex < tutorialTexts.Length)
         {
             tutorialBackground.SetActive(true);
@@ -43,23 +55,22 @@ public class GameTutorial : MonoBehaviour
                 showText = false;
                 tutorialIndex++;
             }
-            else
-                tutorialIndex = tutorialIndex;
         }
         else if ( !showText && tutorialIndex < tutorialTexts.Length )
         {
             tutorialBackground.SetActive(false);
             Time.timeScale = 1;
         }
-        else
-        {
-            tutorialBackground.SetActive(false);
-            endGame.SetActive(true);
-        }
     }
 
     public static void showTutorial()
     {
+        _EndTutorial = false;
         showText = true;
+    }
+
+    public static void endTutorial()
+    {
+        _EndTutorial = true;
     }
 }

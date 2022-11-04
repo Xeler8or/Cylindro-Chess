@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
         pauseGame = FindObjectOfType<PauseGame>();
         onOuterCylinder = false;
         _sendToGoogle = FindObjectOfType<SendToGoogle>();
+        _analyticsVariables.SetCoins(0);
+        _analyticsVariables.SetHealth(0);
     }
 
     // Update is called once per frame
@@ -145,12 +147,19 @@ public class PlayerController : MonoBehaviour
         */
         print(_analyticsVariables.GetCounterRainbow());
         print(_analyticsVariables.GetCounterSlowDown());
+        print(_analyticsVariables.GetHealthZero());
+        print(_analyticsVariables.GetPlatform());
+        print(_analyticsVariables.GetUsedCoins());
+        print(_analyticsVariables.GetCoins());
         print("Restart End");
         
-        _sendToGoogle.Send();
+        if (_sendToGoogle != null)
+            _sendToGoogle.Send();
+        
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
         _analyticsVariables.ResetNotUsedColourPowerUp();
+        _analyticsVariables.ResetUsedCoins();
         _analyticsVariables.ResetCounterRainbow();
         _analyticsVariables.ResetCounterSlowDown();
         
@@ -214,7 +223,6 @@ public class PlayerController : MonoBehaviour
         if (_analyticsVariables.GetHealth() <= 0)
         {
             _analyticsVariables.SetHealth(0);
-            _analyticsVariables.IncrementHealthZero();
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
         }
@@ -222,6 +230,10 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToInner()
     {
+        if (onOuterCylinder == true && _analyticsVariables.GetHealth() == 0)
+        {
+            _analyticsVariables.IncrementHealthZero();
+        }
         onOuterCylinder = false;
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
@@ -230,10 +242,16 @@ public class PlayerController : MonoBehaviour
     
     private void MoveToOuter()
     {
-        onOuterCylinder = true;
-        rb.transform.Translate(Vector3.up + (new Vector3(0,38f, 0) ) );
-        rb.transform.Rotate(Vector3.forward, 180);
-        cameraObject.transform.Rotate(Vector3.forward, 180);
+        if (_analyticsVariables.GetHealth() > 0)
+        {
+            //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
+            InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
+            onOuterCylinder = true;
+            print("PC: " + onOuterCylinder);
+            rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
+            rb.transform.Rotate(Vector3.forward, 180);
+            cameraObject.transform.Rotate(Vector3.forward, 180);
+        }
     }
 
     private void HealthPickup()
@@ -241,14 +259,16 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
     }
 
-    private void HandleBuying(int cost, Collider other)
+    private bool HandleBuying(int cost, Collider other)
     {
         if (_analyticsVariables.GetCoins() >= cost)
         {
             _analyticsVariables.UpdateCoins(-cost);
             _analyticsVariables.ModifyUsedCoins(cost);
-            Destroy(other.gameObject);
+            return true;
         }
+
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -257,18 +277,22 @@ public class PlayerController : MonoBehaviour
         {
 
             if (RainbowActive){
-                if (!other.gameObject.CompareTag("Enemy_Black"))
-                    return;
-                //print("Entered RainbowActive");
-                //print(other.gameObject.tag);
-                
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
-                    //print("Entering for  color powerup obstacle");
+                    print("Entering for color powerup obstacle");
                     _analyticsVariables.IncrementUsedColourPowerUp();
                 }
                 
-                return;
+                if (!other.gameObject.CompareTag("Enemy_Black"))
+                {
+                    return;
+                }
+                //print("Entered RainbowActive");
+                //print(other.gameObject.tag);
+                
+               
+                
+                //return;
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
@@ -282,7 +306,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    //print("Entering for same color obstacle");
+                    print("Entering for same color obstacle");
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
@@ -310,8 +334,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
-                InvokeRepeating("HealthReducer", Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
                 MoveToOuter();
             }
         }
@@ -324,21 +346,41 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
-            StartRainbowPower();
-            _analyticsVariables.IncrementCounterRainbow();
-            HandleBuying(2, other);
+            if (HandleBuying(2, other))
+            {
+                StartRainbowPower();
+                _analyticsVariables.IncrementCounterRainbow();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+             //Show visuals that cannot buy   
+            }
         }
 
         if (other.gameObject.CompareTag("TutorialTrigger"))
         {
             GameTutorial.showTutorial();
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("EndTutorialTrigger"))
+        {
+            GameTutorial.endTutorial();
         }
 
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
-            Velocity -= 5;
-            _analyticsVariables.IncrementCounterSlowDown();
-            HandleBuying(2, other);
+            if (HandleBuying(2, other))
+            {
+                Velocity -= 5;
+                _analyticsVariables.IncrementCounterSlowDown();
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                //Show visuals for cannot buy
+            }
         }
 
         if (other.gameObject.CompareTag("Coin"))
