@@ -37,4 +37,11 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+    
+    public void LoadLevel(string levelName)
+    {
+        Levels.SetCurrentLevel(levelName);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
 }

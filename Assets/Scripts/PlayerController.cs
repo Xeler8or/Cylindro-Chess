@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public float RainbowStartTime;
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
+    public GameObject endLevel;
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -420,6 +421,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Bounce"))
         {
             Velocity = -Velocity;
+        }
+        if (other.gameObject.CompareTag("EndLevel"))
+        {
+            endLevel.SetActive(true);
+            Time.timeScale = 0;
+            return; 
+            Debug.Log("Done");
         }
         // print(Velocity);
     }
