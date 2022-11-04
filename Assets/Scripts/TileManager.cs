@@ -27,12 +27,15 @@ public class TileManager : MonoBehaviour
     {
         activeTiles = new List<GameObject>();
         tilesToLoad = Levels.Platforms();
+        Debug.Log(tilesToLoad.Length);
 
         if (tilesToLoad.Length > 0)
         {
+            print("++++++++=============================");
             print(tilesToLoad);
             for (int i = 0; i < tilesToLoad.Length; i++)
             {
+                print(tilesToLoad[i]);
                 SpawnTile(tilesToLoad[i]);
             }
         }
@@ -56,7 +59,7 @@ public class TileManager : MonoBehaviour
     void Update()
     {
         _analytics.SetPlatform(activeTiles[1].name);
-        if (playerTransform != null && !tutorialMode)
+        if (playerTransform != null && !tutorialMode  && tilesToLoad.Length == 0)
         {
             if (playerTransform.position.z - safeZone > (spawnZ - tilesOnScreen * cylinderLength))
             {
@@ -102,6 +105,11 @@ public class TileManager : MonoBehaviour
         while (randomIndex == lastPrefabIndex)
         {
             randomIndex = Random.Range(0, tilePrefabs.Length);
+            if (tilesToLoad.Length == 0 && randomIndex == 12)
+            {
+                randomIndex = lastPrefabIndex;
+                continue;
+            }
             if (randomIndex == 6 && count <= 3)
             {
                 continue;
@@ -110,6 +118,8 @@ public class TileManager : MonoBehaviour
             {
                 count = 1;
             }
+            
+            
         
             count += 1;
         }
