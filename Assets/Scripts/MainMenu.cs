@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private TileManager _tileManager;
+
+    void Start()
+    {
+        _tileManager = FindObjectOfType<TileManager>();
+    }
+
     public void LoadNewGame()
     {
         Time.timeScale = 1;
@@ -20,7 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         if (tutorialName == "MOVEMENT")
         {
-            
+            Levels.SetCurrentLevel(tutorialName);
         }
         else if (tutorialName == "SHAPE")
         {
@@ -34,7 +42,7 @@ public class MainMenu : MonoBehaviour
         {
             
         }
-        else if (tutorialName == "DEFAULT_LEFT")
+        else if (tutorialName == "LOCK")
         {
             
         }
@@ -50,7 +58,6 @@ public class MainMenu : MonoBehaviour
         {
             
         }
-        
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }

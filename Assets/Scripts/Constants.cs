@@ -73,4 +73,20 @@ public static class Constants
     public const float HEALTH_TIMER = 5f;
 
     public const float PLAYER_MAX_SPEED = 30f;
+    
+    public const string MOVEMENT_TUTORIAL = "MOVEMENT";
+    
+    public const string SHAPE_TUTORIAL = "SHAPE";
+    
+    public const string COLOR_TUTORIAL = "COLOR";
+    
+    public const string DEFAULT_LEFT_TUTORIAL = "DEFAULT_LEFT";
+    
+    public const string LOCK_OBSTACLE_TUTORIAL = "LOCK";
+    
+    public const string COINS_TUTORIAL = "COINS";
+    
+    public const string BOUNCE_TUTORIAL = "BOUNCE";
+    
+    public const string HEALTH_TUTORIAL = "HEALTH";
 }
