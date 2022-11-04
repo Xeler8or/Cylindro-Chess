@@ -364,6 +364,11 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        if (other.gameObject.CompareTag("EndTutorialTrigger"))
+        {
+            GameTutorial.endTutorial();
+        }
+
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
         {
             if (HandleBuying(2, other))

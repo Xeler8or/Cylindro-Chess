@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class LeftRight : MonoBehaviour
 {
-    public float rightRotation = 150f;
-    public float leftRotation = 150f;
+    public float rightRotation = 100f;
+    public float leftRotation = 1500f;
     public GameObject childRotator;
-
     private PlayerController _playerController;
+    
     // // Update is called once per frame
     private void Start()
     {

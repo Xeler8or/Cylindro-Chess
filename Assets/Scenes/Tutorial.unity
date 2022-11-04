@@ -551,7 +551,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 990752268}
         m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
-        m_MethodName: gotoMainMenu
+        m_MethodName: gotoTutorialMainPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3720,7 +3720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462.55887, y: 220.28017}
+  m_AnchoredPosition: {x: -409, y: 238}
   m_SizeDelta: {x: 142.7486, y: 119.4396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091128720
@@ -3847,17 +3847,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
+  - {fileID: 1266849947997122965, guid: 9623ececc041a46bfbf5e5cf4c0323de, type: 3}
   - {fileID: 1266849947997122965, guid: 80dcac57a96a144e3883922724273131, type: 3}
   - {fileID: 804780619634103776, guid: aa2c21a850f2642d0ad99a21067ea5dc, type: 3}
   - {fileID: 1266849947997122965, guid: a91d88ee8a2cf4b05a8ea48d109dbf09, type: 3}
   - {fileID: 804780619634103776, guid: 652ed4e2a8fdb48f48bdfa1c1c19d3d9, type: 3}
   - {fileID: 1266849947997122965, guid: 8b1f06e23d99e49398616e7602fdc0a1, type: 3}
   - {fileID: 1266849947997122965, guid: a32606283269d42a0b59da8b225cf2df, type: 3}
+  - {fileID: 1266849947997122965, guid: e6a65a03c0f464dce83b01036eb6dd36, type: 3}
   - {fileID: 804780619634103776, guid: 51bf6e9417e914c80af71c2e75dfa225, type: 3}
   - {fileID: 804780619634103776, guid: 06dbf298a130a4bbe8582306d8801f45, type: 3}
+  - {fileID: 804780619634103776, guid: e023435c5a9514bd8a10d7cb318a741e, type: 3}
   playerTransform: {fileID: 1166480520}
   count: 3
   tutorialMode: 1
+  tilesToLoad: 
 --- !u!4 &2101995231
 Transform:
   m_ObjectHideFlags: 0
