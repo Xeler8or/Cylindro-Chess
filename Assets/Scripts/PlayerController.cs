@@ -230,6 +230,7 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.SetHealth(0);
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
+            ToggleImmortal();
         }
     }
     
@@ -284,7 +285,7 @@ public class PlayerController : MonoBehaviour
         {
             r.enabled = true;
         }
-        CancelInvoke();
+        CancelInvoke(nameof(Blink));
         print("Immortal off");
     }
 
@@ -417,7 +418,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
         
-        if (other.gameObject.CompareTag("Bounce"))
+        if (other.gameObject.CompareTag("Bounce") && !_immortal)
         {
             Velocity = -Velocity;
         }

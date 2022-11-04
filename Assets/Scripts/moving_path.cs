@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class moving_path : MonoBehaviour
 {
-    public Vector3 _rotation;
-    public float _speed;
+    private Vector3 _rotation = new Vector3(0,1,0);
+    public float _speed = 80f;
     // Update is called once per frame
     void Update()
     {

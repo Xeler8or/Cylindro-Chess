@@ -153,8 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526be3d059ad746499e7f97e01f07245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightRotation: 200
-  leftRotation: 200
   childRotator: {fileID: 0}
 --- !u!114 &-463394787280049202
 MonoBehaviour:
@@ -168,8 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35c02679a1fc48eb9ac6e8293cd1ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 10, z: 0}
-  _speed: 10
+  _speed: 50
 --- !u!1 &1499063696205334265
 GameObject:
   m_ObjectHideFlags: 0
