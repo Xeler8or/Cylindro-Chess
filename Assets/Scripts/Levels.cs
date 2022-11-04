@@ -29,6 +29,8 @@ public static class Levels
             case Constants.HEALTH_TUTORIAL:
                 GameTutorial.setTutorialIndex(15);
                 return new[] { 0, 9, 10 };
+            case Constants.ENDLESS:
+                return new int[] { };
         }
 
         return new int[] { };

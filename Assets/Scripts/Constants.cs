@@ -92,4 +92,6 @@ public static class Constants
     public const string BOUNCE_TUTORIAL = "BOUNCE";
     
     public const string HEALTH_TUTORIAL = "HEALTH";
+
+    public const string ENDLESS = "ENDLESS";
 }

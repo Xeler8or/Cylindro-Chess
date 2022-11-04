@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadNewGame()
     {
+        Levels.SetCurrentLevel("ENDLESS");
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
     }
