@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(0,0,Velocity);
+        /*rb.velocity = new Vector3(0,0,Velocity);
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
             Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
@@ -206,7 +206,49 @@ public class PlayerController : MonoBehaviour
             color = c;
             GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
             ChangeMaterial(child);
-        }
+        }*/
+        rb.velocity = new Vector3(0,0,Velocity);
+                /*
+                if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
+                {
+                    Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
+                    print(Velocity);
+                }
+                */
+                if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
+                {
+                    if (gmc.GetScore() < 500)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .2f);
+                        //print("500");
+                        //print(Velocity);
+                    }
+                    else if (gmc.GetScore() < 1000)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .4f);
+                        //print("1000");
+                        //print(Velocity);
+                    }
+                    else if (gmc.GetScore() < 1500)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .6f);
+                        //print("1500");
+                        //print(Velocity);
+                    }
+                    else
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
+                        //print("other");
+                        //print(Velocity);
+                    }
+                }
+                if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
+                {
+                    Constants.Color c = GetNextColor(color);
+                    color = c;
+                    GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+                    ChangeMaterial(child);
+                }
     }
 
     private void ChangeMaterial(GameObject gm)
@@ -403,7 +445,16 @@ public class PlayerController : MonoBehaviour
         {
             if (HandleBuying(2, other))
             {
-                Velocity -= 5;
+                //need to put a check to ensure velocity stays greater than 0
+                if (Velocity - 5 < 0)
+                {
+                    Velocity = Constants.INITIAL_PLAYER_SPEED;
+                }
+                else
+                {
+                    Velocity -= 5;
+                }
+
                 _analyticsVariables.IncrementCounterSlowDown();
                 Destroy(other.gameObject);
             }
@@ -428,7 +479,6 @@ public class PlayerController : MonoBehaviour
             endLevel.SetActive(true);
             Time.timeScale = 0;
             return;
-            Debug.Log("Done");
         }
         
         // print(Velocity);

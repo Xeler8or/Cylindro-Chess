@@ -118,9 +118,6 @@ public class TileManager : MonoBehaviour
             {
                 count = 1;
             }
-            
-            
-        
             count += 1;
         }
         
