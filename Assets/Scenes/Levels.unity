@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2960708, g: 0.5409928, b: 0.7533725, a: 1}
+  m_IndirectSpecularColor: {r: 0.29568246, g: 0.54072917, b: 0.7530401, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1782,7 +1782,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 797276554}
         m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: gotoMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

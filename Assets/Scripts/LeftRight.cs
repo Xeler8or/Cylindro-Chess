@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LeftRight : MonoBehaviour
 {
-    public float rightRotation = 100f;
-    public float leftRotation = 1500f;
+    private float rightRotation = 100f;
+    private float leftRotation = 100f;
     public GameObject childRotator;
     private PlayerController _playerController;
     
@@ -25,14 +25,14 @@ public class LeftRight : MonoBehaviour
                 //Rotate cylinder to left
                 transform.Rotate(0f,leftRotation * Time.deltaTime,0f, Space.Self);
                 if(childRotator)
-                    childRotator.transform.Rotate(0, 2*leftRotation*Time.deltaTime,0, Space.Self);
+                    childRotator.transform.Rotate(0, 2f*leftRotation*Time.deltaTime,0, Space.Self);
             }
             if(Input.GetKey("a") || Input.GetKey("left"))
             {
                 // Rotate cylinder to right
                 transform.Rotate(0f,-rightRotation * Time.deltaTime, 0f, Space.Self);
                 if(childRotator)
-                    childRotator.transform.Rotate(0, -2*rightRotation*Time.deltaTime,0, Space.Self);
+                    childRotator.transform.Rotate(0, -2f*rightRotation*Time.deltaTime,0, Space.Self);
             }
 
         }
