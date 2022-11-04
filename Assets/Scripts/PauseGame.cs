@@ -23,6 +23,11 @@ public class PauseGame : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    
+    public void gotoTutorialMainPage()
+    {
+        SceneManager.LoadScene(3);
+    }
 
     public void continueToActualGame()
     {
