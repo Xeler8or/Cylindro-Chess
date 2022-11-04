@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -30,9 +31,19 @@ public class GameTutorial : MonoBehaviour
                                                    Constants.HEALTH
     };
 
+    static bool _EndTutorial = false;
+
     // Update is called once per frame
     void Update()
     {
+        if (_EndTutorial)
+        {
+            tutorialBackground.SetActive(false);
+            endGame.SetActive(true);
+            Time.timeScale = 0;
+            return;
+        }
+        
         if (showText && tutorialIndex < tutorialTexts.Length)
         {
             tutorialBackground.SetActive(true);
@@ -50,15 +61,16 @@ public class GameTutorial : MonoBehaviour
             tutorialBackground.SetActive(false);
             Time.timeScale = 1;
         }
-        else
-        {
-            tutorialBackground.SetActive(false);
-            endGame.SetActive(true);
-        }
     }
 
     public static void showTutorial()
     {
+        _EndTutorial = false;
         showText = true;
+    }
+
+    public static void endTutorial()
+    {
+        _EndTutorial = true;
     }
 }
