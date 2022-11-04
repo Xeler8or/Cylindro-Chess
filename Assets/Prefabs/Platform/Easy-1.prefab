@@ -852,8 +852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526be3d059ad746499e7f97e01f07245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightRotation: 100
-  leftRotation: 100
   childRotator: {fileID: 0}
 --- !u!1 &2989445446661345551
 GameObject:
@@ -14059,6 +14057,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1266849947997122962}
     m_Modifications:
     - target: {fileID: 411247716478970952, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3863cd3ac5cc476ebaf9e366751dacb, type: 2}
+    - target: {fileID: 411247716478970952, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2
       objectReference: {fileID: 0}
@@ -14802,6 +14804,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3122622567469738305, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3863cd3ac5cc476ebaf9e366751dacb, type: 2}
     - target: {fileID: 4321153361757366351, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -15486,6 +15492,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6711735055554087549, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3863cd3ac5cc476ebaf9e366751dacb, type: 2}
     - target: {fileID: 6711735055554087549, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2
@@ -16618,6 +16628,10 @@ PrefabInstance:
       propertyPath: m_SelectedEditorRenderState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8823972868076989966, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3863cd3ac5cc476ebaf9e366751dacb, type: 2}
     - target: {fileID: 8823972868076989966, guid: 2ef013f3de00cec4f9f95e4a7a0fb7e5, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2

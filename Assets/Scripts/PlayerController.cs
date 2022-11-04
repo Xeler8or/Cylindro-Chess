@@ -430,7 +430,7 @@ public class PlayerController : MonoBehaviour
             return;
             Debug.Log("Done");
         }
-        }
+        
         // print(Velocity);
     }
 
