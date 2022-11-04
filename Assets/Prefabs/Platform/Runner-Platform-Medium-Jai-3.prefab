@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 804780619634103778}
   - component: {fileID: 963904392159873775}
   m_Layer: 0
-  m_Name: Runner-Platform-Medium-Jai-5
+  m_Name: Runner-Platform-Medium-Jai-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13932,6 +13932,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle_Bounce
       objectReference: {fileID: 0}
+    - target: {fileID: 1367857345530505941, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 3408531747773778810, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -14843,6 +14847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle_Bounce (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1367857345530505941, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
+      propertyPath: m_TagString
+      value: Bounce
+      objectReference: {fileID: 0}
     - target: {fileID: 3408531747773778810, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -15060,6 +15068,10 @@ PrefabInstance:
     - target: {fileID: 1367857345530505941, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
       propertyPath: m_Name
       value: Circle_Bounce (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367857345530505941, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
+      propertyPath: m_TagString
+      value: Bounce
       objectReference: {fileID: 0}
     - target: {fileID: 3408531747773778810, guid: 185aaa608e9304f2895bd5423aedc02f, type: 3}
       propertyPath: m_Materials.Array.data[0]
