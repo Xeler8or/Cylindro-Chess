@@ -153,7 +153,8 @@ public class PlayerController : MonoBehaviour
         print(_analyticsVariables.GetCoins());
         print("Restart End");
         
-        _sendToGoogle.Send();
+        if (_sendToGoogle != null)
+            _sendToGoogle.Send();
         
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
@@ -360,6 +361,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("TutorialTrigger"))
         {
             GameTutorial.showTutorial();
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("EndTutorialTrigger"))
+        {
+            GameTutorial.endTutorial();
         }
 
         if (other.gameObject.CompareTag("SlowDownPowerUp"))
