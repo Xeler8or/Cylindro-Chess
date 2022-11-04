@@ -34,4 +34,9 @@ public class PauseGame : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
+    
+    public void gotoLevelMainPage()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
