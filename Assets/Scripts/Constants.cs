@@ -94,4 +94,22 @@ public static class Constants
     public const string HEALTH_TUTORIAL = "HEALTH";
 
     public const string ENDLESS = "ENDLESS";
+    
+    public const string EASY1 = "EASY1";
+    
+    public const string EASY2 = "EASY2";
+    
+    public const string EASY3 = "EASY3";
+    
+    public const string MEDIUM1 = "MEDIUM1";
+    
+    public const string MEDIUM2 = "MEDIUM2";
+    
+    public const string MEDIUM3 = "MEDIUM3";
+    
+    public const string HARD1 = "HARD1";
+    
+    public const string HARD2 = "HARD2";
+
+    public const string HARD3 = "HARD3";
 }
