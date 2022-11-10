@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public float RainbowStartTime;
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
+    public GameObject endLevel;
     private Collider _bounce;
     private Collider _zone;
     
@@ -92,6 +93,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Update is called once per frame
     private void Update()
     {
         if (RainbowActive){
@@ -107,7 +109,7 @@ public class PlayerController : MonoBehaviour
             {
                 Velocity = -Velocity;
                 Vector3 v = transform.position;
-                transform.position = new Vector3(v.x, v.y, v.z+2);
+                transform.position = new Vector3(v.x, v.y, v.z+40);
                 Destroy(_bounce);
                 _analyticsVariables.DecrementHealth();
             }
@@ -159,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
-
+        
         /*
         print(_analyticsVariables.GetUuid());
         print(_analyticsVariables.GetDeathObstacle());
@@ -180,17 +182,17 @@ public class PlayerController : MonoBehaviour
         // print(_analyticsVariables.GetUsedCoins());
         // print(_analyticsVariables.GetCoins());
         // print("Restart End");
-
+        
         if (_sendToGoogle != null)
             _sendToGoogle.Send();
-
+        
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
         _analyticsVariables.ResetNotUsedColourPowerUp();
         _analyticsVariables.ResetUsedCoins();
         _analyticsVariables.ResetCounterRainbow();
         _analyticsVariables.ResetCounterSlowDown();
-
+        
         Time.timeScale = 0;
         restartPanel.SetActive(true);
         Destroy(gameObject);
@@ -215,7 +217,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(0,0,Velocity);
+        /*rb.velocity = new Vector3(0,0,Velocity);
         if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
         {
             Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
@@ -226,7 +228,49 @@ public class PlayerController : MonoBehaviour
             color = c;
             GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
             ChangeMaterial(child);
-        }
+        }*/
+        rb.velocity = new Vector3(0,0,Velocity);
+                /*
+                if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
+                {
+                    Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
+                    print(Velocity);
+                }
+                */
+                if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
+                {
+                    if (gmc.GetScore() < 500)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .2f);
+                        //print("500");
+                        //print(Velocity);
+                    }
+                    else if (gmc.GetScore() < 1000)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .4f);
+                        //print("1000");
+                        //print(Velocity);
+                    }
+                    else if (gmc.GetScore() < 1500)
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .6f);
+                        //print("1500");
+                        //print(Velocity);
+                    }
+                    else
+                    {
+                        Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
+                        //print("other");
+                        //print(Velocity);
+                    }
+                }
+                if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
+                {
+                    Constants.Color c = GetNextColor(color);
+                    color = c;
+                    GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
+                    ChangeMaterial(child);
+                }
     }
 
     private void ChangeMaterial(GameObject gm)
@@ -251,6 +295,7 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.SetHealth(0);
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
+            ToggleImmortal();
         }
     }
     
@@ -374,6 +419,7 @@ public class PlayerController : MonoBehaviour
             platformRotate = false;
             _initialTime = Time.time;
             timer.SetActive(true);
+            // triggered = true;
             _zone = other;
             gamePassed = false;
         }
@@ -428,7 +474,16 @@ public class PlayerController : MonoBehaviour
         {
             if (HandleBuying(2, other))
             {
-                Velocity -= 5;
+                //need to put a check to ensure velocity stays greater than 0
+                if (Velocity - 5 < 0)
+                {
+                    Velocity = Constants.INITIAL_PLAYER_SPEED;
+                }
+                else
+                {
+                    Velocity -= 5;
+                }
+
                 _analyticsVariables.IncrementCounterSlowDown();
                 Destroy(other.gameObject);
             }
@@ -444,11 +499,18 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
         
-        if (other.gameObject.CompareTag("Bounce") &&!_immortal)
+        if (other.gameObject.CompareTag("Bounce") && !_immortal)
         {
             _bounce = other;
             Velocity = -Velocity;
         }
+        if (other.gameObject.CompareTag("EndLevel"))
+        {
+            endLevel.SetActive(true);
+            Time.timeScale = 0;
+            return;
+        }
+        
         // print(Velocity);
     }
 
