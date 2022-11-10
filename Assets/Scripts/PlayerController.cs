@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     public float RainbowStartTime;
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
+    private Collider _bounce;
+    private Collider _zone;
+    
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -98,7 +101,16 @@ public class PlayerController : MonoBehaviour
         if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
         {
             _analyticsVariables.SetDeathObstacle("Bounce");
-            Restart();
+            if(_analyticsVariables.GetHealth() <= 0)
+                Restart();
+            else
+            {
+                Velocity = -Velocity;
+                Vector3 v = transform.position;
+                transform.position = new Vector3(v.x, v.y, v.z+2);
+                Destroy(_bounce);
+                _analyticsVariables.DecrementHealth();
+            }
         }
         gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
@@ -114,7 +126,16 @@ public class PlayerController : MonoBehaviour
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
-            Restart();
+            if(_analyticsVariables.GetHealth() <= 0)
+                Restart();
+            else
+            {
+                _analyticsVariables.DecrementHealth();
+                Velocity = oldVelocity;
+                Vector3 v = transform.position;
+                transform.position = new Vector3(v.x, v.y, v.z+20);
+                gamePassed = true;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -138,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
-        
+
         /*
         print(_analyticsVariables.GetUuid());
         print(_analyticsVariables.GetDeathObstacle());
@@ -159,17 +180,17 @@ public class PlayerController : MonoBehaviour
         // print(_analyticsVariables.GetUsedCoins());
         // print(_analyticsVariables.GetCoins());
         // print("Restart End");
-        
+
         if (_sendToGoogle != null)
             _sendToGoogle.Send();
-        
+
         _analyticsVariables.ResetHealthZero();
         _analyticsVariables.ResetUsedColourPowerUp();
         _analyticsVariables.ResetNotUsedColourPowerUp();
         _analyticsVariables.ResetUsedCoins();
         _analyticsVariables.ResetCounterRainbow();
         _analyticsVariables.ResetCounterSlowDown();
-        
+
         Time.timeScale = 0;
         restartPanel.SetActive(true);
         Destroy(gameObject);
@@ -284,7 +305,7 @@ public class PlayerController : MonoBehaviour
         {
             r.enabled = true;
         }
-        CancelInvoke();
+        CancelInvoke(nameof(Blink));
         print("Immortal off");
     }
 
@@ -327,7 +348,13 @@ public class PlayerController : MonoBehaviour
                 //print("Should Die");
                 //print(other.gameObject.tag);
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
-                Restart();
+                if(_analyticsVariables.GetHealth() <= 0)
+                    Restart();
+                else
+                {
+                    Destroy(other.gameObject);
+                    _analyticsVariables.DecrementHealth();
+                }
             }
             else
             {
@@ -347,7 +374,7 @@ public class PlayerController : MonoBehaviour
             platformRotate = false;
             _initialTime = Time.time;
             timer.SetActive(true);
-            // triggered = true;
+            _zone = other;
             gamePassed = false;
         }
 
@@ -417,8 +444,9 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
         
-        if (other.gameObject.CompareTag("Bounce"))
+        if (other.gameObject.CompareTag("Bounce") &&!_immortal)
         {
+            _bounce = other;
             Velocity = -Velocity;
         }
         // print(Velocity);
