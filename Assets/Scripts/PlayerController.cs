@@ -5,6 +5,7 @@ using System.Threading;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using TMPro;
+using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
     public static bool onOuterCylinder = false;
     public PauseGame pauseGame;
     private SendToGoogle _sendToGoogle;
-
+    private FollowPlayer _camera;
     public bool RainbowActive = false;
     public float RainbowStartTime;
     private bool _immortal = false;
@@ -78,6 +79,7 @@ public class PlayerController : MonoBehaviour
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
         powerTimerTMP = powerTimer.GetComponent<TextMeshProUGUI>();
         gamePassed = true;
+        _camera = FindObjectOfType<FollowPlayer>();
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         pauseGame = FindObjectOfType<PauseGame>();
         onOuterCylinder = false;
