@@ -105,20 +105,20 @@ public class TileManager : MonoBehaviour
         while (randomIndex == lastPrefabIndex)
         {
             randomIndex = Random.Range(0, tilePrefabs.Length);
-            if (tilesToLoad.Length == 0 && randomIndex == 12)
+            if (tilesToLoad.Length == 0 && randomIndex == 11)
             {
                 randomIndex = lastPrefabIndex;
                 continue;
             }
-            if (randomIndex == 6 && count <= 3)
-            {
-                continue;
-            }
-            if (randomIndex == 6)
-            {
-                count = 1;
-            }
-            count += 1;
+            // if (randomIndex == 6 && count <= 3)
+            // {
+            //     continue;
+            // }
+            // if (randomIndex == 6)
+            // {
+            //     count = 1;
+            // }
+            // count += 1;
         }
         
         lastPrefabIndex = randomIndex;
