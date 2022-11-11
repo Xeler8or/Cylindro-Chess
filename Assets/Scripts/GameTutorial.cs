@@ -12,6 +12,9 @@ public class GameTutorial : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     private static int _tutorialIndex = 0;
     private static bool _showText = false;
+    public GameObject QKey;
+    public GameObject LeftArrowKey;
+    public GameObject RightArrowKey;
     private string[] tutorialTexts = new string[]{ Constants.MOVE_LEFT_RIGHT, 
                                                    Constants.CHANGE_SHAPE,
                                                    Constants.CHANGE_TO_CUBE,
