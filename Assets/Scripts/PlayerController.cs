@@ -137,9 +137,9 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (80 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(80 - Time.time + _initialTime) == 0 && gamePassed == false)
+        if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
