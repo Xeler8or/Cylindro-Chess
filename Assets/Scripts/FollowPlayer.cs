@@ -42,12 +42,12 @@ public class FollowPlayer : MonoBehaviour
             //     once = true;
             // }
 
-            if (_player.platformRotate)
-            {   
-                transform.position = player.position + innerCylinderOffset;
-                // transform.Rotate(-30f,0f,0f);
-                // once = false;
-            }
+            // if (_player.platformRotate)
+            // {   
+            //     transform.position = player.position + innerCylinderOffset;
+            //     // transform.Rotate(-30f,0f,0f);
+            //     // once = false;
+            // }
 
             // if (_player.platformRotate && once)
             // {
