@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
     public GameObject endLevel;
+    public bool lock3Rotate = false;
+
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -109,9 +111,9 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (15 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (80 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
+        if ((int)(80 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
@@ -349,8 +351,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone")) && !_immortal)
+        Debug.Log(other.gameObject.tag);
+
+        if ((other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone")|| other.gameObject.CompareTag("lock1") || other.gameObject.CompareTag("lock2")|| other.gameObject.CompareTag("lock3")) && !_immortal)
         {
+            Debug.Log(other.gameObject.tag);
             if (RainbowActive){
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
@@ -368,7 +373,7 @@ public class PlayerController : MonoBehaviour
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
-                //print("Should Die");
+                print("Should Die");
                 //print(other.gameObject.tag);
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
                 Restart();
@@ -377,15 +382,15 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    // print("Entering for same color obstacle");
+                    print("Entering for same color obstacle");
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
         }
         if (other.gameObject.CompareTag("zone"))
         {
-            Instantiate(lockRotator,
-                new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
+            // Instantiate(lockRotator,
+            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
             oldVelocity = Velocity;
             Velocity = 0f;
             platformRotate = false;
@@ -480,6 +485,17 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0;
             return;
         }
+        if (other.gameObject.CompareTag("lock3"))
+        {
+            // Instantiate(lockRotator,
+            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
+            lock3Rotate = true;
+
+        }
+        if (other.gameObject.CompareTag("Enemy_Black"))
+        {
+            Restart();
+        }
         
         // print(Velocity);
     }
@@ -520,5 +536,13 @@ public class PlayerController : MonoBehaviour
         // triggered = false;
         gamePassed = true;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision");
+        if (collision.gameObject.CompareTag("Enemy_Black"))
+        {
+            Restart();
+        }
+    }
 }
