@@ -73,7 +73,7 @@ public static class Constants
 
     public const float INITIAL_PLAYER_SPEED = 10f;
 
-    public const float HEALTH_TIMER = 5f;
+    public const float HEALTH_TIMER = 8f;
 
     public const float PLAYER_MAX_SPEED = 30f;
     
