@@ -309,6 +309,7 @@ public class PlayerController : MonoBehaviour
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
         cameraObject.transform.Rotate(Vector3.forward, 180);
+        ToggleImmortal();
     }
     
     private void MoveToOuter()
@@ -322,6 +323,7 @@ public class PlayerController : MonoBehaviour
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
+            ToggleImmortal();
         }
     }
 
@@ -429,12 +431,10 @@ public class PlayerController : MonoBehaviour
             {
                 CancelInvoke();
                 MoveToInner();
-                ToggleImmortal();
             }
             else
             {
                 MoveToOuter();
-                ToggleImmortal();
             }
         }
         //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
