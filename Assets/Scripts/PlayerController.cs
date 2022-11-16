@@ -5,7 +5,6 @@ using System.Threading;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using TMPro;
-using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 
@@ -44,17 +43,17 @@ public class PlayerController : MonoBehaviour
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
-    public static bool isScoreDouble = false;
     public PauseGame pauseGame;
     private SendToGoogle _sendToGoogle;
-    private FollowPlayer _camera;
+
     public bool RainbowActive = false;
     public float RainbowStartTime;
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
     public GameObject endLevel;
-    public bool lock3Rotate = false;
-
+    private Collider _bounce;
+    private Collider _zone;
+    
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -80,7 +79,6 @@ public class PlayerController : MonoBehaviour
         timerTMP = timer.GetComponent<TextMeshProUGUI>();
         powerTimerTMP = powerTimer.GetComponent<TextMeshProUGUI>();
         gamePassed = true;
-        _camera = FindObjectOfType<FollowPlayer>();
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         pauseGame = FindObjectOfType<PauseGame>();
         onOuterCylinder = false;
@@ -95,6 +93,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Update is called once per frame
     private void Update()
     {
         if (RainbowActive){
@@ -104,32 +103,18 @@ public class PlayerController : MonoBehaviour
         if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
         {
             _analyticsVariables.SetDeathObstacle("Bounce");
-            Restart();
-        }
-        //gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
-        if (isScoreDouble == true)
-        {
-            print("entered score double");
-            if ((int)gmc.GetScore() < (int)transform.position.z - _initalPos)
-            {
-                gmc.SetScore((int)(transform.position.z - _initalPos)+1);
-                print("new score");
-                print((int)gmc.GetScore());
-
-            }
+            if(_analyticsVariables.GetHealth() <= 0)
+                Restart();
             else
             {
-                gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
-                print((int)gmc.GetScore());
+                Velocity = -Velocity;
+                Vector3 v = transform.position;
+                transform.position = new Vector3(v.x, v.y, v.z+40);
+                Destroy(_bounce);
+                _analyticsVariables.DecrementHealth();
             }
         }
-        else
-        {
-            gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
-            print("ENTERED");
-            print((int)gmc.GetScore());
-        }
-        
+        gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
         {
             TriggerPiecePrefab(player_shape);
@@ -137,13 +122,22 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (15 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
+        if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
-            Restart();
+            if(_analyticsVariables.GetHealth() <= 0)
+                Restart();
+            else
+            {
+                _analyticsVariables.DecrementHealth();
+                Velocity = oldVelocity;
+                Vector3 v = transform.position;
+                transform.position = new Vector3(v.x, v.y, v.z+20);
+                gamePassed = true;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -164,32 +158,30 @@ public class PlayerController : MonoBehaviour
     {
         print("Restart Entered");
         RainbowActive = false;
-        isScoreDouble = false;
+
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
         
-         /*
-         print(_analyticsVariables.GetUuid());
-         print(_analyticsVariables.GetDeathObstacle());
-         print(_analyticsVariables.GetSpeedAtDeath());
-         print(_analyticsVariables.GetFinalScore());
-         print(_analyticsVariables.GetHealthZero());
-         print("No Power Up");
-         print(_analyticsVariables.GetNotUsedColourPowerUp());
-         print("Power Up");
-         print(_analyticsVariables.GetUsedColourPowerUp());
-         print(_analyticsVariables.GetCoins());
-         print(_analyticsVariables.GetUsedCoins());
-
-         print(_analyticsVariables.GetCounterRainbow());
-         print(_analyticsVariables.GetCounterSlowDown());
-         print(_analyticsVariables.GetHealthZero());
-         print(_analyticsVariables.GetPlatform());
-         print(_analyticsVariables.GetUsedCoins());
-         print(_analyticsVariables.GetCoins());
-         print("Restart End");
-         */
-
+        /*
+        print(_analyticsVariables.GetUuid());
+        print(_analyticsVariables.GetDeathObstacle());
+        print(_analyticsVariables.GetSpeedAtDeath());
+        print(_analyticsVariables.GetFinalScore());
+        print(_analyticsVariables.GetHealthZero());
+        print("No Power Up");
+        print(_analyticsVariables.GetNotUsedColourPowerUp());
+        print("Power Up");
+        print(_analyticsVariables.GetUsedColourPowerUp());
+        print(_analyticsVariables.GetCoins());
+        print(_analyticsVariables.GetUsedCoins());
+        */
+        // print(_analyticsVariables.GetCounterRainbow());
+        // print(_analyticsVariables.GetCounterSlowDown());
+        // print(_analyticsVariables.GetHealthZero());
+        // print(_analyticsVariables.GetPlatform());
+        // print(_analyticsVariables.GetUsedCoins());
+        // print(_analyticsVariables.GetCoins());
+        // print("Restart End");
         
         if (_sendToGoogle != null)
             _sendToGoogle.Send();
@@ -314,11 +306,9 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.IncrementHealthZero();
         }
         onOuterCylinder = false;
-        isScoreDouble = false;
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
         cameraObject.transform.Rotate(Vector3.forward, 180);
-        ToggleImmortal();
     }
     
     private void MoveToOuter()
@@ -328,12 +318,10 @@ public class PlayerController : MonoBehaviour
             //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
             InvokeRepeating(nameof(HealthReducer), Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
             onOuterCylinder = true;
-            isScoreDouble = true;
             print("PC: " + onOuterCylinder);
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
-            ToggleImmortal();
         }
     }
 
@@ -383,11 +371,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-
-        if ((other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone")|| other.gameObject.CompareTag("lock1") || other.gameObject.CompareTag("lock2")|| other.gameObject.CompareTag("lock3")) && !_immortal)
+        if ((other.gameObject.CompareTag("EnemyColor")||other.gameObject.CompareTag("Enemy_Shape")||other.gameObject.CompareTag("Enemy_Door")||other.gameObject.CompareTag("Enemy_Black")||other.gameObject.CompareTag("Enemy_Cone")) && !_immortal)
         {
-            Debug.Log(other.gameObject.tag);
             if (RainbowActive){
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
@@ -405,30 +390,36 @@ public class PlayerController : MonoBehaviour
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
-                print("Should Die");
+                //print("Should Die");
                 //print(other.gameObject.tag);
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
-                Restart();
+                if(_analyticsVariables.GetHealth() <= 0)
+                    Restart();
+                else
+                {
+                    _analyticsVariables.DecrementHealth();
+                }
             }
             else
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    print("Entering for same color obstacle");
+                    // print("Entering for same color obstacle");
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
         }
         if (other.gameObject.CompareTag("zone"))
         {
-            // Instantiate(lockRotator,
-            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
+            Instantiate(lockRotator,
+                new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
             oldVelocity = Velocity;
             Velocity = 0f;
             platformRotate = false;
             _initialTime = Time.time;
             timer.SetActive(true);
             // triggered = true;
+            _zone = other;
             gamePassed = false;
         }
 
@@ -438,10 +429,12 @@ public class PlayerController : MonoBehaviour
             {
                 CancelInvoke();
                 MoveToInner();
+                ToggleImmortal();
             }
             else
             {
                 MoveToOuter();
+                ToggleImmortal();
             }
         }
         //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder
@@ -507,6 +500,7 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("Bounce") && !_immortal)
         {
+            _bounce = other;
             Velocity = -Velocity;
         }
         if (other.gameObject.CompareTag("EndLevel"))
@@ -514,17 +508,6 @@ public class PlayerController : MonoBehaviour
             endLevel.SetActive(true);
             Time.timeScale = 0;
             return;
-        }
-        if (other.gameObject.CompareTag("lock3"))
-        {
-            // Instantiate(lockRotator,
-            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
-            lock3Rotate = true;
-
-        }
-        if (other.gameObject.CompareTag("Enemy_Black"))
-        {
-            Restart();
         }
         
         // print(Velocity);
@@ -566,13 +549,5 @@ public class PlayerController : MonoBehaviour
         // triggered = false;
         gamePassed = true;
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collision");
-        if (collision.gameObject.CompareTag("Enemy_Black"))
-        {
-            Restart();
-        }
-    }
+    
 }
