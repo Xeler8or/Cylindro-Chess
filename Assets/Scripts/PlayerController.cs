@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
+    public static bool isScoreDouble = false;
     public PauseGame pauseGame;
     private SendToGoogle _sendToGoogle;
     private FollowPlayer _camera;
@@ -105,7 +106,30 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.SetDeathObstacle("Bounce");
             Restart();
         }
-        gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+        //gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+        if (isScoreDouble == true)
+        {
+            print("entered score double");
+            if ((int)gmc.GetScore() < (int)transform.position.z - _initalPos)
+            {
+                gmc.SetScore((int)(transform.position.z - _initalPos)+1);
+                print("new score");
+                print((int)gmc.GetScore());
+
+            }
+            else
+            {
+                gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+                print((int)gmc.GetScore());
+            }
+        }
+        else
+        {
+            gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+            print("ENTERED");
+            print((int)gmc.GetScore());
+        }
+        
         if (Input.GetKeyUp("q"))
         {
             TriggerPiecePrefab(player_shape);
@@ -113,9 +137,9 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (80 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(80 - Time.time + _initialTime) == 0 && gamePassed == false)
+        if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
@@ -140,30 +164,32 @@ public class PlayerController : MonoBehaviour
     {
         print("Restart Entered");
         RainbowActive = false;
-
+        isScoreDouble = false;
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
         
-        /*
-        print(_analyticsVariables.GetUuid());
-        print(_analyticsVariables.GetDeathObstacle());
-        print(_analyticsVariables.GetSpeedAtDeath());
-        print(_analyticsVariables.GetFinalScore());
-        print(_analyticsVariables.GetHealthZero());
-        print("No Power Up");
-        print(_analyticsVariables.GetNotUsedColourPowerUp());
-        print("Power Up");
-        print(_analyticsVariables.GetUsedColourPowerUp());
-        print(_analyticsVariables.GetCoins());
-        print(_analyticsVariables.GetUsedCoins());
-        */
-        // print(_analyticsVariables.GetCounterRainbow());
-        // print(_analyticsVariables.GetCounterSlowDown());
-        // print(_analyticsVariables.GetHealthZero());
-        // print(_analyticsVariables.GetPlatform());
-        // print(_analyticsVariables.GetUsedCoins());
-        // print(_analyticsVariables.GetCoins());
-        // print("Restart End");
+         /*
+         print(_analyticsVariables.GetUuid());
+         print(_analyticsVariables.GetDeathObstacle());
+         print(_analyticsVariables.GetSpeedAtDeath());
+         print(_analyticsVariables.GetFinalScore());
+         print(_analyticsVariables.GetHealthZero());
+         print("No Power Up");
+         print(_analyticsVariables.GetNotUsedColourPowerUp());
+         print("Power Up");
+         print(_analyticsVariables.GetUsedColourPowerUp());
+         print(_analyticsVariables.GetCoins());
+         print(_analyticsVariables.GetUsedCoins());
+
+         print(_analyticsVariables.GetCounterRainbow());
+         print(_analyticsVariables.GetCounterSlowDown());
+         print(_analyticsVariables.GetHealthZero());
+         print(_analyticsVariables.GetPlatform());
+         print(_analyticsVariables.GetUsedCoins());
+         print(_analyticsVariables.GetCoins());
+         print("Restart End");
+         */
+
         
         if (_sendToGoogle != null)
             _sendToGoogle.Send();
@@ -288,9 +314,11 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.IncrementHealthZero();
         }
         onOuterCylinder = false;
+        isScoreDouble = false;
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
         cameraObject.transform.Rotate(Vector3.forward, 180);
+        ToggleImmortal();
     }
     
     private void MoveToOuter()
@@ -300,10 +328,12 @@ public class PlayerController : MonoBehaviour
             //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
             InvokeRepeating(nameof(HealthReducer), Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
             onOuterCylinder = true;
+            isScoreDouble = true;
             print("PC: " + onOuterCylinder);
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
+            ToggleImmortal();
         }
     }
 
@@ -408,12 +438,10 @@ public class PlayerController : MonoBehaviour
             {
                 CancelInvoke();
                 MoveToInner();
-                ToggleImmortal();
             }
             else
             {
                 MoveToOuter();
-                ToggleImmortal();
             }
         }
         //Remember to cancel the invoke by calling "CancelInvoke();" after returning to lower cylinder

@@ -41,7 +41,7 @@ public class FollowPlayer : MonoBehaviour
             //     transform.Rotate(30f,0f,0f);
             //     once = true;
             // }
-
+            //
             // if (_player.platformRotate)
             // {   
             //     transform.position = player.position + innerCylinderOffset;
