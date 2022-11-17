@@ -18,16 +18,16 @@ public static class Constants
     }
 
     public const string MOVE_LEFT_RIGHT = 
-        "Press A/Left Arrow to move left.\nPress D/Right Arrow to move right.";
+        "Move Left: A/Left.\nMove Right: D/Right";
 
     public const string CHANGE_SHAPE =
-        "Press Q to change the shape of the player.\nAvailable shapes are Sphere, Cube and Triangle.";
+        "Q: Shape Change.\nAvailable shapes are Sphere, Cube and Triangle.";
 
     public const string CHANGE_TO_CUBE =
-        "Change shape to change to a cube to pass through the next obstacle.";
+        "Change shape to a cube to pass through.";
 
     public const string COLOR_CHANGE =
-        "The player has a color which helps him pass through obstacles of the same color.\nColor of the player changes at regular intervals.";
+        "The player can pass through obstacles of the same color.";
 
     public const string PASS_THROUGH_RED_PORTION =
         "Pass through the section where the color is the same as the player.";
@@ -36,7 +36,7 @@ public static class Constants
         "This is a lock obstacle.\nTo clear this, remember the pattern to perform shown on top.";
 
     public const string AUTOMATIC_RIGHT_SECTION =
-        "There are sections in the game where the player moves right by default. \nThis is indicated by the arrows on the ground.";
+        "This section moves left by default.\nThis is indicated by the arrows on the ground.";
 
     public const string ROTATE_RIGHT_360 =
         "When the lock appears, first rotate 2 right 360 degree turns.";
@@ -51,19 +51,19 @@ public static class Constants
         "Collects coins to buy powerups during the game.";
 
     public const string COLLECT_RAINBOW_POWERUP =
-        "This is a rainbow powerup. Once you collect this, you can pass through any color obstacle irrespective of player color.\n2 Coins = 1 Rainbow powerup.";
+        "Rainbow Powerup: Pass through any colored obstacle.\n2 Coins = 1 Rainbow powerup.";
 
     public const string COLLECT_SLOWDOWN_POWERUP =
-        "This is the showdown powerup. Once you collect his, the speed of the player reduces.\n2 Coins = 1 Slowdown powerup.";
+        "Slowdown Powerup: Slows the player down.\n2 Coins = 1 Slowdown powerup.";
 
     public const string BOUNCE_OBSTACLE =
         "This is a bounce obstacle, you need to bounce your way through the obstacle. Try it!";
 
     public const string HEALTH =
-        "These are healths.\n You need these to go to the outer cylinder.\nOn the outer cylinder the points are double.";
+        "Health: These help you stay on the outer cylinder.\nPoints are 2x on the outer cylinder.";
 
     public const string PORTALS =
-        "These are portal, hit these and you will move between inner and outer cylinders.";
+        "Portals: These help move between outer and inner cylinder";
 
     public const string UP_SIDE_DOWN =
         "Wohoo! Welcome to the upside-down.\nYou get double points here but you also need to constantly collect health to stay here.";
