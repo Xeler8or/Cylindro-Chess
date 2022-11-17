@@ -103,16 +103,9 @@ public class PlayerController : MonoBehaviour
         if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
         {
             _analyticsVariables.SetDeathObstacle("Bounce");
-            if(_analyticsVariables.GetHealth() <= 0)
+            
                 Restart();
-            else
-            {
-                Velocity = -Velocity;
-                Vector3 v = transform.position;
-                transform.position = new Vector3(v.x, v.y, v.z+40);
-                Destroy(_bounce);
-                _analyticsVariables.DecrementHealth();
-            }
+            
         }
         gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
         if (Input.GetKeyUp("q"))
@@ -194,6 +187,7 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables.ResetCounterSlowDown();
         
         Time.timeScale = 0;
+        pauseGame.hidePause();
         restartPanel.SetActive(true);
         Destroy(gameObject);
     }
@@ -413,8 +407,8 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("zone"))
         {
-            Instantiate(lockRotator,
-                new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
+            // Instantiate(lockRotator,
+            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
             oldVelocity = Velocity;
             Velocity = 0f;
             platformRotate = false;

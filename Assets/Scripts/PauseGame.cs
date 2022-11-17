@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 public class PauseGame : MonoBehaviour
 {
     public GameObject pauseDialogue;
+    public GameObject buttonHide;
 
     public void pauseGame()
     {
         Time.timeScale = 0;
         pauseDialogue.SetActive(true);
+    }
+
+    public void hidePause()
+    {   
+        Debug.Log("herrrr");
+        buttonHide.SetActive(false);
     }
 
     public void playGame()
