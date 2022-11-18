@@ -123,16 +123,17 @@ public class PlayerController : MonoBehaviour
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
-            if(_analyticsVariables.GetHealth() <= 0)
-                Restart();
-            else
-            {
-                _analyticsVariables.DecrementHealth();
-                Velocity = oldVelocity;
-                Vector3 v = transform.position;
-                transform.position = new Vector3(v.x, v.y, v.z+20);
-                gamePassed = true;
-            }
+            ContinuePlay();
+            // if(_analyticsVariables.GetHealth() <= 0)
+                // Restart();
+            // else
+            // {
+            //     _analyticsVariables.DecrementHealth();
+            //     Velocity = oldVelocity;
+            //     Vector3 v = transform.position;
+            //     transform.position = new Vector3(v.x, v.y, v.z+20);
+            //     gamePassed = true;
+            // }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
