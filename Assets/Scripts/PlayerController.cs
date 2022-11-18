@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public GameObject lockRotator;
     public GameObject cameraObject;
     private float _initialTime;
+    private float _colorChangeTime;
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
     public static bool onOuterCylinder = false;
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _colorChangeTime = Time.time;
         Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
         gmc = FindObjectOfType<GameController>();
@@ -115,9 +117,9 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (15 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
 
-        if ((int)(15 - Time.time + _initialTime) == 0 && gamePassed == false)
+        if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
@@ -258,8 +260,10 @@ public class PlayerController : MonoBehaviour
                         //print(Velocity);
                     }
                 }
-                if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
+                // if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
+                if ((int)(Time.time - _colorChangeTime)%20 == 0 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
                 {
+                    _colorChangeTime = Time.time;
                     Constants.Color c = GetNextColor(color);
                     color = c;
                     GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;

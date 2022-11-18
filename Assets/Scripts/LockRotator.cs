@@ -69,7 +69,7 @@ public class LockRotator : MonoBehaviour
             //     instructions.SetActive(true);
             //
             // }
-            if (Input.GetKey("z"))
+            if (Input.GetKey("space"))
             {
                 _player.ContinuePlay();
                 // instructions.SetActive(true);
