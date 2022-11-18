@@ -1,10 +1,9 @@
-## Hey, this is Xeler8or 👋
+## Hey, this is Xeler8or. This is our main repo. 👋
 
 ![Team Xeler8or Logo.](https://cdn.dribbble.com/users/3004968/screenshots/8729242/media/0b68191a877c3fe815494e96f56fb3c2.png?compress=1&resize=1600x1200&vertical=top)
 
-### 🍿 Some Important Links
+### Some Important Links
 #### Log Line - Infinite runner on a cylinder with color and shape switch.
-- [Our Main Repo](https://github.com/Xeler8or/Cylindro-Chess) - A Endless Runner Game
 - [WebGL Link](https://play.unity.com/mg/other/cylindro-human) - WebGL Link to play our awsome game!
 
 ### Other Links

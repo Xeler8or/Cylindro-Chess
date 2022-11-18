@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
             
         }
         gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
-        if (Input.GetKeyUp("q"))
+        if (Input.GetKeyUp("q") && platformRotate)
         {
             TriggerPiecePrefab(player_shape);
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];

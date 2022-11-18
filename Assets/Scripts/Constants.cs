@@ -18,10 +18,10 @@ public static class Constants
     }
 
     public const string MOVE_LEFT_RIGHT = 
-        "Move Left: A/Left.\nMove Right: D/Right";
+        "Move Left: A/Left\nMove Right: D/Right";
 
     public const string CHANGE_SHAPE =
-        "Q: Shape Change.\nAvailable shapes are Sphere, Cube and Triangle.";
+        "Q: Shape Change\nAvailable shapes are Sphere, Cube and Triangle.";
 
     public const string CHANGE_TO_CUBE =
         "Change shape to a cube to pass through.";
