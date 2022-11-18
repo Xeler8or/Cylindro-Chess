@@ -14,8 +14,8 @@ public class FollowPlayer : MonoBehaviour
     // Initial Camera (10, 0, 0)
     private PlayerController _player;
     private bool _cameraRotate = false;
-    private float factor = 1000f;
-    private float factor2 = 1000f;
+    private float factor = 150f;
+    private float factor2 = 150f;
     private int counter = 1;
     private float trans_y;
     private float trans_z;
