@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 public class UIManager : MonoBehaviour
 {
     public GameObject gameController;
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject healthGm;
     public GameObject coinsGm;
     private TextMeshProUGUI _healthText;
+    private TextMeshProUGUI _healthText_old;
     private TextMeshProUGUI _coinsText;
     private AnalyticsVariables _analyticsVariables;
 

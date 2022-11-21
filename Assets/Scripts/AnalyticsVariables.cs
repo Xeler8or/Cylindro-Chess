@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AnalyticsVariables : MonoBehaviour
 {
+    private int health_animation=0;
+
     private int _health = 3;
     //Set death variable to color, shape, door, lock, arch
     private string _causeOfDeath;
@@ -77,13 +79,28 @@ public class AnalyticsVariables : MonoBehaviour
     public void SetHealth(int h)
     {
         _health = h;
+        if(h>0)
+        {
+            health_animation=1;
+            // Debug.Log("HEALTH========================== +1");
+        }
+        else {
+            health_animation=0;
+            // Debug.Log("HEALTH========================== 0");
+        }
     }
 
     public void DecrementHealth()
     {
         _health -= 1;
+        health_animation=-1;
+        // Debug.Log("HEALTH========================== -1");
     }
     
+    public int GetAnimatedHealth()
+    {
+        return health_animation;
+    }
     
     public string GetDeathObstacle()
     {
