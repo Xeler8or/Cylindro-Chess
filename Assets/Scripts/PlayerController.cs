@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
     
     //For sound 
     public AudioClip coinSound;
+    public AudioClip healthSound;
+    public AudioClip shapeSound;
+    public AudioClip rainbowSound;
+    public AudioClip slowdownSound;
+    
     
     
     // Start is called before the first frame update
@@ -122,6 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             TriggerPiecePrefab(player_shape);
             player_shape = GetShape[(ShapeRanking[player_shape]+1)%3];
+            AudioSource.PlayClipAtPoint(shapeSound, transform.position, 0.8f);
             TriggerPiecePrefab(player_shape);
         }
         
@@ -508,6 +514,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Health"))
         {
             HealthPickup();
+            AudioSource.PlayClipAtPoint(healthSound, transform.position, 0.8f);
             Destroy(other.gameObject);
             
         }
@@ -515,7 +522,9 @@ public class PlayerController : MonoBehaviour
         {
             if (HandleBuying(2, other))
             {
+                
                 StartRainbowPower();
+                AudioSource.PlayClipAtPoint(rainbowSound, transform.position, 0.8f);
                 _analyticsVariables.IncrementCounterRainbow();
                 Destroy(other.gameObject);
             }
@@ -549,7 +558,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Velocity -= 5;
                 }
-
+                AudioSource.PlayClipAtPoint(slowdownSound, transform.position, 0.8f);
                 _analyticsVariables.IncrementCounterSlowDown();
                 Destroy(other.gameObject);
             }
