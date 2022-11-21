@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
     private Collider _bounce;
     private Collider _zone;
     
+    //For sound 
+    public AudioClip coinSound;
+    
+    
     // Start is called before the first frame update
     public Dictionary<Constants.Shapes, int> ShapeRanking = new Dictionary<Constants.Shapes, int>{
         {Constants.Shapes.Cube,0},
@@ -494,6 +498,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Coin"))
         {
             _analyticsVariables.UpdateCoins(1);
+            AudioSource.PlayClipAtPoint(coinSound, transform.position, 0.8f);
             Destroy(other.gameObject);
         }
         
