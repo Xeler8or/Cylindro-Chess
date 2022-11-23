@@ -107,7 +107,7 @@ public class FollowPlayer : MonoBehaviour
             if (_player.platformRotate && _cameraRotate)
             {
                 _cameraRotate = false;
-                transform.Rotate(-40f,0f,0f);
+                transform.localEulerAngles = new Vector3(10, 0, 0);
             }
 
             // if (!_player.platformRotate && !once)
