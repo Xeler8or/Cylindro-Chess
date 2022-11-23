@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
          print("Restart End");
          */
 
-         if (_analyticsVariables.GetCoins() > Constants.CONTINUE_COINS && _uiManager.GetReplayFlag()!= true)
+         if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && _uiManager.GetReplayFlag()!= true)
          {
              Time.timeScale = 0;
              pauseGame.hidePause();
@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ToggleImmortal()
+    public void ToggleImmortal()
     {
         _immortal = true;
         InvokeRepeating(nameof(Blink), 0.5f, 0.5f);
