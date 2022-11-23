@@ -75,7 +75,7 @@ public static class Constants
 
     public const float HEALTH_TIMER = 8f;
 
-    public const float PLAYER_MAX_SPEED = 30f;
+    public const float PLAYER_MAX_SPEED = 25f;
     
     public const string MOVEMENT_TUTORIAL = "MOVEMENT";
     
@@ -112,4 +112,6 @@ public static class Constants
     public const string HARD2 = "HARD2";
 
     public const string HARD3 = "HARD3";
+
+    public const int CONTINUE_COINS = 10;
 }
