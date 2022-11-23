@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         scoreText.text = gmc.GetScore().ToString();
         _healthText.text = _analyticsVariables.GetHealth().ToString();
         _coinsText.text = _analyticsVariables.GetCoins().ToString();
-        if (_analyticsVariables.GetCoins() > Constants.CONTINUE_COINS)
+        if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS)
         {
             buttonContinue.SetActive(true);
         }
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void Replay(){
-        if (_analyticsVariables.GetCoins() > Constants.CONTINUE_COINS && replayFlag != true)
+        if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && replayFlag != true)
         {
             //print("Replay If");
             SetReplayFlag();
@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1; 
         restartDialogue.SetActive(false);
         _analyticsVariables.UpdateCoins(-(Constants.CONTINUE_COINS));
+        _playerController.ToggleImmortal();
     }
 
     
