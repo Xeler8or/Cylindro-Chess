@@ -15,7 +15,10 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI _healthText_old;
     private TextMeshProUGUI _coinsText;
     private AnalyticsVariables _analyticsVariables;
-
+    private PlayerController _playerController;
+    public GameObject buttonContinue;
+    public bool replayFlag = false;
+    public GameObject restartDialogue;
     private void Start()
     {
         // scoreText = scoreGameObjectText.GetComponent<Text>();
@@ -23,6 +26,7 @@ public class UIManager : MonoBehaviour
         _healthText = healthGm.GetComponent<TextMeshProUGUI>();
         _coinsText = coinsGm.GetComponent<TextMeshProUGUI>();
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
+        _playerController = FindObjectOfType<PlayerController>();
     }
     // Update is called once per frame
     void Update()
@@ -30,11 +34,56 @@ public class UIManager : MonoBehaviour
         scoreText.text = gmc.GetScore().ToString();
         _healthText.text = _analyticsVariables.GetHealth().ToString();
         _coinsText.text = _analyticsVariables.GetCoins().ToString();
+        if (_analyticsVariables.GetCoins() > Constants.CONTINUE_COINS)
+        {
+            buttonContinue.SetActive(true);
+        }
+        else
+        {
+            buttonContinue.SetActive(false);
+        }
+            
+    }
+
+    private void SetReplayFlag()
+    {
+        replayFlag = true;
+    }
+
+    public bool GetReplayFlag()
+    {
+        return replayFlag;
+    }
+    
+    public void ResetReplayFlag()
+    {
+        replayFlag = false;
     }
 
     public void Replay(){
-        Time.timeScale = 1;
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        if (_analyticsVariables.GetCoins() > Constants.CONTINUE_COINS && replayFlag != true)
+        {
+            //print("Replay If");
+            SetReplayFlag();
+            _playerController.Restart();
+        }
+        else
+        {
+            //print("Replay Else");
+            ResetReplayFlag();
+            Time.timeScale = 1;
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+        
     }
+    
+    public void Continue(){
+        Time.timeScale = 1; 
+        restartDialogue.SetActive(false);
+        _analyticsVariables.UpdateCoins(-(Constants.CONTINUE_COINS));
+    }
+
+    
+
 }
