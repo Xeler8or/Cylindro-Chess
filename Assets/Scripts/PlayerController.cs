@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Constants.Color color;
     
-    [SerializeField] private GameObject healthTextPrefab;
-    private GameObject prefab;
-    private TextMeshProUGUI healthTextMesh;
+    public GameObject healthTextPrefab;
+    public GameObject healthIconPrefab;
+    private TextMeshProUGUI healthTextPrefabTMP;
 
     public Material redMat;
     public Material blueMat;
@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         onOuterCylinder = false;
         _analyticsVariables.SetCoins(0);
         _analyticsVariables.SetHealth(0);
+        healthTextPrefabTMP = healthTextPrefab.GetComponent<TextMeshProUGUI>();
         foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>())
         {
             _renderers.Add(r);
@@ -170,7 +171,6 @@ public class PlayerController : MonoBehaviour
         {
             pauseGame.pauseGame();
         }
-        
     }
 
     private void TriggerPiecePrefab(Constants.Shapes player_shape)
@@ -314,8 +314,20 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = rainbowMat;
     }
 
+    void SetFalse()
+    {
+        healthTextPrefab.SetActive(false);
+        healthIconPrefab.SetActive(false);
+    }
+
     private void HealthReducer()
     {
+        if (_analyticsVariables.GetHealth() > 0) {
+            healthTextPrefabTMP.text = "-1";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
+        }
         _analyticsVariables.DecrementHealth();  //Decrements by 1
         if (_analyticsVariables.GetHealth() <= 0)
         {
@@ -324,22 +336,6 @@ public class PlayerController : MonoBehaviour
             MoveToInner();//Return to lower cylinder
             ToggleImmortal();
         }
-        if(_analyticsVariables.GetAnimatedHealth()==1)
-        {
-            Debug.Log("HEALTH========================== +1");
-            prefab = Instantiate(healthTextPrefab);
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text="+1";
-        }
-        else if(_analyticsVariables.GetAnimatedHealth()==-1)
-        {
-            Debug.Log("HEALTH========================== -1");
-            prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text="-1";
-        }
-        else
-        {
-            Debug.Log("HEALTH========================== 0");
-        }
     }
     
     private void MoveToInner()
@@ -347,6 +343,10 @@ public class PlayerController : MonoBehaviour
         if (onOuterCylinder == true && _analyticsVariables.GetHealth() == 0)
         {
             _analyticsVariables.IncrementHealthZero();
+            healthTextPrefabTMP.text = "0";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
         }
         onOuterCylinder = false;
         isScoreDouble = false;
@@ -369,27 +369,19 @@ public class PlayerController : MonoBehaviour
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
             ToggleImmortal();
+            // healthTextPrefab.SetActive(false);
         }
     }
 
     private void HealthPickup()
     {
+        if(_analyticsVariables.GetHealth()<3) {
+            healthTextPrefabTMP.text = "+1";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
+        }
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
-        if(_analyticsVariables.GetAnimatedHealth()==1)
-        {
-            Debug.Log("HEALTH========================== +1");
-            healthTextPrefab.GetComponentInChildren<TextMeshProUGUI>().text="+1";
-        }
-        else if(_analyticsVariables.GetAnimatedHealth()==-1)
-        {
-            Debug.Log("HEALTH========================== -1");
-            prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text=(-1).ToString();
-        }
-        else
-        {
-            Debug.Log("HEALTH========================== 0");
-        }
     }
 
     private bool HandleBuying(int cost, Collider other)
@@ -454,6 +446,13 @@ public class PlayerController : MonoBehaviour
                     Restart();
                 else
                 {
+                    if (_analyticsVariables.GetHealth() > 0) {
+                        Debug.Log("HEALTH========================== -1");
+                        healthTextPrefabTMP.text = "-1";
+                        healthIconPrefab.SetActive(true);
+                        healthTextPrefab.SetActive(true);
+                        Invoke("SetFalse",0.6f);
+                    }
                     _analyticsVariables.DecrementHealth();
                 }
             }
