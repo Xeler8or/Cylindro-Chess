@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Constants.Color color;
     
-    [SerializeField] private GameObject healthTextPrefab;
-    private GameObject prefab;
-    private TextMeshProUGUI healthTextMesh;
+    public GameObject healthTextPrefab;
+    public GameObject healthIconPrefab;
+    private TextMeshProUGUI healthTextPrefabTMP;
 
     public Material redMat;
     public Material blueMat;
@@ -45,8 +45,10 @@ public class PlayerController : MonoBehaviour
     public GameObject cameraObject;
     private float _initialTime;
     private float _colorChangeTime;
+    private static bool isScoreDouble = false;
     private bool _onUpperCylinder;
     private AnalyticsVariables _analyticsVariables;
+    private UIManager _uiManager;
     public static bool onOuterCylinder = false;
     public PauseGame pauseGame;
     private SendToGoogle _sendToGoogle;
@@ -84,7 +86,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+
         _colorChangeTime = Time.time;
+        
+
         Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
         gmc = FindObjectOfType<GameController>();
@@ -96,18 +101,22 @@ public class PlayerController : MonoBehaviour
         gamePassed = true;
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         pauseGame = FindObjectOfType<PauseGame>();
-        onOuterCylinder = false;
         _sendToGoogle = FindObjectOfType<SendToGoogle>();
+        _renderers = new List<MeshRenderer>();
+        _uiManager = FindObjectOfType<UIManager>();
+        
+        onOuterCylinder = false;
         _analyticsVariables.SetCoins(0);
         _analyticsVariables.SetHealth(0);
-        _renderers = new List<MeshRenderer>();
+        healthTextPrefabTMP = healthTextPrefab.GetComponent<TextMeshProUGUI>();
         foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>())
         {
             _renderers.Add(r);
         }
+        
+        
     }
 
-    // Update is called once per frame
     // Update is called once per frame
     private void Update()
     {
@@ -118,11 +127,29 @@ public class PlayerController : MonoBehaviour
         if ((int)(gmc.GetScore() - (transform.position.z - _initalPos)) == 20)
         {
             _analyticsVariables.SetDeathObstacle("Bounce");
-            
-                Restart();
-            
+            Restart();
+
         }
-        gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+        
+        if (isScoreDouble == true)
+        {
+            //print("entered score double");
+            if ((int)gmc.GetScore() < (int)transform.position.z - _initalPos)
+            {
+                gmc.SetScore((int)(transform.position.z - _initalPos)+1);
+
+            }
+            else
+            {
+                gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+            }
+        }
+        else
+        {
+            gmc.SetScore((int)Math.Max(gmc.GetScore(), transform.position.z - _initalPos));
+
+        }
+        
         if (Input.GetKeyUp("q") && platformRotate)
         {
             TriggerPiecePrefab(player_shape);
@@ -138,41 +165,12 @@ public class PlayerController : MonoBehaviour
             timer.SetActive(false);
             _analyticsVariables.SetDeathObstacle("Lock");
             ContinuePlay();
-            // if(_analyticsVariables.GetHealth() <= 0)
-                // Restart();
-            // else
-            // {
-            //     _analyticsVariables.DecrementHealth();
-            //     Velocity = oldVelocity;
-            //     Vector3 v = transform.position;
-            //     transform.position = new Vector3(v.x, v.y, v.z+20);
-            //     gamePassed = true;
-            // }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseGame.pauseGame();
         }
-
-        // if(_analyticsVariables.GetAnimatedHealth()==1)
-        // {
-        //     Debug.Log("HEALTH========================== +1");
-        //     prefab = Instantiate(healthTextPrefab);
-        //     // healthTextMesh=prefab.GetComponentInChildren<TextMeshProUGUI>();
-        //     // healthTextMesh.text=(+1).ToString();
-        //     prefab.GetComponentInChildren<TextMeshProUGUI>().text=(+1).ToString();
-        // }
-        // else if(_analyticsVariables.GetAnimatedHealth()==-1)
-        // {
-        //     Debug.Log("HEALTH========================== -1");
-        //     prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-        //     prefab.GetComponentInChildren<TextMeshProUGUI>().text=(-1).ToString();
-        // }
-        // else
-        // {
-        //     Debug.Log("HEALTH========================== 0");
-        // }
     }
 
     private void TriggerPiecePrefab(Constants.Shapes player_shape)
@@ -183,49 +181,71 @@ public class PlayerController : MonoBehaviour
         ChangeMaterial(child);
     }
     
-    private void Restart()
+    public void Restart()
     {
         print("Restart Entered");
         RainbowActive = false;
-
+        isScoreDouble = false;
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
         _analyticsVariables.SetFinalScore(gmc.GetScore());
         
-        /*
-        print(_analyticsVariables.GetUuid());
-        print(_analyticsVariables.GetDeathObstacle());
-        print(_analyticsVariables.GetSpeedAtDeath());
-        print(_analyticsVariables.GetFinalScore());
-        print(_analyticsVariables.GetHealthZero());
-        print("No Power Up");
-        print(_analyticsVariables.GetNotUsedColourPowerUp());
-        print("Power Up");
-        print(_analyticsVariables.GetUsedColourPowerUp());
-        print(_analyticsVariables.GetCoins());
-        print(_analyticsVariables.GetUsedCoins());
-        */
-        // print(_analyticsVariables.GetCounterRainbow());
-        // print(_analyticsVariables.GetCounterSlowDown());
-        // print(_analyticsVariables.GetHealthZero());
-        // print(_analyticsVariables.GetPlatform());
-        // print(_analyticsVariables.GetUsedCoins());
-        // print(_analyticsVariables.GetCoins());
-        // print("Restart End");
+         /*
+         print(_analyticsVariables.GetUuid());
+         print(_analyticsVariables.GetDeathObstacle());
+         print(_analyticsVariables.GetSpeedAtDeath());
+         print(_analyticsVariables.GetFinalScore());
+         print(_analyticsVariables.GetHealthZero());
+         print("No Power Up");
+         print(_analyticsVariables.GetNotUsedColourPowerUp());
+         print("Power Up");
+         print(_analyticsVariables.GetUsedColourPowerUp());
+         print(_analyticsVariables.GetCoins());
+         print(_analyticsVariables.GetUsedCoins());
+
+         print(_analyticsVariables.GetCounterRainbow());
+         print(_analyticsVariables.GetCounterSlowDown());
+         print(_analyticsVariables.GetHealthZero());
+         print(_analyticsVariables.GetPlatform());
+         print(_analyticsVariables.GetUsedCoins());
+         print(_analyticsVariables.GetCoins());
+         print("Restart End");
+         */
+
+         if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && _uiManager.GetReplayFlag()!= true)
+         {
+             Time.timeScale = 0;
+             pauseGame.hidePause();
+             restartPanel.SetActive(true);
+         }
+
+         else
+         {
+             if (_sendToGoogle != null)
+             {
+                 _sendToGoogle.Send();
+             }
+             
+             _analyticsVariables.ResetHealthZero();
+             _analyticsVariables.ResetUsedColourPowerUp();
+             _analyticsVariables.ResetNotUsedColourPowerUp();
+             _analyticsVariables.ResetUsedCoins();
+             _analyticsVariables.ResetCounterRainbow();
+             _analyticsVariables.ResetCounterSlowDown();
         
-        if (_sendToGoogle != null)
-            _sendToGoogle.Send();
-        
-        _analyticsVariables.ResetHealthZero();
-        _analyticsVariables.ResetUsedColourPowerUp();
-        _analyticsVariables.ResetNotUsedColourPowerUp();
-        _analyticsVariables.ResetUsedCoins();
-        _analyticsVariables.ResetCounterRainbow();
-        _analyticsVariables.ResetCounterSlowDown();
-        
-        Time.timeScale = 0;
-        pauseGame.hidePause();
-        restartPanel.SetActive(true);
-        Destroy(gameObject);
+             Time.timeScale = 0;
+             if (_uiManager.GetReplayFlag() == false)
+             {
+                 pauseGame.hidePause();
+                 restartPanel.SetActive(true);
+             }
+             else
+             {
+                 _uiManager.Replay();
+             }
+
+             Destroy(gameObject);
+         }
+         
     }
 
     private Constants.Color GetNextColor(Constants.Color color)
@@ -247,54 +267,29 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        /*rb.velocity = new Vector3(0,0,Velocity);
-        if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
-        {
-            Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
-        }
-        if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
-        {
-            Constants.Color c = GetNextColor(color);
-            color = c;
-            GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
-            ChangeMaterial(child);
-        }*/
+       
         rb.velocity = new Vector3(0,0,Velocity);
-                /*
-                if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
-                {
-                    Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
-                    print(Velocity);
-                }
-                */
+ 
                 if (gmc.GetScore() % 100 == 0 && gmc.GetScore() != 0)
                 {
                     if (gmc.GetScore() < 500)
                     {
                         Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .2f);
-                        //print("500");
-                        //print(Velocity);
                     }
                     else if (gmc.GetScore() < 1000)
                     {
                         Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .4f);
-                        //print("1000");
-                        //print(Velocity);
                     }
                     else if (gmc.GetScore() < 1500)
                     {
                         Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .6f);
-                        //print("1500");
-                        //print(Velocity);
                     }
                     else
                     {
                         Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
-                        //print("other");
-                        //print(Velocity);
                     }
                 }
-                // if(gmc.GetScore()%200 == 0 && gmc.GetScore() != 0 && RainbowActive == false)
+
                 if ((int)(Time.time - _colorChangeTime)%20 == 0 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
                 {
                     _colorChangeTime = Time.time;
@@ -319,8 +314,20 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = rainbowMat;
     }
 
+    void SetFalse()
+    {
+        healthTextPrefab.SetActive(false);
+        healthIconPrefab.SetActive(false);
+    }
+
     private void HealthReducer()
     {
+        if (_analyticsVariables.GetHealth() > 0) {
+            healthTextPrefabTMP.text = "-1";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
+        }
         _analyticsVariables.DecrementHealth();  //Decrements by 1
         if (_analyticsVariables.GetHealth() <= 0)
         {
@@ -329,24 +336,6 @@ public class PlayerController : MonoBehaviour
             MoveToInner();//Return to lower cylinder
             ToggleImmortal();
         }
-        if(_analyticsVariables.GetAnimatedHealth()==1)
-        {
-            Debug.Log("HEALTH========================== +1");
-            prefab = Instantiate(healthTextPrefab);
-            // healthTextMesh=prefab.GetComponentInChildren<TextMeshProUGUI>();
-            // healthTextMesh.text=(+1).ToString();
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text="+1";
-        }
-        else if(_analyticsVariables.GetAnimatedHealth()==-1)
-        {
-            Debug.Log("HEALTH========================== -1");
-            prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text="-1";
-        }
-        else
-        {
-            Debug.Log("HEALTH========================== 0");
-        }
     }
     
     private void MoveToInner()
@@ -354,8 +343,13 @@ public class PlayerController : MonoBehaviour
         if (onOuterCylinder == true && _analyticsVariables.GetHealth() == 0)
         {
             _analyticsVariables.IncrementHealthZero();
+            healthTextPrefabTMP.text = "0";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
         }
         onOuterCylinder = false;
+        isScoreDouble = false;
         rb.transform.Translate(Vector3.down + (new Vector3(0, 40f, 0)) );
         rb.transform.Rotate(Vector3.forward, 180);
         cameraObject.transform.Rotate(Vector3.forward, 180);
@@ -369,40 +363,25 @@ public class PlayerController : MonoBehaviour
             //Invoke health counter. Calls every X seconds where X = time mentioned in the parameter
             InvokeRepeating(nameof(HealthReducer), Constants.HEALTH_TIMER, Constants.HEALTH_TIMER);
             onOuterCylinder = true;
+            isScoreDouble = true;
             print("PC: " + onOuterCylinder);
             rb.transform.Translate(Vector3.up + (new Vector3(0, 38f, 0)));
             rb.transform.Rotate(Vector3.forward, 180);
             cameraObject.transform.Rotate(Vector3.forward, 180);
             ToggleImmortal();
+            // healthTextPrefab.SetActive(false);
         }
     }
 
     private void HealthPickup()
     {
+        if(_analyticsVariables.GetHealth()<3) {
+            healthTextPrefabTMP.text = "+1";
+            healthIconPrefab.SetActive(true);
+            healthTextPrefab.SetActive(true);
+            Invoke("SetFalse",0.6f);
+        }
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
-        if(_analyticsVariables.GetAnimatedHealth()==1)
-        {
-            Debug.Log("HEALTH========================== +1");
-            //prefab = Instantiate(healthTextPrefab);
-            // healthTextMesh=prefab.GetComponentInChildren<TextMeshProUGUI>();
-            // healthTextMesh.text=(+1).ToString();
-            healthTextPrefab.GetComponentInChildren<TextMeshProUGUI>().text="+1";
-        }
-        else if(_analyticsVariables.GetAnimatedHealth()==-1)
-        {
-            Debug.Log("HEALTH========================== -1");
-            prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-            prefab.GetComponentInChildren<TextMeshProUGUI>().text=(-1).ToString();
-        }
-        else
-        {
-            Debug.Log("HEALTH========================== 0");
-        }
-        // Debug.Log("HEALTH========================== +1");
-        // prefab = Instantiate(healthTextPrefab,transform.position,Quaternion.identity);
-        // healthTextMesh=prefab.GetComponentInChildren<TextMeshProUGUI>();
-        // healthTextMesh.text=(+1).ToString();
-        // prefab.GetComponentInChildren<TextMeshProUGUI>().text=(+1).ToString;
     }
 
     private bool HandleBuying(int cost, Collider other)
@@ -437,7 +416,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ToggleImmortal()
+    public void ToggleImmortal()
     {
         _immortal = true;
         InvokeRepeating(nameof(Blink), 0.5f, 0.5f);
@@ -451,7 +430,6 @@ public class PlayerController : MonoBehaviour
             if (RainbowActive){
                 if (other.gameObject.CompareTag("EnemyColor"))
                 {
-                    print("Entering for color power up obstacle");
                     _analyticsVariables.IncrementUsedColourPowerUp();
                 }
                 
@@ -459,19 +437,22 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-                //print("Entered RainbowActive");
-                //print(other.gameObject.tag);
-                //return;
+
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
-                //print("Should Die");
-                //print(other.gameObject.tag);
                 _analyticsVariables.SetDeathObstacle(other.gameObject.tag);
                 if(_analyticsVariables.GetHealth() <= 0)
                     Restart();
                 else
                 {
+                    if (_analyticsVariables.GetHealth() > 0) {
+                        Debug.Log("HEALTH========================== -1");
+                        healthTextPrefabTMP.text = "-1";
+                        healthIconPrefab.SetActive(true);
+                        healthTextPrefab.SetActive(true);
+                        Invoke("SetFalse",0.6f);
+                    }
                     _analyticsVariables.DecrementHealth();
                 }
             }
@@ -479,15 +460,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    // print("Entering for same color obstacle");
+                    
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
         }
         if (other.gameObject.CompareTag("zone"))
-        {
-            // Instantiate(lockRotator,
-            //     new Vector3(transform.position.x, transform.position.y-5f, transform.position.z + 20f), Quaternion.Euler(new Vector3(-90f,0f,0f)));
+        { 
             oldVelocity = Velocity;
             Velocity = 0f;
             platformRotate = false;
