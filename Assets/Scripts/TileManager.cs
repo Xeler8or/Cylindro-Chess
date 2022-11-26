@@ -110,11 +110,11 @@ public class TileManager : MonoBehaviour
                 randomIndex = lastPrefabIndex;
                 continue;
             }
-            if (randomIndex == 6 && count <= 3)
+            if (randomIndex == 10 && count <= 3)
             {
                 continue;
             }
-            if (randomIndex == 6)
+            if (randomIndex == 10)
             {
                 count = 1;
             }
