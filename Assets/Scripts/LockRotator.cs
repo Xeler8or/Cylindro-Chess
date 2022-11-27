@@ -28,7 +28,7 @@ public class LockRotator : MonoBehaviour
         
         if (!_player.platformRotate)
         {
-            if (Input.GetKey("d") || Input.GetKey("right"))
+            if (Input.GetKey("a") || Input.GetKey("left"))
             {
                 // instructions.SetActive(false);
                 //Rotate cylinder to left
@@ -44,7 +44,7 @@ public class LockRotator : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey("a") || Input.GetKey("left"))
+            if (Input.GetKey("d") || Input.GetKey("right"))
             {
                 // Rotate cylinder to right
                 // instructions.SetActive(false);
