@@ -26,7 +26,7 @@ public class LockRotator3 : MonoBehaviour
     {
         if (lock2.lock3Rotate && lock2.dir)
         {
-            if (Input.GetKey("d") || Input.GetKey("right"))
+            if (Input.GetKey("a") || Input.GetKey("left"))
             {
                 // instructions.SetActive(false);
                 //Rotate cylinder to left
@@ -54,7 +54,7 @@ public class LockRotator3 : MonoBehaviour
 
         if (lock2.lock3Rotate && !lock2.dir)
         {
-            if (Input.GetKey("a") || Input.GetKey("left"))
+            if (Input.GetKey("d") || Input.GetKey("right"))
             {
                 // Rotate cylinder to right
                 // instructions.SetActive(false);
