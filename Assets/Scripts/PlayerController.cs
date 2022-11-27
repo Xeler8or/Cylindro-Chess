@@ -334,7 +334,6 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.SetHealth(0);
             CancelInvoke();
             MoveToInner();//Return to lower cylinder
-            ToggleImmortal();
         }
     }
     
@@ -398,6 +397,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ImmortalityCoroutine(int secs)
     {
+        print("Immortal courotine");
         yield return new WaitForSeconds(secs);
         _immortal = false;
         foreach (var r in _renderers)
@@ -495,7 +495,6 @@ public class PlayerController : MonoBehaviour
             HealthPickup();
             AudioSource.PlayClipAtPoint(healthSound, transform.position, 0.8f);
             Destroy(other.gameObject);
-            
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
