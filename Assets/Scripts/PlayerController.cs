@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public GameObject healthTextPrefab;
     public GameObject healthIconPrefab;
     private TextMeshProUGUI healthTextPrefabTMP;
+    public GameObject coinTextPrefab;
+    public GameObject coinIconPrefab;
+    private TextMeshProUGUI coinTextPrefabTMP;
 
     public Material redMat;
     public Material blueMat;
@@ -109,6 +112,7 @@ public class PlayerController : MonoBehaviour
         _analyticsVariables.SetCoins(0);
         _analyticsVariables.SetHealth(0);
         healthTextPrefabTMP = healthTextPrefab.GetComponent<TextMeshProUGUI>();
+        coinTextPrefabTMP = coinTextPrefab.GetComponent<TextMeshProUGUI>();
         foreach (MeshRenderer r in GetComponentsInChildren<MeshRenderer>())
         {
             _renderers.Add(r);
@@ -314,10 +318,16 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = rainbowMat;
     }
 
-    void SetFalse()
+    void SetFalseHealth()
     {
         healthTextPrefab.SetActive(false);
         healthIconPrefab.SetActive(false);
+    }
+
+    void SetFalseCoin()
+    {
+        coinTextPrefab.SetActive(false);
+        coinIconPrefab.SetActive(false);
     }
 
     private void HealthReducer()
@@ -326,7 +336,7 @@ public class PlayerController : MonoBehaviour
             healthTextPrefabTMP.text = "-1";
             healthIconPrefab.SetActive(true);
             healthTextPrefab.SetActive(true);
-            Invoke("SetFalse",0.6f);
+            Invoke("SetFalseHealth",0.6f);
         }
         _analyticsVariables.DecrementHealth();  //Decrements by 1
         if (_analyticsVariables.GetHealth() <= 0)
@@ -345,7 +355,7 @@ public class PlayerController : MonoBehaviour
             healthTextPrefabTMP.text = "0";
             healthIconPrefab.SetActive(true);
             healthTextPrefab.SetActive(true);
-            Invoke("SetFalse",0.6f);
+            Invoke("SetFalseHealth",0.6f);
         }
         onOuterCylinder = false;
         isScoreDouble = false;
@@ -378,7 +388,7 @@ public class PlayerController : MonoBehaviour
             healthTextPrefabTMP.text = "+1";
             healthIconPrefab.SetActive(true);
             healthTextPrefab.SetActive(true);
-            Invoke("SetFalse",0.6f);
+            Invoke("SetFalseHealth",0.6f);
         }
         _analyticsVariables.SetHealth(Math.Min(_analyticsVariables.GetHealth()+1, 3));
     }
@@ -389,9 +399,13 @@ public class PlayerController : MonoBehaviour
         {
             _analyticsVariables.UpdateCoins(-cost);
             _analyticsVariables.ModifyUsedCoins(cost);
+            coinTextPrefabTMP.text = "-"+cost.ToString();
+            coinIconPrefab.SetActive(true);
+            coinTextPrefab.SetActive(true);
+            Invoke("SetFalseCoin",0.6f);
             return true;
         }
-
+        SetFalseCoin();
         return false;
     }
 
@@ -451,7 +465,7 @@ public class PlayerController : MonoBehaviour
                         healthTextPrefabTMP.text = "-1";
                         healthIconPrefab.SetActive(true);
                         healthTextPrefab.SetActive(true);
-                        Invoke("SetFalse",0.6f);
+                        Invoke("SetFalseHealth",0.6f);
                     }
                     _analyticsVariables.DecrementHealth();
                 }
@@ -460,7 +474,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
-                    
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
                 }
             }
@@ -551,6 +564,11 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.UpdateCoins(1);
             AudioSource.PlayClipAtPoint(coinSound, transform.position, 0.8f);
             Destroy(other.gameObject);
+            print("+1 coin");
+            coinTextPrefabTMP.text = "+1";
+            coinIconPrefab.SetActive(true);
+            coinTextPrefab.SetActive(true);
+            Invoke("SetFalseCoin",0.6f);
         }
         
         if (other.gameObject.CompareTag("Bounce") && !_immortal)
