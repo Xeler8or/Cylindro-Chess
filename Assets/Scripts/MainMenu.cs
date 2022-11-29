@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     public void LoadNewGame()
     {
         Levels.SetCurrentLevel("ENDLESS");
-        Time.timeScale = 1;
+        PauseGame.continueGame();
         SceneManager.LoadScene(1);
     }
 
@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     {
         GameTutorial.startTutorial();
         Levels.SetCurrentLevel(tutorialName);
-        Time.timeScale = 1;
+        PauseGame.continueGame();
         SceneManager.LoadScene(2);
     }
 
@@ -41,7 +41,7 @@ public class MainMenu : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         Levels.SetCurrentLevel(levelName);
-        Time.timeScale = 1;
+        PauseGame.continueGame();
         SceneManager.LoadScene(1);
     }
 }

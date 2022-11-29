@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             _renderers.Add(r);
         }
+        PauseGame.continueGame();
         
         
     }
@@ -217,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
          if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && _uiManager.GetReplayFlag()!= true)
          {
-             Time.timeScale = 0;
+             PauseGame.stopGame();
              pauseGame.hidePause();
              restartPanel.SetActive(true);
          }
@@ -235,8 +236,8 @@ public class PlayerController : MonoBehaviour
              _analyticsVariables.ResetUsedCoins();
              _analyticsVariables.ResetCounterRainbow();
              _analyticsVariables.ResetCounterSlowDown();
-        
-             Time.timeScale = 0;
+             
+             PauseGame.stopGame();
              if (_uiManager.GetReplayFlag() == false)
              {
                  pauseGame.hidePause();
@@ -579,7 +580,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EndLevel"))
         {
             endLevel.SetActive(true);
-            Time.timeScale = 0;
+            PauseGame.stopGame();
             return;
         }
         

@@ -8,21 +8,30 @@ public class PauseGame : MonoBehaviour
     public GameObject pauseDialogue;
     public GameObject buttonHide;
 
-    public void pauseGame()
+    public static void stopGame()
     {
         Time.timeScale = 0;
+    }
+
+    public static void continueGame()
+    {
+        Time.timeScale = 1;
+    }
+    
+    public void pauseGame()
+    {
+        stopGame();
         pauseDialogue.SetActive(true);
     }
 
     public void hidePause()
-    {   
-        Debug.Log("herrrr");
+    {
         buttonHide.SetActive(false);
     }
 
     public void playGame()
     {
-        Time.timeScale = 1;
+        continueGame();
         pauseDialogue.SetActive(false);
     }
 
@@ -40,7 +49,7 @@ public class PauseGame : MonoBehaviour
     {
         Levels.SetCurrentLevel(Constants.ENDLESS);
         SceneManager.LoadScene(1);
-        Time.timeScale = 1;
+        continueGame();
     }
     
     public void gotoLevelMainPage()
