@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29596063, g: 0.5407851, b: 0.75311095, a: 1}
+  m_IndirectSpecularColor: {r: 0.29581022, g: 0.54076886, b: 0.7530995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9098039, g: 0.30588236, b: 0.20392157, a: 1}
+  m_Color: {r: 0.22352941, g: 0.24313726, b: 0.37254903, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1046,8 +1046,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284366134
-  m_fontColor: {r: 0.21176471, g: 0.23921569, b: 0.36862746, a: 1}
+    rgba: 4282472919
+  m_fontColor: {r: 0.84313726, g: 0.34901962, b: 0.25490198, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1743,8 +1743,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284366134
-  m_fontColor: {r: 0.21176471, g: 0.23921569, b: 0.36862746, a: 1}
+    rgba: 4282472919
+  m_fontColor: {r: 0.84313726, g: 0.34901962, b: 0.25490198, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2397,6 +2397,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1159794599}
     - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: coinSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 35d56ab0e39494bbabe110ab568fa39e, type: 3}
+    - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: powerTimer
       value: 
       objectReference: {fileID: 1918145846}
@@ -2404,6 +2408,14 @@ PrefabInstance:
       propertyPath: rainbowMat
       value: 
       objectReference: {fileID: 2100000, guid: c5437cc2c5ae63548a55afef5e0182d0, type: 2}
+    - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: shapeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e3089821dbfe647639594a8a5740cb49, type: 3}
+    - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: healthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc4a930ea6e6d462ba62834aff93e6ae, type: 3}
     - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: lockRotator
       value: 
@@ -2413,9 +2425,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1966693465}
     - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: rainbowSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dfe3b571d93d84d84b297f1ae72620e5, type: 3}
+    - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: restartPanel
       value: 
       objectReference: {fileID: 990752266}
+    - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
+      propertyPath: slowdownSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 42f612ec6b76741218bf931afe7af846, type: 3}
     - target: {fileID: 6073109322261225238, guid: 77defc8b4826ca84d9c5dcabedcecd73, type: 3}
       propertyPath: coinIconPrefab
       value: 
@@ -2778,8 +2798,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284366134
-  m_fontColor: {r: 0.21176471, g: 0.23921569, b: 0.36862746, a: 1}
+    rgba: 4282472919
+  m_fontColor: {r: 0.84313726, g: 0.34901962, b: 0.25490198, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4156,6 +4176,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4115313425804536718, guid: 310c9846f6e6f4ba0a2bc750537c4f19, type: 3}
   m_PrefabInstance: {fileID: 1930317908}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1930317910
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930317909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdb973e471e34485eaa0c574ad70b5b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1937715406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,7 +4466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -409, y: 238}
+  m_AnchoredPosition: {x: -485, y: 238}
   m_SizeDelta: {x: 142.7486, y: 119.4396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091128720
