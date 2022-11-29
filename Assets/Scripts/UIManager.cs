@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         {
             //print("Replay Else");
             ResetReplayFlag();
-            Time.timeScale = 1;
+            PauseGame.continueGame();
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
     }
     
     public void Continue(){
-        Time.timeScale = 1; 
+        PauseGame.continueGame();
         restartDialogue.SetActive(false);
         _analyticsVariables.UpdateCoins(-(Constants.CONTINUE_COINS));
         _playerController.ToggleImmortal();
