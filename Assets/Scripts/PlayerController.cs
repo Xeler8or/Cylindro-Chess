@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     public bool RainbowActive = false;
     public float RainbowStartTime;
+    public float VideoStartTime;
     private bool _immortal = false;
     private List<MeshRenderer>  _renderers;
     public GameObject endLevel;
@@ -73,6 +74,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip shapeSound;
     public AudioClip rainbowSound;
     public AudioClip slowdownSound;
+    
+    public GameObject LockTutorialVideo;
     
     
     
@@ -179,6 +182,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseGame.pauseGame();
+        }
+
+        if ((int)(18 - Time.time + VideoStartTime) == 0)
+        {
+            Velocity = Constants.INITIAL_PLAYER_SPEED;
         }
     }
 
@@ -606,6 +614,14 @@ public class PlayerController : MonoBehaviour
             endLevel.SetActive(true);
             PauseGame.stopGame();
             return;
+        }
+
+        if (other.gameObject.CompareTag("LockTutorialVideo"))
+        {
+            Velocity = 0f;
+            VideoStartTime = Time.time;
+            LockTutorialVideo.SetActive(true);
+            Destroy(LockTutorialVideo, 18);
         }
         
         // print(Velocity);
