@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using TMPro;
@@ -60,7 +61,9 @@ public class PlayerController : MonoBehaviour
     public GameObject endLevel;
     private Collider _bounce;
     private Collider _zone;
-    
+    public GameObject colorIndicator;
+    private Image colorChangeIndicatorImg;
+
     //For sound 
     public AudioClip coinSound;
     public AudioClip healthSound;
@@ -88,7 +91,8 @@ public class PlayerController : MonoBehaviour
     {
 
         _colorChangeTime = Time.time;
-        
+        colorChangeIndicatorImg = colorIndicator.GetComponent<Image>();
+        colorChangeIndicatorImg.color = GetHexFromColor(color);
 
         Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
@@ -289,11 +293,20 @@ public class PlayerController : MonoBehaviour
                         Velocity = Math.Min(Constants.PLAYER_MAX_SPEED, Velocity += .8f);
                     }
                 }
-
+                if ((int)(Time.time - _colorChangeTime)%20 == 17 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
+                {
+                    print("Changing indicator: " + color);
+                    Constants.Color c = GetNextColor(color);
+                    print("Changing indicator post: " + color);
+                    colorChangeIndicatorImg.color = GetHexFromColor(c);
+                }
+                
                 if ((int)(Time.time - _colorChangeTime)%20 == 0 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
                 {
                     _colorChangeTime = Time.time;
+                    print("Material Color: " + color);
                     Constants.Color c = GetNextColor(color);
+                    print("Mat Color post: " + color);
                     color = c;
                     GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
                     ChangeMaterial(child);
@@ -312,6 +325,17 @@ public class PlayerController : MonoBehaviour
             gm.GetComponent<MeshRenderer>().material = yellowMat;
         else if(color == Constants.Color.Rainbow)
             gm.GetComponent<MeshRenderer>().material = rainbowMat;
+    }
+
+    private Color GetHexFromColor(Constants.Color _color)
+    {
+        if (_color == Constants.Color.Red)
+            return Color.red;
+        else if (_color == Constants.Color.Blue)
+            return Color.blue;
+        else if (_color == Constants.Color.Green)
+            return Color.green;        
+        return Color.yellow;
     }
 
     void SetFalse()
