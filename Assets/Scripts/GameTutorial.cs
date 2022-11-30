@@ -14,7 +14,9 @@ public class GameTutorial : MonoBehaviour
     private static bool _showText = false;
     private string[] tutorialTexts = new string[]{ Constants.MOVE_LEFT_RIGHT, 
                                                    Constants.CHANGE_SHAPE,
-                                                   Constants.CHANGE_TO_CUBE,
+                                                   Constants.CHANGE_TO_CIRCLE,
+                                                   Constants.CHANGE_TO_RECTANGLE,
+                                                   Constants.CHANGE_TO_TRIANGLE,
                                                    Constants.COLOR_CHANGE,
                                                    Constants.PASS_THROUGH_RED_PORTION,
                                                    Constants.AUTOMATIC_RIGHT_SECTION,
@@ -41,26 +43,26 @@ public class GameTutorial : MonoBehaviour
         {
             tutorialBackground.SetActive(false);
             endGame.SetActive(true);
-            Time.timeScale = 0;
+            PauseGame.stopGame();
             return;
         }
         
         if (_showText && _tutorialIndex < tutorialTexts.Length)
         {
             tutorialBackground.SetActive(true);
-            Time.timeScale = 0;
+            PauseGame.stopGame();
             tutorialText.text = tutorialTexts[_tutorialIndex];
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 tutorialBackground.SetActive(false);
                 _showText = false;
                 _tutorialIndex++;
+                PauseGame.continueGame();
             }
         }
         else if ( !_showText && _tutorialIndex <= tutorialTexts.Length )
         {
             tutorialBackground.SetActive(false);
-            Time.timeScale = 1;
         }
     }
 

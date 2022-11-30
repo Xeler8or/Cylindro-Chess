@@ -23,8 +23,14 @@ public static class Constants
     public const string CHANGE_SHAPE =
         "Q: Shape Change\nAvailable shapes are Sphere, Cube and Triangle.";
 
-    public const string CHANGE_TO_CUBE =
-        "Change shape to a cube to pass through.";
+    public const string CHANGE_TO_CIRCLE =
+        "Change shape to a circle to pass through.";
+    
+    public const string CHANGE_TO_RECTANGLE =
+        "Change shape to a rectangle to pass through.";
+    
+    public const string CHANGE_TO_TRIANGLE =
+        "Change shape to a triangle to pass through.";
 
     public const string COLOR_CHANGE =
         "The player can pass through obstacles of the same color.";
