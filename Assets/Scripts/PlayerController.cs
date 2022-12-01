@@ -482,7 +482,7 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
-
+                Destroy(other.gameObject);
             }
             if (other.gameObject.GetComponent<ObstacleController>().color != color)
             {
@@ -492,7 +492,6 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     if (_analyticsVariables.GetHealth() > 0) {
-                        Debug.Log("HEALTH========================== -1");
                         healthTextPrefabTMP.text = "-1";
                         healthIconPrefab.SetActive(true);
                         healthTextPrefab.SetActive(true);
@@ -506,6 +505,7 @@ public class PlayerController : MonoBehaviour
                 if (other.gameObject.GetComponent<ObstacleController>().color == color)
                 {
                     _analyticsVariables.IncrementNotUsedColourPowerUp();
+                    Destroy(other.gameObject);
                 }
             }
         }
@@ -538,7 +538,6 @@ public class PlayerController : MonoBehaviour
         {
             HealthPickup();
             AudioSource.PlayClipAtPoint(healthSound, transform.position, 0.8f);
-            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
@@ -595,7 +594,6 @@ public class PlayerController : MonoBehaviour
             _analyticsVariables.UpdateCoins(1);
             AudioSource.PlayClipAtPoint(coinSound, transform.position, 0.8f);
             Destroy(other.gameObject);
-            print("+1 coin");
             coinTextPrefabTMP.text = "+1";
             coinIconPrefab.SetActive(true);
             coinTextPrefab.SetActive(true);
