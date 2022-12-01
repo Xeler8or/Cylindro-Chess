@@ -525,8 +525,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Portal"))
         {
+            print("Poooooortaaaalllllll");
             if (onOuterCylinder)
             {
+                
                 CancelInvoke();
                 MoveToInner();
             }
