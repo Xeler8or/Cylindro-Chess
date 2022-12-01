@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
     
     public void Restart()
     {
-        print("Restart Entered");
+        //print("Restart Entered");
         RainbowActive = false;
         isScoreDouble = false;
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
@@ -238,6 +238,7 @@ public class PlayerController : MonoBehaviour
          {
              if (_sendToGoogle != null)
              {
+                 print("Send to Google");
                  _sendToGoogle.Send();
              }
              
@@ -249,9 +250,9 @@ public class PlayerController : MonoBehaviour
              _analyticsVariables.ResetCounterSlowDown();
              
              PauseGame.stopGame();
+             pauseGame.hidePause();
              if (_uiManager.GetReplayFlag() == false)
              {
-                 pauseGame.hidePause();
                  restartPanel.SetActive(true);
              }
              else
@@ -508,6 +509,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(other.gameObject);
                 }
             }
+            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("zone"))
         { 
@@ -545,7 +547,6 @@ public class PlayerController : MonoBehaviour
         {
             if (HandleBuying(2, other))
             {
-                
                 StartRainbowPower();
                 AudioSource.PlayClipAtPoint(rainbowSound, transform.position, 0.8f);
                 _analyticsVariables.IncrementCounterRainbow();
