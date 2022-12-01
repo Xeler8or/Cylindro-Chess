@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
     
     public void Restart()
     {
-        print("Restart Entered");
+        //print("Restart Entered");
         RainbowActive = false;
         isScoreDouble = false;
         _analyticsVariables.SetSpeedAtDeath((int)Velocity);
@@ -238,6 +238,7 @@ public class PlayerController : MonoBehaviour
          {
              if (_sendToGoogle != null)
              {
+                 print("Send to Google");
                  _sendToGoogle.Send();
              }
              
@@ -249,9 +250,9 @@ public class PlayerController : MonoBehaviour
              _analyticsVariables.ResetCounterSlowDown();
              
              PauseGame.stopGame();
+             pauseGame.hidePause();
              if (_uiManager.GetReplayFlag() == false)
              {
-                 pauseGame.hidePause();
                  restartPanel.SetActive(true);
              }
              else
