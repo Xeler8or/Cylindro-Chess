@@ -81,7 +81,7 @@ public static class Constants
 
     public const float HEALTH_TIMER = 8f;
 
-    public const float PLAYER_MAX_SPEED = 25f;
+    public const float PLAYER_MAX_SPEED = 22f;
     
     public const string MOVEMENT_TUTORIAL = "MOVEMENT";
     
