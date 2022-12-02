@@ -39,7 +39,7 @@ public static class Constants
         "Pass through the section where the color is the same as the player.";
 
     public const string LOCK_TUTORIAL =
-        "This is a lock obstacle.\nTo clear this, remember the pattern to perform shown on top.";
+        "This is a lock obstacle.\nGive it a shot!";
 
     public const string AUTOMATIC_RIGHT_SECTION =
         "This section moves left by default.\nThis is indicated by the arrows on the ground.";
