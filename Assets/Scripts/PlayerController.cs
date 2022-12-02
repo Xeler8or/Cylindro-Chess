@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
             pauseGame.pauseGame();
         }
 
-        if ((int)(18 - Time.time + VideoStartTime) == 0)
+        if ((int)(22 - Time.time + VideoStartTime) == 0)
         {
             Velocity = Constants.INITIAL_PLAYER_SPEED;
         }
@@ -638,9 +638,9 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LockTutorialVideo"))
         {
             Velocity = 0f;
-            VideoStartTime = Time.time;
             LockTutorialVideo.SetActive(true);
-            Destroy(LockTutorialVideo, 18);
+            VideoStartTime = Time.time;
+            Destroy(LockTutorialVideo, 22);
         }
         
         // print(Velocity);
