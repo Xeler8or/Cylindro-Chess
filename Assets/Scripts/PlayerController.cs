@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     public GameObject endLevel;
     private Collider _bounce;
     private Collider _zone;
-    public GameObject colorIndicator;
+    public GameObject colorIndicatorGM;
     private Image colorChangeIndicatorImg;
     
     //For sound 
@@ -97,8 +97,11 @@ public class PlayerController : MonoBehaviour
 
         _colorChangeTime = Time.time;
         
-        colorChangeIndicatorImg = colorIndicator.GetComponent<Image>();
-        colorChangeIndicatorImg.color = GetHexFromColor(color);
+        colorChangeIndicatorImg = colorIndicatorGM.GetComponent<Image>();
+        Constants.Color nextColor = GetNextColor(color);
+        colorChangeIndicatorImg.color = GetHexFromColor(nextColor);
+        colorIndicatorGM.SetActive(false);
+        
         Velocity = Constants.INITIAL_PLAYER_SPEED;
         rb.inertiaTensor = _inertiaTensor;
         gmc = FindObjectOfType<GameController>();
@@ -169,7 +172,7 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#")+ "\n" + "Press Space to continue";
 
         if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
@@ -183,7 +186,7 @@ public class PlayerController : MonoBehaviour
             pauseGame.pauseGame();
         }
 
-        if ((int)(18 - Time.time + VideoStartTime) == 0)
+        if ((int)(22 - Time.time + VideoStartTime) == 0)
         {
             Velocity = Constants.INITIAL_PLAYER_SPEED;
         }
@@ -307,12 +310,9 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 
-                if ((int)(Time.time - _colorChangeTime)%20 == 17 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
+                if ((int)(Time.time - _colorChangeTime)%20 == 15 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
                 {
-                    print("Changing indicator: " + color);
-                    Constants.Color c = GetNextColor(color);
-                    print("Changing indicator post: " + color);
-                    colorChangeIndicatorImg.color = GetHexFromColor(c);
+                    ToggleIndicator();
                 }
 
                 if ((int)(Time.time - _colorChangeTime)%20 == 0 && (int)(Time.time - _colorChangeTime) != 0 && RainbowActive == false)
@@ -322,6 +322,8 @@ public class PlayerController : MonoBehaviour
                     color = c;
                     GameObject child = gameObject.transform.GetChild(ShapeRanking[player_shape]).gameObject;
                     ChangeMaterial(child);
+                    Constants.Color nextColor = GetNextColor(color);
+                    colorChangeIndicatorImg.color = GetHexFromColor(nextColor);
                 }
     }
 
@@ -462,11 +464,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void BlinkIndicator()
+    {
+        colorIndicatorGM.SetActive(!colorIndicatorGM.activeSelf);
+    }
+    
     public void ToggleImmortal()
     {
         _immortal = true;
         InvokeRepeating(nameof(Blink), 0.5f, 0.5f);
         StartCoroutine(ImmortalityCoroutine(4));
+    }
+
+    private IEnumerator IndicatorEnderCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        CancelInvoke(nameof(BlinkIndicator));
+        colorIndicatorGM.SetActive(false);
+    }
+    private void ToggleIndicator()
+    {
+        InvokeRepeating(nameof(BlinkIndicator), 0, 0.5f);
+        StartCoroutine(IndicatorEnderCoroutine());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -619,9 +638,9 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("LockTutorialVideo"))
         {
             Velocity = 0f;
-            VideoStartTime = Time.time;
             LockTutorialVideo.SetActive(true);
-            Destroy(LockTutorialVideo, 18);
+            VideoStartTime = Time.time;
+            Destroy(LockTutorialVideo, 22);
         }
         
         // print(Velocity);
