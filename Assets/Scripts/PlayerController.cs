@@ -542,6 +542,7 @@ public class PlayerController : MonoBehaviour
         {
             HealthPickup();
             AudioSource.PlayClipAtPoint(healthSound, transform.position, 0.8f);
+            Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Rainbow"))
         {
