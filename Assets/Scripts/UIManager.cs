@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject buttonContinue;
     public bool replayFlag = false;
     public GameObject restartDialogue;
+    public PauseGame pauseGame;
     private void Start()
     {
         // scoreText = scoreGameObjectText.GetComponent<Text>();
@@ -27,6 +28,8 @@ public class UIManager : MonoBehaviour
         _coinsText = coinsGm.GetComponent<TextMeshProUGUI>();
         _analyticsVariables = FindObjectOfType<AnalyticsVariables>();
         _playerController = FindObjectOfType<PlayerController>();
+        pauseGame = FindObjectOfType<PauseGame>();
+        
     }
     // Update is called once per frame
     void Update()
@@ -72,6 +75,7 @@ public class UIManager : MonoBehaviour
             //print("Replay Else");
             ResetReplayFlag();
             PauseGame.continueGame();
+            pauseGame.showPause();
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
         }
@@ -82,6 +86,7 @@ public class UIManager : MonoBehaviour
         print("Entered Continue");
         restartDialogue.SetActive(false);
         PauseGame.continueGame();
+        pauseGame.showPause();
         _analyticsVariables.UpdateCoins(-(Constants.CONTINUE_COINS));
         _playerController.ToggleImmortal();
     }

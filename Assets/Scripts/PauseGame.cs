@@ -29,6 +29,11 @@ public class PauseGame : MonoBehaviour
         buttonHide.SetActive(false);
     }
 
+    public void showPause()
+    {
+        buttonHide.SetActive(true);
+    }
+
     public void playGame()
     {
         continueGame();
