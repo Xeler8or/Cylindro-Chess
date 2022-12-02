@@ -7,8 +7,8 @@ public class LeftRight : MonoBehaviour
 {
     private float rightRotation = 100f;
     private float leftRotation = 100f;
-    private float outerLeftRotation = 40f;
-    private float outerRightRotation = 40f;
+    private float outerLeftRotation = 50f;
+    private float outerRightRotation = 50f;
 
     public GameObject childRotator;
     private PlayerController _playerController;

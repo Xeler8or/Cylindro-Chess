@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
             TriggerPiecePrefab(player_shape);
         }
         
-        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#");
+        timerTMP.text = "Time Left : " + (20 - Time.time + _initialTime).ToString("#")+ "\n" + "Press Space to continue";
 
         if ((int)(20 - Time.time + _initialTime) == 0 && gamePassed == false)
         {
