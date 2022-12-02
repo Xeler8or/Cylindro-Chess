@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void Replay(){
-        if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && replayFlag != true)
+        if (_analyticsVariables.GetCoins() >= Constants.CONTINUE_COINS && GetReplayFlag() != true)
         {
             //print("Replay If");
             SetReplayFlag();
@@ -79,8 +79,9 @@ public class UIManager : MonoBehaviour
     }
     
     public void Continue(){
-        PauseGame.continueGame();
+        print("Entered Continue");
         restartDialogue.SetActive(false);
+        PauseGame.continueGame();
         _analyticsVariables.UpdateCoins(-(Constants.CONTINUE_COINS));
         _playerController.ToggleImmortal();
     }
